@@ -1,4 +1,4 @@
-using LinearAlgebra, BasicInterpolators
+using LinearAlgebra, BasicInterpolators, Plots
 
 function discretize_assets(amin,amax,n_a)
     ubar = log(1+log(1+amax-amin))
@@ -79,7 +79,6 @@ function backward_iteration(Va, Π, a_grid, y, r, β, σ)
     c = coh - a
 
     Va = (1+r) .* c .^ (-1/σ)
-    println(sum(Va))
     return Va, a, c
 end
 
@@ -91,9 +90,6 @@ function policy_ss(Π, a_grid, y, r, β, σ, tol = 1E-9)
     a_old = zeros(size(coh))
     for i in 1:10_000
         Va, a, c = backward_iteration(Va,Π, a_grid, y, r, β, σ)
-        #if i < 200
-        #    println("iteration ", i, ":   ", sum(a))
-        #end
         if i > 1 && maximum(abs.(a - a_old)) < tol
             return Va, a, c
         end
@@ -108,4 +104,59 @@ r = 0.01/4
 β = 1-0.08/4
 σ = 1
 Va,a,c = policy_ss(Π,a_grid,y,r,β,σ)
-println(sum(Va))
+
+function get_lottery(a, a_grid)
+    a_i = searchsortedlast(a_grid, a)
+    a_π = (a_grid[a_i + 1] - a)/(a_grid[a_i + 1] - a_grid[a_i])
+    return a_i, a_π
+end
+
+#get_lottery(a[6,1], a_grid)
+#=
+a_i, a_π = zeros(size(a)), zeros(size(a))
+for i in 1:size(a)[1]
+    for j in 1:size(a)[2]
+        a_i[i,j], a_π[i,j] = get_lottery(a[i,j], a_grid)
+    end
+end
+=#
+
+function forward_policy(D, a_i, a_π)
+    Dend = zeros(size(D))
+    for i in 1:size(a_i)[1]
+        for j in 1:size(a_i)[2]
+            Dend[i,a_i[i,j]] += a_π[i,j]*D[i,j]
+            Dend[i,a_i[i,j]] += (1-a_π[i,j])*D[i,j]
+        end
+    end
+    return Dend
+end
+
+function forward_iteration(D,Π,a_i,a_π)
+    Dend = forward_policy(D, a_i, a_π)
+    return Π' * Dend
+end
+
+function distribution_ss(Π, a, a_grid, tol = 1E-10)
+    a_i = Matrix{Int64}(undef, size(a))
+    a_π = zeros(size(a))
+    for i in 1:size(a)[1]
+        for j in 1:size(a)[2]
+            a_i[i,j], a_π[i,j] = get_lottery(a[i,j], a_grid)
+        end
+    end
+
+    π = stationary_markov(Π)
+    D = π*ones(size(a_grid))' ./ length(a_grid)
+
+    for i in 1:10_000
+        D_new = forward_iteration(D, Π, a_i, a_π)
+        if maximum(abs.(D_new - D)) < tol
+            return D_new
+        end
+        D = D_new
+    end
+end
+
+D = distribution_ss(Π, a, a_grid)
+size(D)
