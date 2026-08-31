@@ -108,25 +108,29 @@ Va,a,c = policy_ss(Π,a_grid,y,r,β,σ)
 function get_lottery(a, a_grid)
     a_i = searchsortedlast(a_grid, a)
     a_π = (a_grid[a_i + 1] - a)/(a_grid[a_i + 1] - a_grid[a_i])
+    if a_π == 1.0
+        a_π = 0.0
+    end
     return a_i, a_π
 end
 
 #get_lottery(a[6,1], a_grid)
-#=
+#print(get_lottery(a[1,1], a_grid))
+
 a_i, a_π = zeros(size(a)), zeros(size(a))
 for i in 1:size(a)[1]
     for j in 1:size(a)[2]
         a_i[i,j], a_π[i,j] = get_lottery(a[i,j], a_grid)
     end
 end
-=#
+#println(a_π[1,:])
 
 function forward_policy(D, a_i, a_π)
     Dend = zeros(size(D))
     for i in 1:size(a_i)[1]
         for j in 1:size(a_i)[2]
             Dend[i,a_i[i,j]] += a_π[i,j]*D[i,j]
-            Dend[i,a_i[i,j]] += (1-a_π[i,j])*D[i,j]
+            Dend[i,a_i[i,j]+1] += (1-a_π[i,j])*D[i,j]
         end
     end
     return Dend
@@ -159,4 +163,74 @@ function distribution_ss(Π, a, a_grid, tol = 1E-10)
 end
 
 D = distribution_ss(Π, a, a_grid)
-size(D)
+#size(D)
+
+cplot = plot((ones(7)*a_grid')',c')
+cplot_zoom1 = plot((ones(7)*a_grid')'[1:121,:],c'[1:121,:])
+cplot_zoom2 = plot((ones(7)*a_grid')'[1:121,1:4],c'[1:121,1:4])
+splot_zoom1 = plot((ones(7)*a_grid')'[1:301,:], a'[1:301,:] - (ones(7)*a_grid')'[1:301,:])
+
+
+function plot_cwd(a_grid,D,cap)
+    Dpv = zeros(cap)
+    
+    for i in 1:cap
+        Dpv[i] += sum(D[:,i])
+    end
+    
+    return plot(a_grid[1:cap],cumsum(Dpv))
+end
+
+cwdplot = plot_cwd(a_grid,D,length(a_grid))
+cwdplot_zoom1 = plot_cwd(a_grid,D,argmax(a_grid .> 20))
+cwdplot_zoom2 = plot_cwd(a_grid,D,argmax(a_grid .> 2))
+
+#=
+function steady_state(Π, a_grid, y, r, β, σ)
+    Va, a, c = policy_ss(Π, a_grid, y, r, β, σ)
+    D = distribution_ss(Π, a, a_grid)
+
+    return Dict(D => D, Va => Va, a => a, c => c, 
+    A => dot(a, D), C = dot(c, D), Π=Π, 
+    a_grid=a_grid, y=y, r=r, β=β, σ=σ)
+end
+
+ss = steady_state(Π, a_grid, y, r, β, σ)
+=#
+
+rs = range(-0.02,0.015,15) .+ r
+As = zeros(size(rs))
+#=
+for i in 1:length(rs)
+    atemp = policy_ss(Π, a_grid, y, rs[i], β, σ)[2]
+    Dtemp = distribution_ss(Π, atemp, a_grid)
+    As[i] = dot(atemp,Dtemp)
+end
+
+rcsplot = plot(rs,As)
+=#
+
+#=
+sds = range(0.3,1.2,8)
+As2 = zeros(size(sds))
+for i in 1:length(sds)
+    y_new,π_new,Π_new = discretize_income(0.975,sds[i],7)
+    
+    atemp = policy_ss(Π_new,a_grid,y_new,r,β,σ)[2]
+    Dtemp = distribution_ss(Π_new,atemp,a_grid)
+    As2[i] = dot(atemp,Dtemp)
+end
+
+sdcsplot = plot(sds,As2)
+=# 
+
+σs = range(0.4,2,10)
+As3 = zeros(size(σs))
+for i in 1:length(σs)
+    atemp = policy_ss(Π, a_grid, y, r, β, σs[i])[2]
+    Dtemp = distribution_ss(Π, atemp, a_grid)
+    As3[i] = dot(atemp, Dtemp)
+end
+
+σcsplot = plot(σs,As3)
+

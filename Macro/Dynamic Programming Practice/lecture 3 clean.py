@@ -82,7 +82,6 @@ def backward_iteration(Va, Pi, a_grid, y, r, beta, eis):
     
     # step 4: using the envelope condition to recover the derivative of the value function
     Va = (1+r) * c**(-1/eis)
-    print(Va.sum())
     return Va, a, c
 
 def policy_ss(Pi, a_grid, y, r, beta, eis, tol=1E-5):
@@ -120,7 +119,6 @@ Va, a, c = policy_ss(Pi, a_grid, y, r, beta, eis)
 #coh = y[:, np.newaxis] + (1+r)*a_grid
 #print(c_endog.shape)
 
-'''
 for e, ye in enumerate(y):
     plt.plot(a_grid, c[e, :], label=f'y={ye:.2f}')
 plt.legend()
@@ -174,6 +172,8 @@ def get_lottery(a, a_grid):
     
     return a_i, a_pi
 
+a_i, a_pi = get_lottery(a, a_grid)
+
 @numba.njit
 def forward_policy(D, a_i, a_pi):
     Dend = np.zeros_like(D)
@@ -206,7 +206,7 @@ def distribution_ss(Pi, a, a_grid, tol=1E-10):
         D = D_new
 
 D = distribution_ss(Pi, a, a_grid)
-D.shape
+#print(D[:,20])
 
 i = np.argmax(a_grid > 20) # first gridpoint above 20
 plt.plot(a_grid[:i], D.sum(axis=0)[:i].cumsum())
@@ -235,6 +235,8 @@ plt.plot(rs, As)
 plt.xlabel('Real interest rate')
 plt.ylabel('Aggregate assets over quarterly income');
 
+print(As)
+'''
 sigmas = np.linspace(0.3, 1.2, 8) # our benchmark was sigma=0.7
 As = []
 for sigma in sigmas:
