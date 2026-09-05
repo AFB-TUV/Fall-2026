@@ -1,0 +1,108 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Homework 1 \\ Macroeconomic Theory I}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+	
+	\maketitle
+
+	\section{Labor Market Data}
+
+	\subsection{Two-state hazards from duration shocks}
+
+	\subsection{The Flow Steady State}
+
+	\section{Theory}
+
+	\subsection{McCall with Separation}
+
+	\subsubsection{}
+
+	We begin by writing the Bellman equations. Unemployed workers cannot separate from jobs, so their value function is exactly the same as in the base model:
+
+	\[U = b + \beta \max_w\{E(w), U\} = b + \beta \left[ \int_{w^*}^{\bar{w}} E(w)\ dF(w) + \int_{\ubar{w}}^{w^*} U\ dF(w) \right]\] 
+
+	The change in this model lies in the value function for the employed worker \(E(w)\), which is no longer the value of receiving \(w\) forever. It is now given by
+
+	\[E(w) = w + \beta [(1 - \sigma) E(w) + \sigma U]\]
+
+	which should remain constant for a given wage \(w\) since there is no renegotiation or on-the-job search. Since it is constant, we can rearrange for this value:
+
+	\[ (1-\beta (1-\sigma)) E(w) = w + \beta \sigma U \implies E(w) = \frac{w + \beta \sigma U}{1-\beta(1-\sigma)}\]
+
+	The reservation wage is the wage at which \(E(w^*) = U\), so we can also write
+
+	\[ U = \frac{w^* + \beta \sigma U}{1 - \beta (1 - \sigma)} \implies (1-\beta (1-\sigma)) U = w^* + \beta \sigma U\]
+
+	We can then see that
+
+	\[ U - \beta U + \beta \sigma U - \beta \sigma U = w^* = (1 - \beta) U \implies U = \frac{w^*}{1 - \beta}\]
+
+	which is exactly the same as in the original model! This is because the value of \(U\) does not depend directly on the separation probability; unemployed workers don't separate from jobs. The reservation wage encodes all the effects of the separation hazard.
+
+	Now that we have solved for \(E\) and \(U\), we can solve for the reservation wage itself. Going back to the unemployed worker's Bellman equation, we now have:
+
+	\[ \frac{w^*}{1 - \beta} = b + \beta \int_{w^*}^{\bar{w}} \frac{w + \beta \sigma \frac{w^*}{1 - \beta}}{1 - \beta (1 - \sigma)} dF(w) + \beta \int_{\ubar{w}}^{w^*} \frac{w^*}{1-\beta} dF(w) \]
+
+	From this point we have no choice but to grind through algebra. 
+
+	\subsubsection{}
+
+	\subsubsection{}
+
+	\subsection{The wage equation, in and out of steady state}
+
+	\section{Computation}
+
+	\subsection{Calibrate to your hazards}
+
+	\subsection{Comparative statics}
+
+	\subsection{The Beveridge loop}
+
+\end{document}

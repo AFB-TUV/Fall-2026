@@ -198,19 +198,23 @@ end
 ss = steady_state(Π, a_grid, y, r, β, σ)
 =#
 
+println("Conducting comparative statics on interest rates...")
+
 rs = range(-0.02,0.015,15) .+ r
 As = zeros(size(rs))
-#=
+
 for i in 1:length(rs)
+
     atemp = policy_ss(Π, a_grid, y, rs[i], β, σ)[2]
     Dtemp = distribution_ss(Π, atemp, a_grid)
     As[i] = dot(atemp,Dtemp)
 end
 
 rcsplot = plot(rs,As)
-=#
 
-#=
+println("Conducting comparative statics on income volatility...")
+    
+
 sds = range(0.3,1.2,8)
 As2 = zeros(size(sds))
 for i in 1:length(sds)
@@ -222,7 +226,9 @@ for i in 1:length(sds)
 end
 
 sdcsplot = plot(sds,As2)
-=# 
+
+println("Conducting comparative statics on EIS...")
+    
 
 σs = range(0.4,2,10)
 As3 = zeros(size(σs))
