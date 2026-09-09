@@ -31,3 +31,4 @@ murders[1,2] #row-column notation
 
 murders$population # datasetname#columnname
 ifelse(numbers > 5, "Big", "Small")
+
