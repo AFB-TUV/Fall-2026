@@ -53,6 +53,8 @@
 	
 	\maketitle
 
+	\emph{note: the code for this homework is maintained here if checking it is necessary}
+
 	\section{Labor Market Data}
 	
 	\subsection{Two-state hazards from duration shocks}
@@ -152,7 +154,7 @@
 
 	Now we force \( \lambda = \bar{s} = 0.40444  \). This immediately gives \(w^* = 1 - 0.40444 = 0.59556\). Assuming \(\sigma = 0.02\), we can rework the model to be
 	\[ b = -C*[w^* - 1)^2 - w^*]     \] 
-	Calculating through, we see that this model requires \(b\) to be close to \(0.7\), more than twice our calibration! This suggests 
+	Calculating through, we see that this model requires \(b\) to be close to \(0.332\), about \(1.1\) times our calibration. This suggests the model
 	
 	\subsection{The wage equation, in and out of steady state}
 
@@ -203,17 +205,17 @@
 	like we want. 
 	
 	Now we want to derive an equation for the surplus itself. We again want to obtain an equation in \(J(w')\). We start by deriving \(W - U\) as a fraction of the surplus. The first-order condition says 
-	\[ S = \Big(W(w) - U(b)\Big) + \Big(J(w) - V(\kappa)\Big)  \]
+	\[ S = \Big(W(w') - U(b')\Big) + \Big(J(w') - V(\kappa')\Big)  \]
 	Imposing free entry and then substituting the Bellman equations, we get
-	\[ S = w - b + z - w + \beta \bigg[ (1 - \sigma - \lambda_w(\theta)) \Big(W(w') - U(b')\Big) + (1 - \sigma) J(w') \bigg]     \]
+	\[ S = w' - b' + z - w' + \beta \bigg[ (1 - \sigma - \lambda_w(\theta)) \Big(W(w'') - U(b'')\Big) + (1 - \sigma) J(w'') \bigg]     \]
 	This time, we want to solve for \(S\). We replace \(W - U\) and \(J\) with their associated fractions of the surplus:
-	\[ S = z - b + \beta \bigg[ (1 - \sigma - \lambda_w(\theta)) \gamma S  + (1 - \sigma) (1 - \gamma) S \bigg]     \]
+	\[ S = z - b' + \beta \bigg[ (1 - \sigma - \lambda_w(\theta)) \gamma S  + (1 - \sigma) (1 - \gamma) S \bigg]     \]
 	Expanding the various terms in parentheses, we have
-	\[ S = z - b + S \Big( \gamma \beta - \gamma \beta \sigma - \gamma \beta \lambda_w(\theta) + \beta - \beta \sigma - \beta \gamma + \beta \gamma \sigma   \Big)    \]
+	\[ S = z - b' + S \Big( \gamma \beta - \gamma \beta \sigma - \gamma \beta \lambda_w(\theta) + \beta - \beta \sigma - \beta \gamma + \beta \gamma \sigma   \Big)    \]
 	which simplifies to 
-	\[ S = z - b + S \Big( \beta - \gamma \beta \lambda_w(\theta) - \beta \sigma   \Big) = z - b + \beta S \Big( (1 - \sigma) - \gamma \lambda_w(\theta)   \Big)    \]
+	\[ S = z - b' + S \Big( \beta - \gamma \beta \lambda_w(\theta) - \beta \sigma   \Big) = z - b' + \beta S \Big( (1 - \sigma) - \gamma \lambda_w(\theta)   \Big)    \]
 	Combining the S terms, we get
-	\[ 1 -  \beta \Big( (1 - \sigma) - \gamma \lambda_w(\theta)   \Big) S = z - b \]
+	\[ 1 -  \beta \Big( (1 - \sigma) - \gamma \lambda_w(\theta)   \Big) S = z - b' \]
 	and thus derive the equation for the surplus
 	\[ S = \frac{z - b}{1 -  \beta (1 - \sigma) + \beta \gamma \lambda_w(\theta)} \]
 	as required. 
@@ -222,6 +224,19 @@
 	The above derivation intentionally avoided imposing the steady-state condition when deriving the equations for the surplus and wage equation; thus, it should be evident that they will hold even if the economy is not in steady state provided the economy is in equilibrium.
 
 	\subsubsection{}
+
+	With wages fixed until separation, wages are no longer easy to solve for, as they now depend on the \emph{entire path} of the economy rather than the just the next period's bargaining problem. For instance, if the worker and firm believe that the overall productivity of firms \(z\) will increase over the length of a match, then the negotiated wage should be higher initially since it cannot rise when the value of the joint surplus increases with \(z\) later. 
+
+	Mathematically, the Nash bargaining protocol remains the same on the surface; the worker and firm are still splitting the joint surplus. What changes with no wage negotiation is actually the value functions themselves. We still have
+	\[ S = \Big(W(w') - U(b')\Big) + \Big(J(w') - V(\kappa')\Big)  \]
+	However, if were to write out the Bellman equations, we now have
+\begin{align*}
+	U(b) &= b + \beta \left[\lambda_w(\theta) W(w') + (1 - \lambda_w(\theta)) U(b')\right]\\
+	W(w) &= w + \beta \left[(1 - \sigma) W(w) + \sigma U(b')\right]\\
+	V(\kappa) &= - \kappa + \beta \left[\lambda_f(\theta) J(w') + (1 - \lambda_f(\theta)) V(\kappa')\right]\\
+	J(w) &= z - w + \beta \left[(1-\sigma) J(w) + \sigma V(\kappa')\right]
+	\end{align*}
+	In the original setup, the solution to the bargaining problem is pinned down by the free entry condition, which lets us define \(J(w')\) by the free entry condition and substitute it when \(J(w')\) appears in the firm's part of the surplus. However, with \(w\) not able to be renegotiated each period, we see that \(V\) still depends on \(J(w')\), since when a vacancy is filled the wage will be negotiated in the next period. \(J(w)\) itself depends on \(J(w)\) now, not \(J(w')\) --- so we cannot simply substitute \(J(w')\) to solve the system anymore! We would need some other relationship between \(J(w)\) and \(J(w')\) to solve for the surplus the way we did before.
 
 	\section{Computation}
 
