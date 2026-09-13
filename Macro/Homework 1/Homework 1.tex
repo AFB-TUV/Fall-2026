@@ -241,8 +241,36 @@
 	\section{Computation}
 
 	\subsection{Calibrate to your hazards}
-	The model boils down to solving
-	\[     \]
+	
+	First, we make sure \(\lambda_w\) and \(\theta\) are set appropriately. The matching function we are using is given by \(M(u,v) = \chi u^\eta v^{(1 - \eta)}\). This gives \(\lambda_f = \frac{M{u,v}}{v} = \chi \theta^{1-\eta}\), and if we normalize \(\theta = 1\) we have \(\chi = \lambda_f = \lambda_w\). That means that we must set \(\chi = \bar{f}\) to make this calibration work. Now we just need to determine \(\kappa\).
+
+	From free-entry and the firm's value function, we previously obtained the closed-form expression for the free-entry condition,
+	\[ J(w') = \frac{\kappa}{\beta \lambda_f(\theta)}    \]
+	We want to obtain a difference equation in \(\theta\), so we'll use this condition to rewrite the firm's value function as 
+	\[  \frac{\kappa}{\lambda_f(\theta)} = \beta \bigg( z' - w + \frac{(1 - \sigma)\kappa}{\lambda_f(\theta')} \bigg) \]
+	At this point we want to substitute out \(w\). We could substitute this using an expression derived from \(W\) and \(U\), but since we already derived the wage equation it will be simpler to use that:
+	\[ \frac{\kappa}{\lambda_f(\theta)} = \beta \bigg( z' - (1 - \gamma) b' - \gamma(z' + \kappa \theta') + \frac{(1 - \sigma)\kappa}{\lambda_f(\theta')} \bigg)     \]
+	Doing some algebra, this rearranges to
+	\[ \frac{\kappa}{(1 - \gamma) \lambda_f(\theta)} = \beta \bigg( (z' - b') - \frac{\gamma}{1 - \gamma}\kappa \theta' + \frac{(1 - \sigma)\kappa}{(1 - \gamma)\lambda_f(\theta')} \bigg)     \]
+	We then combine the \(\kappa\) terms on the right-hand side and use \( \theta \lambda_f(\theta) = \lambda_w(\theta) \) to get
+	\[  \frac{\kappa}{(1 - \gamma) \lambda_f(\theta)} = \beta \bigg( (z' - b') + \frac{(1 - \sigma) - \gamma \lambda_w(\theta')}{(1 - \gamma)\lambda_f(\theta')} \kappa \bigg)  \]
+	At this point, for the purpose of computation, we impose the steady-state condition and set \(\theta = 1\), which also sets \(\lambda_w = \lambda_f = \lambda\). Then we have
+	\[  \frac{\kappa}{(1 - \gamma) \lambda} = \beta \bigg( (z - b) + \frac{(1 - \sigma) - \gamma \lambda}{(1 - \gamma)\lambda} \kappa \bigg)  \]
+	Putting the \(\kappa\) terms on one side and multiplying through by \((1 - \gamma) \lambda\), we get
+	\[ (1 - \beta ((1 - \sigma) - \gamma \lambda))\kappa = \beta \lambda (1-\gamma) (z - b) \]
+	which rearranges to 
+	\[ \kappa = \frac{\beta \lambda (1 - \gamma) (z - b)}{1 - \beta ((1 - \sigma) - \gamma \lambda)}   \]
+	which can be solved in closed-form. We can then see the steady-state:
+	\begin{align*}
+	\lambda_w &= \bar{f} = \lambda_f \\
+	u^* &= \frac{\sigma}{\lambda + \sigma} \\
+	w^* &= (1 - \gamma) b + \gamma (z + \kappa \theta) \\
+	S &= \frac{z - b}{1 -  \beta (1 - \sigma) + \beta \gamma \lambda_w(\theta)} \\
+	J &= \gamma S
+	\end{align*}
+	
+
+
 	\subsection{Comparative statics}
 
 	\subsection{The Beveridge loop}

@@ -1,9 +1,10 @@
 #compute solution to McCall model using given parameters
 #could be analytical but easier to do by computer
 
-β = 0.99
-σvec = [0 0.02 0.05]
-b = 0.3
+β_p2 = 0.99
+σvec_p2 = [0 0.02 0.05]
+b_p2 = 0.3
+
 function coeff(β, σ)
     return 0.5*β/(1 - β*(1 - σ))
 end
@@ -41,16 +42,19 @@ minus_wstar = zeros(size(Cvec))
 λvec = zeros(size(Cvec))
 uvec = zeros(size(Cvec))
 for i in 1:length(σvec)
-    Cvec[i] += coeff(β, σvec[i])
-    plus_wstar[i] += w_star_plus(Cvec[i], b)
-    minus_wstar[i] += w_star_minus(Cvec[i], b)
+    Cvec[i] += coeff(β_p2, σvec_p2[i])
+    plus_wstar[i] += w_star_plus(Cvec[i], b_p2)
+    minus_wstar[i] += w_star_minus(Cvec[i], b_p2)
     λvec[i] += 1 - minus_wstar[i]
-    uvec[i] += σvec[i]/(σvec[i] + λvec[i])
+    uvec[i] += σvec_p2[i]/(σvec_p2[i] + λvec[i])
 end
+
+#note: use minus_wstar; the +sqrt() option is outside [0,1]
 
 function calc_b(λ, C)
     w = 1 - λ
     return -1*(C*((w - 1)^2) - w)
 end
 
-b2 = calc_b(f_bar, coeff(β, b))
+b2 = calc_b(f_bar, coeff(β_p2, σvec_p2[2]))
+#b_test = calc_b(λvec[3], coeff(β_p2, σvec_p2[3]))
