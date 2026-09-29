@@ -1,0 +1,96 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+
+\usepackage[margin=1in]{geometry}
+%\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Homework 5 \\ Actuarial Corporate Finance}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+    \maketitle
+
+    \section{Problem 1}
+
+    \subsection{Part 1}
+
+    To find the required return for asset \(B\), we first need to find the risk-free rate. To do this, we will use information about Asset \(A\) and the market portfolio. 
+
+    We are given that the market portfolio has required return \(0.06\). We can guess that under CAPM this should also be the required return since the market portfolio \emph{is} the desired portfolio for every investor, but this can also be shown explicitly with the CAPM equation. This is 
+    \[ RR_M = r_f + \beta_M (\Ex{R_M} - r_f) = r_f + \rho_{M,M} \frac{\sigma_M}{\sigma_M} (\Ex{R_M} - r_f) = r_f + \Ex{R_M} - r_f = \Ex{R_M}   \]
+    With this in hand, we can now write down the system for the expected and required returns of A:
+    \begin{align*}
+    \Ex{R_A} &= r_f + \rho_{A,M} \frac{\sigma_A}{\sigma_M} (\Ex{R_M} - r_f) \\
+    RR_A &= r_f + \rho_{A,M} \frac{\sigma_A}{\sigma_M} (\Ex{R_A} - r_f)
+    \end{align*}
+    Substituting values, we can write the first equation as
+    \[ \Ex{R_A} = r_f - 0.25 \times \frac{0.5}{0.25} (0.06 - r_f) = r_f - 0.03 + 0.5 r_f = 1.5 r_f - 0.03 \]
+    which makes the second equation
+    \[ RR_A = 0.03 = r_f - 0.25 \times \frac{0.5}{0.25} (1.5 r_f - 0.03 - r_f) = r_f - 0.25 r_f + 0.015  \]
+    Thus we derive
+    \[ r_f = \frac{0.03 - 0.015}{0.75} = 0.02 \]
+    We then find the expected return of \(R_A\) immediately as \(\Ex{R_A} = 0.02 \times 1.5 - 0.03 = 0\), which we will use in the next part. For now, we look to determine the required return of Asset \(B\).
+
+    The expected return of \(B\) is
+    \[ \Ex{B} = r_f + \rho_{B,M} \frac{\sigma_B}{\sigma_M} (\Ex{R_M} - r_f) = 0.02 + 0.3 \times \frac{0.35}{0.25} (0.06 - 0.02) = 0.0368   \]
+    which then gives the required return as
+    \[  \boxed{RR_B = 0.02 + 0.3 \times \frac{0.35}{0.25} \times (0.368 - 0.02) = 0.027}  \]
+
+    \subsection{Part 2}
+
+    With the above information, it should be easy to derive the expected return of the portfolio. The expected return of the portfolio is just a linear combination of the returns of each asset:
+    \[ \Ex{R_P} = 0 \times 0.25 + 0.0368 \times 0.75 = 0.0276   \]
+    This then lets us use the CAPM to get
+    \[ 0.0276 = 0.02 + \beta{P_M} (0.06 - 0.02) \implies \boxed{\beta_{P,M} = \frac{0.076}{0.04} = 1.9}   \]
+
+    \section{Problem 2}
+
+    The market portfolio is essentially just trying to replicate the return of the market. Since the expected return of the market is just a proportional linear combination of the assets, the market portfolio held by an investor should replicate the weights of the market. That means that we should have
+    \[ \frac{shares_{A,M}}{shares_{B,M}} = \frac{shares_{A,P}}{shares_{B,P}} \implies \frac{10000}{5000} = \frac{50}{shares_{B,P}}  \]
+    so doing this math, we see that
+    \[ \boxed{shares_{B,P} = 25}   \]
+
+\end{document}
