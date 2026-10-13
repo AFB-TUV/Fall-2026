@@ -1,0 +1,375 @@
+\documentclass[lualatex]{beamer}
+\usepackage{comment}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{svg}
+\usepackage{breqn}
+\usepackage{xcolor}
+\usecolortheme[named=violet]{structure}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}[#1]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+
+
+
+\mode<presentation>
+{
+  \usetheme{Madrid}
+
+
+  \setbeamercovered{transparent}
+
+}
+
+
+\usepackage[english]{babel}
+
+
+\usepackage[latin1]{inputenc}
+
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+
+\title[Defining Labor Force Non-Participation]
+{Labor Force Non-Participation in a Search and Matching Model}
+
+\author[Alejandro Flores-Brown]
+{Alejandro Flores-Brown}
+
+
+\institute[WUSTL]
+{
+	Department of Economics\\
+	Washington University in St. Louis
+}
+
+\date[Quant Macro, 4/10]
+{April 10th, 2019}
+
+\subject{Quantitative Macroeconomics}
+
+
+\AtBeginSubsection[]
+{
+	\begin{frame}<beamer>{Outline}
+	\tableofcontents[currentsection,currentsubsection]
+\end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Motivation}
+\begin{itemize}
+	\item Recent evidence: labor force participation fluctuates \newline over the business cycle
+
+	\item Evidence that discouraged workers leave labor force, but little theoretical motivation for this phenomenon
+
+	\item Why should we care?
+
+	\begin{itemize}
+
+		\item Want to explain a feature of data
+
+		\item Model of non-participation important for evaluating policy
+
+	\end{itemize}
+
+	\item This project: fluctuating human capital \newline $\implies$ some workers cannot be matched (discouraged)
+
+	\item Declining human capital during unemployment $\implies$ prolonged unemployment leads to non-participation
+
+	\item Introduce aggregate fluctuations into standard matching model with human capital and heterogeneous firms
+
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Literature: Two Strands}
+
+\begin{itemize}
+
+	\item Various papers by Sahin and coauthors
+
+	\begin{itemize}
+
+		\item Flows from nonparticipation to unemployment \textit{increase} during recessions!
+
+		\item Decomposition of data: marginally attached workers join the labor market
+
+		\item Suggestions: search intensity, indivisible labor, insurance role of non-participating members of households\dots
+
+		\item But also: composition of non-participation includes more prime-age males during recessions $\implies$ movement from labor force outwards
+
+	\end{itemize}
+
+	\item Kroft et al. (2016, 2019)
+
+	\begin{itemize}
+		\item All types of workers more likely to be non-participating after long unemployment spells $\iff$ duration dependence in unemployment and non-participation
+
+	\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Contribution to Literature}
+
+	\begin{itemize}
+
+	\item \textit{Model} which focuses specifically on discouraged workers
+
+	\item Explicit definition of discouragement
+
+	\item Includes duration dependence in human capital
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Model Parameters and Variables: Toy Example}
+	\begin{itemize}
+
+		\item State variables:
+
+		\begin{itemize}
+			\item Human capital $h$
+
+			\item $h \in \{\underline{h}, \overline{h}\}$ such that workers less likely to transition to high state $\overline{h}$ while unemployed
+
+		\end{itemize}
+
+		\item Transition to unemployment with probability $\lambda$
+
+		\item Hired at rate $p = q*\chi(V^E>V^U)*\chi(V^F > 0)$
+
+		\item Fixed home production $b$
+
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Value Functions and other details}
+
+		\begin{itemize}
+
+			\item Unemployment: $J^U(h) = b + \beta  \mathbb{P}\left(match\right) \mathbb{E}_h \left[J^E\right] + \beta \left(1-\mathbb{P}\left(match\right)\right) \mathbb{E}_h\left[J^U\right]$
+
+			\item Employment: $J^E(h) = w(h) + \beta  \lambda \mathbb{E}_h\left[J^U\right] + \beta \left(1-\lambda \right) \mathbb{E}_h \left[ J^E \right]$
+
+			\item Filled Job: $J^F = f(h) - w(h) + \beta \left(1-\lambda\right) \mathbb{E}_h\left[ J^E \right]$
+
+			\item Vacancy: $J^V(h) \equiv 0$
+
+			\item Wage $w$ determined by Nash Bargaining
+
+			\item FOC: $J^F(h) = \frac{1-\alpha}{\alpha} \left(J^E(h) - J^U(h) \right)$
+
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Detailed Explanation of the Mechanism}
+\begin{itemize}
+
+	\item Match probability: $\mathbb{P}(match) = \mathbb{P}\left(meeting\right)
+	\times \mathbb{P}\left(offer\right) \times \mathbb{P}\left(accept\right)$
+
+	\item $q \times \mathbb{P}\left(J^F > J^V\right) \times \mathbb{P}\left(J^E > J^U\right)$
+
+	\item Non-retired NILF $\iff$ match probability $=0$
+
+	\pause
+
+	\item Conditions based on productivity of match $f(A, z, h)$
+
+	\item This implies reservation productivities $z^w$, $h^f$
+
+	\item $\mathbb{P}\left(match\right) = q \times \mathbb{P}\left(h \geq h^f\right) \times \mathbb{P}\left(z \geq z^w\right)$
+
+	\pause
+
+	\item Note that this mechanism exists in every search model! But often leads to degenerate solutions
+
+	\item E.g.: this idea shows up as a regularity condition with homogeneous workers and firms (so not everyone is unemployed)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Solution Procedure: Two worker types, one firm}
+\begin{itemize}
+
+	\item Compute value functions for firm, workers
+
+	\item Solve Nash Bargaining problem to get wages for each type (nonlinearly solve $2 \times 2$ system in this example)
+
+	\item Check if hiring probability converges; if not, update
+
+	\item Find stationary distribution
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Results: Changing Benefits}
+
+	\begin{table}[]\small
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+	\hline
+	   $b$     & $w_h$ & $w_l$ & $q_h$ & $q_l$ & $E_h$ & $E_l$ & $U_h$ & $U_l$ \\ \hline
+	1.0 & 2.78  & 1.56  & 0.45  & 0.45  & 0.27  & 0.48  & 0.08  & 0.17  \\ \hline
+	1.9 & 2.87 & 1.69 & 0.45 & 0.45 & 0.27 & 0.48 & 0.08 & 0.17 \\ \hline
+	2.0 & 3.38  & 0.62  & 0.45  & 0     & 0.12  & 0.13  & 0.08  & 0     \\ \hline
+	4.0 & 2.34  & 1.29  & 0     & 0     & 0     & 0     & 0.14  & 0.86  \\ \hline
+	\end{tabular}
+	\end{table}
+
+	\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+    $b$    & $E$  & $U$  & $N$  \\ \hline
+1.0 & 0.75 & 0.25 & 0    \\ \hline
+1.9 & 0.75 & 0.25 & 0 \\ \hline
+2.0 & 0.25 & 0.08 & 0.67 \\ \hline
+4.0 & 0    & 0    & 1    \\ \hline
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}{Full Model: State Variables}
+
+	\begin{itemize}
+
+	\item Human capital through on-the-job learning
+
+	\begin{itemize}
+
+		\item Human capital increases by $\eta$ during every period of employment
+
+		\item Human capital decreases by $\delta$ during every period of unemployment
+
+	\end{itemize}
+
+	\item Firm productivity $z_i$ from fixed distribution $F(z)$.
+
+	\begin{itemize}
+		\item Could be extended to endogenous firm distribution, though not common in the literature.
+
+		\item Enters twice into state space: current and previous offer
+
+	\end{itemize}
+
+	\item Regularizing factor
+
+	\begin{itemize}
+
+		\item With only on-the-job learning, nonparticipation is degenerate solution!
+
+		\item Aggregate shocks
+
+		\item Non-decreasing human capital during unemployment
+
+	\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Full Model: Calibration}
+\begin{itemize}
+	\item Many parameters are standard
+
+	\item Difficult thing: how to calibrate human capital?
+
+	\item Most papers: use administrative data
+
+	\item Other sorts of human capital: use MEPS, SIPP, or CPS data to calibrate health
+
+	\item Firm productivity distribution calibrated to firm sizes
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Possible Experiments with Full Framework}
+\begin{itemize}
+
+	\item Policy experiments: simulate effects of policy reforms \newline on stochastic steady state
+
+	\begin{itemize}
+
+		\item Minimum wage: simulate with $w = \max\{\underline{w}, w_{NB}\}$
+
+		\item Unemployment benefits: simulate with new $b'$ \newline and approximated tax system $\tau(w)$
+
+		\item Job guarantee: simulate with $b$, $\tau(w)$, \newline new rate of human capital depreciation $\delta'$
+
+	\end{itemize}
+
+	\item Extensions to model
+
+	\begin{itemize}
+
+  	\item Here: fixed $q$. Natural extension: $q(\theta)$ where $\theta$ is market tightness.
+
+		\item Here: fixed firm productivity distribution $F(z)$. \newline Natural extension: simulate firm distribution as studied in class.
+
+		\item Here: workers are hand-to-mouth. \newline Natural extension: allow for asset accumulation, effects on wages. (+ risk aversion)
+
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+	\item Idea: Come up with a model which can explain discouraged workers
+
+	\item Model: Basic search model with duration dependence
+
+	\item Why? Noticed in empirical literature + previously unexplained (to my knowledge)
+
+	\item Proof of concept: model can deliver non-participation from low-productivity workers
+
+	\item Larger model: include on-the-job search + learning, firm size distribution, endogenous hiring, aggregate shocks
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain, c]{The End}
+\huge
+\begin{center}
+Thank you!
+\end{center}
+\end{frame}
+
+\begin{frame}{Appendix: Calibration}
+
+	\begin{table}[]
+	\begin{tabular}{|l|l|}
+	\hline
+	Calibration                  & Value            \\ \hline
+	$\beta$: impatience          & 0.95             \\ \hline
+	Transition to Bad State      & 0.30             \\ \hline
+	Transition to Good State (E) & 0.20             \\ \hline
+	Transition to Good State (U) & 0.05             \\ \hline
+	$\lambda$: firing rate       & 0.145            \\ \hline
+	q: base hiring rate          & 0.45             \\ \hline
+	$\alpha$: Bargaining power   & 0.72             \\ \hline
+	Production function          & $f(h) = h^{0.7}$ \\ \hline
+	\end{tabular}
+	\end{table}
+
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,4533 @@
+version: 0.12.2
+filePath: hw4.tex
+options:
+  $BIBINPUTS:
+    - $ROOTDIR
+    - $ROOTDIR/$OUTDIR
+    - ''
+  $TEXINPUTS:
+    - $ROOTDIR
+    - $ROOTDIR/$OUTDIR
+    - ''
+  bibtexEngine: bibtex
+  cleanPatterns:
+    - '**/*.aux'
+    - '**/*.aux.bak'
+    - '**/*.bbl'
+    - '**/*.bcf'
+    - '**/*.blg'
+    - '**/*.dvi'
+    - '**/*.fdb_latexmk'
+    - '**/*.fls'
+    - '**/*.idx'
+    - '**/*.idx.bak'
+    - '**/*.ilg'
+    - '**/*.ind'
+    - '**/*.lof'
+    - '**/*.log'
+    - '**/*.lol'
+    - '**/*.lot'
+    - '**/*.nav'
+    - '**/*.out'
+    - '**/*.pdf'
+    - '**/*.ps'
+    - '**/*.snm'
+    - '**/*.synctex.gz'
+    - '**/*.toc'
+    - '/**/_minted-${JOB}'
+    - '/${OUTDIR}/sage-plots-for-${JOB}.tex'
+    - /missfont.log
+    - /texput.log
+    - /texput.aux
+  dviToPdfEngine: xdvipdfmx
+  engine: pdflatex
+  epstopdfBoundingBox: default
+  epstopdfOutputPath: $DIR_0/$NAME_0.pdf
+  indexAutomaticRanges: true
+  indexEngine: makeindex
+  indexOrdering: word
+  indexSorting: default
+  knitrConcordance: true
+  knitrOutputPath: $JOB.tex
+  lhs2texStyle: poly
+  literateAgdaEngine: agda
+  literateHaskellEngine: lhs2TeX
+  loadCache: true
+  loadUserOptions: true
+  outputFormat: pdf
+  phaseCycles: 20
+  pweaveCacheDirectory: pweave-cache-for-$JOB
+  pweaveFigureDirectory: pweave-figures-for-$JOB
+  pweaveKernel: python3
+  pweaveOutputFormat: tex
+  pweaveOutputPath: $JOB.tex
+  saveCache: true
+  severity: info
+  validateCache: true
+  synctex: true
+  copyTargetsToRoot: true
+  outputDirectory: ''
+  intermediatePostScript: false
+  $PATH: >-
+    %SystemDrive%\texlive\2017\bin\win32;%SystemDrive%\texlive\2016\bin\win32;%SystemDrive%\texlive\2015\bin\win32;%ProgramFiles%\MiKTeX
+    2.9\miktex\bin\x64;%ProgramFiles(x86)%\MiKTeX 2.9\miktex\bin;$PATH
+files:
+  dicy-instance.yaml-ParsedYAML:
+    timeStamp: 2019-02-24T22:12:57.990Z
+    jobNames: []
+    value:
+      severity: info
+    type: ParsedYAML
+  dicy.yaml-ParsedYAML:
+    jobNames: []
+    type: ParsedYAML
+  hw4.yaml-ParsedYAML:
+    jobNames: []
+    type: ParsedYAML
+  hw4.tex-ParsedLaTeXMagic:
+    timeStamp: 2019-02-24T22:12:58.085Z
+    jobNames: []
+    value: {}
+    type: ParsedLaTeXMagic
+  'C:\Users\Alejandro\AppData\Roaming\dicy\config.yaml-ParsedYAML':
+    timeStamp: 2019-02-24T22:12:58.080Z
+    jobNames: []
+    value:
+      synctex: true
+      engine: pdflatex
+      severity: warning
+      copyTargetsToRoot: true
+      outputDirectory: ''
+      outputFormat: pdf
+      cleanPatterns:
+        - '**/*.aux'
+        - '**/*.aux.bak'
+        - '**/*.bbl'
+        - '**/*.bcf'
+        - '**/*.blg'
+        - '**/*.dvi'
+        - '**/*.fdb_latexmk'
+        - '**/*.fls'
+        - '**/*.idx'
+        - '**/*.idx.bak'
+        - '**/*.ilg'
+        - '**/*.ind'
+        - '**/*.lof'
+        - '**/*.log'
+        - '**/*.lol'
+        - '**/*.lot'
+        - '**/*.nav'
+        - '**/*.out'
+        - '**/*.pdf'
+        - '**/*.ps'
+        - '**/*.snm'
+        - '**/*.synctex.gz'
+        - '**/*.toc'
+        - '/**/_minted-${JOB}'
+        - '/${OUTDIR}/sage-plots-for-${JOB}.tex'
+        - /missfont.log
+        - /texput.log
+        - /texput.aux
+      intermediatePostScript: false
+      $PATH: >-
+        %SystemDrive%\texlive\2017\bin\win32;%SystemDrive%\texlive\2016\bin\win32;%SystemDrive%\texlive\2015\bin\win32;%ProgramFiles%\MiKTeX
+        2.9\miktex\bin\x64;%ProgramFiles(x86)%\MiKTeX 2.9\miktex\bin;$PATH
+    type: ParsedYAML
+  hw4.tex:
+    timeStamp: 2019-02-24T22:48:12.130Z
+    jobNames: []
+    hash: 3xDsLqaeNIbn9Mmu92+9o8S0uXy63BUDErEudpMDrZE=
+    type: LaTeX
+    subType: article
+  'C:\Users\Alejandro\AppData\Roaming\dicy\config.yaml':
+    timeStamp: 2019-02-24T22:12:58.011Z
+    jobNames: []
+    type: YAML
+  x.y-Nil:
+    jobNames: []
+    type: Nil
+  hw4.fls-ParsedFileListing:
+    timeStamp: 2019-02-24T22:46:54.750Z
+    jobNames: []
+    value:
+      messages: []
+      inputs:
+        - 'C:\Program Files\MiKTeX 2.9\fonts\enc\dvips\base\8r.enc'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\enc\dvips\cm-super\cm-super-t1.enc'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplb7t.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplb8r.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplb8t.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplr7t.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplr8r.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplr8t.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\jknappen\ec\ecrm1200.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\jknappen\ec\ectt1200.tfm'
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr10.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr12.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy10.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeuex10.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeurb10.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeurb7.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeurm10.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeurm7.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeusb10.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeusb7.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeusm10.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeusm7.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\mathpazo\zplmb7t.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\mathpazo\zplmr7t.tfm'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\type1\public\cm-super\sftt1200.pfb'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\type1\urw\palatino\uplb8a.pfb'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\type1\urw\palatino\uplr8a.pfb'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\vf\adobe\palatino\pplb8t.vf'
+        - 'C:\Program Files\MiKTeX 2.9\fonts\vf\adobe\palatino\pplr8t.vf'
+        - 'C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii'
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty'
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcore.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorearrows.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcoreexternal.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcoregraphicstate.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcoreimage.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorelayers.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcoreobjects.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorepathconstruct.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorepathprocessing.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorepathusage.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorepatterns.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorepoints.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorequick.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorerdf.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorescopes.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcoreshade.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcoretransformations.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcoretransparency.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytopaths.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\libraries\pgflibraryplothandlers.code.tex
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex'
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathcalc.code.tex'
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfloat.code.tex'
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.base.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.basic.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.comparison.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.integerarithmetics.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.misc.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.random.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.round.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.trigonometric.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathparser.code.tex
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathutil.code.tex'
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\modules\pgfmodulematrix.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\modules\pgfmoduleplot.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\modules\pgfmoduleshapes.code.tex
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\pgf.revision.tex'
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgf.cfg'
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\systemlayer\pgfsys-common-pdf.def
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\systemlayer\pgfsys-pdftex.def
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\systemlayer\pgfsys.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.tex
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgffor.code.tex'
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex'
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\utilities\pgfkeysfiltered.code.tex
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfrcs.code.tex'
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\utilities\pgfutil-common-lists.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\utilities\pgfutil-common.tex
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\utilities\pgfutil-latex.def
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\unicode-data\UnicodeData.txt'
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\keyval.tex'
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex'
+        - 'C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkvutils.tex'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\breqn.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\flexisym.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\mathstyle.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\comment\comment.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\datetime\datetime-defaults.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\datetime\datetime.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\enumitem\enumitem.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\eulervm\eulervm.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\eulervm\uzeuex.fd'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\eulervm\uzeur.fd'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\eulervm\uzeus.fd'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fc-english.def'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fcnumparser.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fcprefix.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fmtcount.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\expl3-code.tex'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\expl3.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3pdfmode.def'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\l3packages\xparse\xparse.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\ms\everyshi.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgfcore.sty'
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
+        - >-
+          C:\Program Files\MiKTeX
+          2.9\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\math\pgfmath.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\systemlayer\pgfsys.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgffor.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgfkeys.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgfrcs.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\physics\physics.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\mathpazo.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsppl.fd'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ppl.fd'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1zplm.fd'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1ppl.fd'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\setspace\setspace.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\bm.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\enumerate.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty'
+        - 'C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty'
+        - >-
+          C:\Users\Alejandro\AppData\Local\MiKTeX\2.9\miktex\data\le\pdftex\pdflatex.fmt
+        - 'C:\Users\Alejandro\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map'
+        - figure1.png
+        - figure4.png
+        - figure5.png
+        - figure6.png
+        - figure7.png
+        - hw4.aux
+        - hw4.out
+        - hw4.tex
+        - 'nul:.tex'
+      outputs:
+        - hw4.aux
+        - hw4.log
+        - hw4.out
+        - hw4.pdf
+      calls: []
+    type: ParsedFileListing
+  hw4.log-ParsedLaTeXLog:
+    timeStamp: 2019-02-24T22:48:19.344Z
+    jobNames: []
+    value:
+      messages:
+        - name: pdfTeX
+          severity: info
+          text: datetime 2015/03/20 v2.60 Date Time Package
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\datetime\datetime.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 23
+              end: 23
+        - name: pdfTeX
+          severity: info
+          text: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 25
+              end: 25
+        - name: pdfTeX
+          severity: info
+          text: fmtcount 2017/12/24 v3.05
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fmtcount.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 28
+              end: 28
+        - name: pdfTeX
+          severity: info
+          text: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 30
+              end: 30
+        - name: pdfTeX
+          severity: info
+          text: xkeyval 2014/12/03 v2.7a package option processing (HA)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 32
+              end: 32
+        - name: pdfTeX
+          severity: info
+          text: fcprefix 2012/09/28
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fcprefix.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 41
+              end: 41
+        - name: pdfTeX
+          severity: info
+          text: fcnumparser 2017/06/15
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fcnumparser.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 43
+              end: 43
+        - name: pdfTeX
+          severity: info
+          text: datetime-defaults 2013/09/10
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\latex\datetime\datetime-defaults.sty
+          log:
+            file: hw4.log
+            range:
+              start: 60
+              end: 60
+        - severity: info
+          name: pdfTeX
+          category: Package datetime
+          text: 'No datetime.cfg file found, using default settings'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\datetime\datetime.sty'
+            range:
+              start: 308
+              end: 308
+          log:
+            file: hw4.log
+            range:
+              start: 74
+              end: 75
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \today
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\datetime\datetime.sty'
+            range:
+              start: 736
+              end: 736
+          log:
+            file: hw4.log
+            range:
+              start: 79
+              end: 79
+        - name: pdfTeX
+          severity: info
+          text: inputenc 2018/08/11 v1.3c Input encoding file
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 83
+              end: 83
+        - name: pdfTeX
+          severity: info
+          text: amsmath 2018/12/01 v2.17b AMS math features
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 87
+              end: 87
+        - name: pdfTeX
+          severity: info
+          text: amstext 2000/06/29 v2.01 AMS text
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 91
+              end: 91
+        - name: pdfTeX
+          severity: info
+          text: amsbsy 1999/11/29 v1.2d Bold Symbols
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 93
+              end: 93
+        - name: pdfTeX
+          severity: info
+          text: amsopn 2016/03/08 v2.02 operator names
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 96
+              end: 96
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \frac
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty'
+            range:
+              start: 223
+              end: 223
+          log:
+            file: hw4.log
+            range:
+              start: 99
+              end: 99
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \overline
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty'
+            range:
+              start: 385
+              end: 385
+          log:
+            file: hw4.log
+            range:
+              start: 102
+              end: 102
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \ldots
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty'
+            range:
+              start: 482
+              end: 482
+          log:
+            file: hw4.log
+            range:
+              start: 105
+              end: 105
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \dots
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty'
+            range:
+              start: 485
+              end: 485
+          log:
+            file: hw4.log
+            range:
+              start: 106
+              end: 106
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \cdots
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty'
+            range:
+              start: 606
+              end: 606
+          log:
+            file: hw4.log
+            range:
+              start: 107
+              end: 107
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Redeclaring font encoding OML
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty'
+            range:
+              start: 729
+              end: 729
+          log:
+            file: hw4.log
+            range:
+              start: 111
+              end: 111
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Redeclaring font encoding OMS
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty'
+            range:
+              start: 730
+              end: 730
+          log:
+            file: hw4.log
+            range:
+              start: 112
+              end: 112
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: 'Redefining \['
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty'
+            range:
+              start: 2844
+              end: 2844
+          log:
+            file: hw4.log
+            range:
+              start: 133
+              end: 133
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: 'Redefining \]'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty'
+            range:
+              start: 2845
+              end: 2845
+          log:
+            file: hw4.log
+            range:
+              start: 134
+              end: 134
+        - name: pdfTeX
+          severity: info
+          text: 'mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS)'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\mathpazo.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 136
+              end: 136
+        - name: pdfTeX
+          severity: info
+          text: eulervm 2005/01/11 v4.0 (WaS)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\eulervm\eulervm.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 139
+              end: 139
+        - name: pdfTeX
+          severity: info
+          text: geometry 2018/04/16 v5.8 Page Geometry
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 141
+              end: 141
+        - name: pdfTeX
+          severity: info
+          text: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 143
+              end: 143
+        - name: pdfTeX
+          severity: info
+          text: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 145
+              end: 145
+        - severity: info
+          name: pdfTeX
+          category: Package ifvtex
+          text: VTeX not detected.
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 146
+              end: 146
+        - name: pdfTeX
+          severity: info
+          text: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 148
+              end: 148
+        - name: pdfTeX
+          severity: info
+          text: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\enumerate.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 164
+              end: 164
+        - name: pdfTeX
+          severity: info
+          text: enumitem 2019/01/14 v3.7 Customized lists
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\enumitem\enumitem.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 167
+              end: 167
+        - name: pdfTeX
+          severity: info
+          text: listings 2018/09/02 1.7 (Carsten Heinz)
+          source:
+            file: hw4.tex
+          log:
+            file: hw4.log
+            range:
+              start: 196
+              end: 196
+        - name: pdfTeX
+          severity: info
+          text: fontenc 2018/08/11 v2.0j Standard LaTeX package
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 198
+              end: 198
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Redeclaring font encoding T1
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def'
+            range:
+              start: 48
+              end: 48
+          log:
+            file: hw4.log
+            range:
+              start: 201
+              end: 201
+        - name: pdfTeX
+          severity: info
+          text: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 203
+              end: 203
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: >-
+            Overwriting math alphabet `\mathfrak' in version `bold' U/euf/m/n
+            --> U/euf/b/n.
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty'
+            range:
+              start: 106
+              end: 106
+          log:
+            file: hw4.log
+            range:
+              start: 206
+              end: 207
+        - name: pdfTeX
+          severity: info
+          text: amssymb 2013/01/14 v3.01 AMS font symbols
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 209
+              end: 209
+        - name: pdfTeX
+          severity: info
+          text: amsthm 2017/10/31 v2.20.4
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 211
+              end: 211
+        - name: pdfTeX
+          severity: info
+          text: multirow 2019/01/01 v2.4 Span multiple rows of a table
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 222
+              end: 222
+        - name: pdfTeX
+          severity: info
+          text: array 2018/12/30 v2.4k Tabular extension package (FMi)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 228
+              end: 228
+        - name: pdfTeX
+          severity: info
+          text: 'graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 237
+              end: 237
+        - name: pdfTeX
+          severity: info
+          text: 'graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 239
+              end: 239
+        - name: pdfTeX
+          severity: info
+          text: trig 2016/01/03 v1.10 sin cos tan (DPC)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 241
+              end: 241
+        - severity: info
+          name: pdfTeX
+          category: Package graphics
+          text: 'Driver file: pdftex.def'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty'
+            range:
+              start: 99
+              end: 99
+          log:
+            file: hw4.log
+            range:
+              start: 245
+              end: 245
+        - name: pdfTeX
+          severity: info
+          text: physics
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\physics\physics.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 252
+              end: 252
+        - name: pdfTeX
+          severity: info
+          text: expl3 2019-01-13 L3 programming layer (loader)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\expl3.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 255
+              end: 255
+        - name: pdfTeX
+          severity: info
+          text: expl3 2019-01-13 L3 programming layer (code)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\expl3-code.tex'
+          log:
+            file: hw4.log
+            range:
+              start: 257
+              end: 257
+        - name: pdfTeX
+          severity: info
+          text: xparse 2018-10-17 L3 Experimental document command parser
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\l3packages\xparse\xparse.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 406
+              end: 406
+        - name: pdfTeX
+          severity: info
+          text: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\bm.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 413
+              end: 413
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Redeclaring math alphabet \mathbf
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\bm.sty'
+            range:
+              start: 141
+              end: 141
+          log:
+            file: hw4.log
+            range:
+              start: 418
+              end: 418
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \bm
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\bm.sty'
+            range:
+              start: 207
+              end: 207
+          log:
+            file: hw4.log
+            range:
+              start: 419
+              end: 419
+        - name: pdfTeX
+          severity: info
+          text: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\ms\everyshi.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 432
+              end: 432
+        - name: pdfTeX
+          severity: info
+          text: pgfrcs 2019/01/05 v3.1 (3.1)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\pgf\utilities\pgfrcs.code.tex
+          log:
+            file: hw4.log
+            range:
+              start: 435
+              end: 435
+        - name: pdfTeX
+          severity: info
+          text: pgf 2019/01/05 v3.1 (3.1)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 437
+              end: 437
+        - name: pdfTeX
+          severity: info
+          text: pgfsys 2019/01/05 v3.1 (3.1)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\pgf\systemlayer\pgfsys.code.tex
+          log:
+            file: hw4.log
+            range:
+              start: 441
+              end: 441
+        - name: pdfTeX
+          severity: info
+          text: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 488
+              end: 488
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: 'Driver file: pdftex.def'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty'
+            range:
+              start: 225
+              end: 225
+          log:
+            file: hw4.log
+            range:
+              start: 492
+              end: 492
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `cmy' substituted by `cmy0'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty'
+            range:
+              start: 1348
+              end: 1348
+          log:
+            file: hw4.log
+            range:
+              start: 493
+              end: 493
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `hsb' substituted by `rgb'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty'
+            range:
+              start: 1352
+              end: 1352
+          log:
+            file: hw4.log
+            range:
+              start: 494
+              end: 494
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `RGB' extended
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty'
+            range:
+              start: 1364
+              end: 1364
+          log:
+            file: hw4.log
+            range:
+              start: 495
+              end: 495
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `HTML' substituted by `rgb'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty'
+            range:
+              start: 1366
+              end: 1366
+          log:
+            file: hw4.log
+            range:
+              start: 496
+              end: 496
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `Hsb' substituted by `hsb'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty'
+            range:
+              start: 1367
+              end: 1367
+          log:
+            file: hw4.log
+            range:
+              start: 497
+              end: 497
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `tHsb' substituted by `hsb'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty'
+            range:
+              start: 1368
+              end: 1368
+          log:
+            file: hw4.log
+            range:
+              start: 498
+              end: 498
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `HSB' substituted by `hsb'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty'
+            range:
+              start: 1369
+              end: 1369
+          log:
+            file: hw4.log
+            range:
+              start: 499
+              end: 499
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `Gray' substituted by `gray'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty'
+            range:
+              start: 1370
+              end: 1370
+          log:
+            file: hw4.log
+            range:
+              start: 500
+              end: 500
+        - severity: info
+          name: pdfTeX
+          category: Package xcolor
+          text: Model `wave' substituted by `hsb'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty'
+            range:
+              start: 1371
+              end: 1371
+          log:
+            file: hw4.log
+            range:
+              start: 501
+              end: 501
+        - name: pdfTeX
+          severity: info
+          text: pgfcore 2019/01/05 v3.1 (3.1)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\pgf\basiclayer\pgfcore.code.tex
+          log:
+            file: hw4.log
+            range:
+              start: 503
+              end: 503
+        - name: pdfTeX
+          severity: info
+          text: pgfcomp-version-0-65 2019/01/05 v3.1 (3.1)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\latex\pgf\compatibility\pgfcomp-version-0-65.
+          log:
+            file: hw4.log
+            range:
+              start: 632
+              end: 632
+        - name: pdfTeX
+          severity: info
+          text: pgfcomp-version-1-18 2019/01/05 v3.1 (3.1)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\latex\pgf\compatibility\pgfcomp-version-1-18.
+          log:
+            file: hw4.log
+            range:
+              start: 638
+              end: 638
+        - name: pdfTeX
+          severity: info
+          text: pgffor 2019/01/05 v3.1 (3.1)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\pgf\utilities\pgffor.code.tex
+          log:
+            file: hw4.log
+            range:
+              start: 645
+              end: 645
+        - name: pdfTeX
+          severity: info
+          text: tikz 2019/01/05 v3.1 (3.1)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\pgf\frontendlayer\tikz\tikz.code.t
+          log:
+            file: hw4.log
+            range:
+              start: 653
+              end: 653
+        - name: pdfTeX
+          severity: info
+          text: breqn 2018/09/14 v0.98f Breaking equations
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\breqn.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 687
+              end: 687
+        - name: pdfTeX
+          severity: info
+          text: flexisym 2017/01/27 v0.98e Make math characters macros
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\flexisym.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 689
+              end: 689
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \textprime
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\flexisym.sty'
+            range:
+              start: 300
+              end: 300
+          log:
+            file: hw4.log
+            range:
+              start: 690
+              end: 690
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \not
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\flexisym.sty'
+            range:
+              start: 358
+              end: 358
+          log:
+            file: hw4.log
+            range:
+              start: 691
+              end: 691
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \hbar
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 325
+              end: 325
+          log:
+            file: hw4.log
+            range:
+              start: 694
+              end: 694
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \surd
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 327
+              end: 327
+          log:
+            file: hw4.log
+            range:
+              start: 695
+              end: 695
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \angle
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 335
+              end: 335
+          log:
+            file: hw4.log
+            range:
+              start: 696
+              end: 696
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \neq
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 336
+              end: 336
+          log:
+            file: hw4.log
+            range:
+              start: 697
+              end: 697
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \mapsto
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 337
+              end: 337
+          log:
+            file: hw4.log
+            range:
+              start: 698
+              end: 698
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \cong
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 338
+              end: 338
+          log:
+            file: hw4.log
+            range:
+              start: 699
+              end: 699
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \notin
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 341
+              end: 341
+          log:
+            file: hw4.log
+            range:
+              start: 700
+              end: 700
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \rightleftharpoons
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 342
+              end: 342
+          log:
+            file: hw4.log
+            range:
+              start: 701
+              end: 701
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \doteq
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 343
+              end: 343
+          log:
+            file: hw4.log
+            range:
+              start: 702
+              end: 702
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \hookrightarrow
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 344
+              end: 344
+          log:
+            file: hw4.log
+            range:
+              start: 703
+              end: 703
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \hookleftarrow
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 345
+              end: 345
+          log:
+            file: hw4.log
+            range:
+              start: 704
+              end: 704
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \bowtie
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 346
+              end: 346
+          log:
+            file: hw4.log
+            range:
+              start: 705
+              end: 705
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \models
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 347
+              end: 347
+          log:
+            file: hw4.log
+            range:
+              start: 706
+              end: 706
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \Longrightarrow
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 348
+              end: 348
+          log:
+            file: hw4.log
+            range:
+              start: 707
+              end: 707
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \longrightarrow
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 349
+              end: 349
+          log:
+            file: hw4.log
+            range:
+              start: 708
+              end: 708
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \Longleftarrow
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 350
+              end: 350
+          log:
+            file: hw4.log
+            range:
+              start: 709
+              end: 709
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \longleftarrow
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 351
+              end: 351
+          log:
+            file: hw4.log
+            range:
+              start: 710
+              end: 710
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \longmapsto
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 352
+              end: 352
+          log:
+            file: hw4.log
+            range:
+              start: 711
+              end: 711
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \longleftrightarrow
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 353
+              end: 353
+          log:
+            file: hw4.log
+            range:
+              start: 712
+              end: 712
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \Longleftrightarrow
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 354
+              end: 354
+          log:
+            file: hw4.log
+            range:
+              start: 713
+              end: 713
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \cdots
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 358
+              end: 358
+          log:
+            file: hw4.log
+            range:
+              start: 714
+              end: 714
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \vdots
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 361
+              end: 361
+          log:
+            file: hw4.log
+            range:
+              start: 715
+              end: 715
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \ddots
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+            range:
+              start: 366
+              end: 366
+          log:
+            file: hw4.log
+            range:
+              start: 716
+              end: 716
+        - name: pdfTeX
+          severity: info
+          text: mathstyle 2017/01/27 0.98e Tracking mathstyle implicitly
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\mathstyle.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 718
+              end: 718
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \displaystyle
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\mathstyle.sty'
+            range:
+              start: 93
+              end: 93
+          log:
+            file: hw4.log
+            range:
+              start: 719
+              end: 719
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \textstyle
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\mathstyle.sty'
+            range:
+              start: 95
+              end: 95
+          log:
+            file: hw4.log
+            range:
+              start: 720
+              end: 720
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \scriptstyle
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\mathstyle.sty'
+            range:
+              start: 97
+              end: 97
+          log:
+            file: hw4.log
+            range:
+              start: 721
+              end: 721
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \scriptscriptstyle
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\mathstyle.sty'
+            range:
+              start: 99
+              end: 99
+          log:
+            file: hw4.log
+            range:
+              start: 722
+              end: 722
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \genfrac
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\mathstyle.sty'
+            range:
+              start: 145
+              end: 145
+          log:
+            file: hw4.log
+            range:
+              start: 723
+              end: 723
+        - name: pdfTeX
+          severity: info
+          text: 'calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 725
+              end: 725
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \setlength
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty'
+            range:
+              start: 80
+              end: 80
+          log:
+            file: hw4.log
+            range:
+              start: 732
+              end: 732
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \addtolength
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty'
+            range:
+              start: 81
+              end: 81
+          log:
+            file: hw4.log
+            range:
+              start: 733
+              end: 733
+        - name: pdfTeX
+          severity: info
+          text: 'natbib 2010/09/13 8.31b (PWD, AO)'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 799
+              end: 799
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \cite
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty'
+            range:
+              start: 694
+              end: 694
+          log:
+            file: hw4.log
+            range:
+              start: 802
+              end: 802
+        - name: pdfTeX
+          severity: info
+          text: setspace 2011/12/19 v6.7a set line spacing
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\setspace\setspace.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 808
+              end: 808
+        - name: pdfTeX
+          severity: info
+          text: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 810
+              end: 810
+        - name: pdfTeX
+          severity: info
+          text: >-
+            hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref
+            (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+          log:
+            file: hw4.log
+            range:
+              start: 812
+              end: 813
+        - name: pdfTeX
+          severity: info
+          text: 'hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)'
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 815
+              end: 815
+        - name: pdfTeX
+          severity: info
+          text: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 816
+              end: 816
+        - name: pdfTeX
+          severity: info
+          text: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 817
+              end: 817
+        - name: pdfTeX
+          severity: info
+          text: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 818
+              end: 818
+        - name: pdfTeX
+          severity: info
+          text: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 819
+              end: 819
+        - severity: info
+          name: pdfTeX
+          category: Package ifluatex
+          text: LuaTeX not detected.
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 820
+              end: 820
+        - severity: info
+          name: pdfTeX
+          category: Package hobsub
+          text: Skipping package `ifvtex' (already loaded).
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 821
+              end: 821
+        - name: pdfTeX
+          severity: info
+          text: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 822
+              end: 822
+        - severity: info
+          name: pdfTeX
+          category: Package hobsub
+          text: Skipping package `ifpdf' (already loaded).
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 823
+              end: 823
+        - name: pdfTeX
+          severity: info
+          text: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 824
+              end: 824
+        - name: pdfTeX
+          severity: info
+          text: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 825
+              end: 825
+        - name: pdfTeX
+          severity: info
+          text: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 826
+              end: 826
+        - name: pdfTeX
+          severity: info
+          text: >-
+            pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX
+            (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 827
+              end: 828
+        - severity: info
+          name: pdfTeX
+          category: Package pdftexcmds
+          text: LuaTeX not detected.
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 829
+              end: 829
+        - severity: info
+          name: pdfTeX
+          category: Package pdftexcmds
+          text: \pdf@primitive is available.
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 830
+              end: 830
+        - severity: info
+          name: pdfTeX
+          category: Package pdftexcmds
+          text: \pdf@ifprimitive is available.
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 831
+              end: 831
+        - severity: info
+          name: pdfTeX
+          category: Package pdftexcmds
+          text: \pdfdraftmode found.
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 832
+              end: 832
+        - name: pdfTeX
+          severity: info
+          text: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 833
+              end: 833
+        - name: pdfTeX
+          severity: info
+          text: >-
+            bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers
+            (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 834
+              end: 835
+        - name: pdfTeX
+          severity: info
+          text: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 836
+              end: 836
+        - name: pdfTeX
+          severity: info
+          text: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-generic.sty
+          log:
+            file: hw4.log
+            range:
+              start: 837
+              end: 837
+        - severity: info
+          name: pdfTeX
+          category: Package hobsub
+          text: Skipping package `hobsub' (already loaded).
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+          log:
+            file: hw4.log
+            range:
+              start: 839
+              end: 839
+        - name: pdfTeX
+          severity: info
+          text: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+          log:
+            file: hw4.log
+            range:
+              start: 840
+              end: 840
+        - name: pdfTeX
+          severity: info
+          text: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+          log:
+            file: hw4.log
+            range:
+              start: 841
+              end: 841
+        - name: pdfTeX
+          severity: info
+          text: xcolor-patch 2016/05/16 xcolor patch
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+          log:
+            file: hw4.log
+            range:
+              start: 842
+              end: 842
+        - name: pdfTeX
+          severity: info
+          text: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+          log:
+            file: hw4.log
+            range:
+              start: 843
+              end: 843
+        - name: pdfTeX
+          severity: info
+          text: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+          log:
+            file: hw4.log
+            range:
+              start: 844
+              end: 844
+        - name: pdfTeX
+          severity: info
+          text: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+          log:
+            file: hw4.log
+            range:
+              start: 845
+              end: 845
+        - name: pdfTeX
+          severity: info
+          text: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+          log:
+            file: hw4.log
+            range:
+              start: 846
+              end: 846
+        - name: pdfTeX
+          severity: info
+          text: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 848
+              end: 848
+        - name: pdfTeX
+          severity: info
+          text: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 850
+              end: 850
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: Hyper figures OFF
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 4519
+              end: 4519
+          log:
+            file: hw4.log
+            range:
+              start: 864
+              end: 864
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: Link nesting OFF
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 4524
+              end: 4524
+          log:
+            file: hw4.log
+            range:
+              start: 865
+              end: 865
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: Hyper index ON
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 4527
+              end: 4527
+          log:
+            file: hw4.log
+            range:
+              start: 866
+              end: 866
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: Plain pages OFF
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 4534
+              end: 4534
+          log:
+            file: hw4.log
+            range:
+              start: 867
+              end: 867
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: Backreferencing OFF
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 4539
+              end: 4539
+          log:
+            file: hw4.log
+            range:
+              start: 868
+              end: 868
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: Implicit mode ON; LaTeX internals redefined.
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 869
+              end: 869
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: Bookmarks ON
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 4772
+              end: 4772
+          log:
+            file: hw4.log
+            range:
+              start: 870
+              end: 870
+        - name: pdfTeX
+          severity: info
+          text: 'url 2013/09/16 ver 3.4 Verb mode for urls, etc.'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 874
+              end: 874
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \url
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 5125
+              end: 5125
+          log:
+            file: hw4.log
+            range:
+              start: 876
+              end: 876
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: Hyper figures OFF
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 6380
+              end: 6380
+          log:
+            file: hw4.log
+            range:
+              start: 881
+              end: 881
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: Link nesting OFF
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 6385
+              end: 6385
+          log:
+            file: hw4.log
+            range:
+              start: 882
+              end: 882
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: Hyper index ON
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 6388
+              end: 6388
+          log:
+            file: hw4.log
+            range:
+              start: 883
+              end: 883
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: backreferencing OFF
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 6395
+              end: 6395
+          log:
+            file: hw4.log
+            range:
+              start: 884
+              end: 884
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: Link coloring OFF
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 6400
+              end: 6400
+          log:
+            file: hw4.log
+            range:
+              start: 885
+              end: 885
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: Link coloring with OCG OFF
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 6405
+              end: 6405
+          log:
+            file: hw4.log
+            range:
+              start: 886
+              end: 886
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: PDF/A mode OFF
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 6410
+              end: 6410
+          log:
+            file: hw4.log
+            range:
+              start: 887
+              end: 887
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \ref
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 6450
+              end: 6450
+          log:
+            file: hw4.log
+            range:
+              start: 888
+              end: 888
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \pageref
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+            range:
+              start: 6454
+              end: 6454
+          log:
+            file: hw4.log
+            range:
+              start: 889
+              end: 889
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: 'Driver (autodetected): hpdftex.'
+          source:
+            file: hw4.tex
+          log:
+            file: hw4.log
+            range:
+              start: 894
+              end: 894
+        - name: pdfTeX
+          severity: info
+          text: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 900
+              end: 900
+        - severity: info
+          name: pdfTeX
+          category: Package uniquecounter
+          text: New unique counter `rerunfilecheck'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty'
+            range:
+              start: 282
+              end: 282
+          log:
+            file: hw4.log
+            range:
+              start: 901
+              end: 902
+        - severity: warning
+          name: pdfTeX
+          category: LaTeX
+          text: 'Unused global option(s):'
+          source:
+            file: hw4.tex
+          log:
+            file: hw4.log
+            range:
+              start: 912
+              end: 912
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for OML/cmm/m/it ... okay
+          source:
+            file: hw4.tex
+            range:
+              start: 47
+              end: 47
+          log:
+            file: hw4.log
+            range:
+              start: 918
+              end: 919
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for T1/cmr/m/n ... okay
+          source:
+            file: hw4.tex
+            range:
+              start: 47
+              end: 47
+          log:
+            file: hw4.log
+            range:
+              start: 920
+              end: 921
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for OT1/cmr/m/n ... okay
+          source:
+            file: hw4.tex
+            range:
+              start: 47
+              end: 47
+          log:
+            file: hw4.log
+            range:
+              start: 922
+              end: 923
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for OMS/cmsy/m/n ... okay
+          source:
+            file: hw4.tex
+            range:
+              start: 47
+              end: 47
+          log:
+            file: hw4.log
+            range:
+              start: 924
+              end: 925
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for OMX/cmex/m/n ... okay
+          source:
+            file: hw4.tex
+            range:
+              start: 47
+              end: 47
+          log:
+            file: hw4.log
+            range:
+              start: 926
+              end: 927
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for U/cmr/m/n ... okay
+          source:
+            file: hw4.tex
+            range:
+              start: 47
+              end: 47
+          log:
+            file: hw4.log
+            range:
+              start: 928
+              end: 929
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for PD1/pdf/m/n ... okay
+          source:
+            file: hw4.tex
+            range:
+              start: 47
+              end: 47
+          log:
+            file: hw4.log
+            range:
+              start: 930
+              end: 931
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Try loading font information for T1+ppl
+          source:
+            file: hw4.tex
+            range:
+              start: 47
+              end: 47
+          log:
+            file: hw4.log
+            range:
+              start: 932
+              end: 932
+        - name: pdfTeX
+          severity: info
+          text: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 987
+              end: 987
+        - name: pdfTeX
+          severity: info
+          text: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 989
+              end: 989
+        - severity: info
+          name: pdfTeX
+          category: Package epstopdf-base
+          text: Redefining graphics rule for `.eps'
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty'
+            range:
+              start: 438
+              end: 438
+          log:
+            file: hw4.log
+            range:
+              start: 991
+              end: 992
+        - severity: info
+          name: pdfTeX
+          category: Package grfext
+          text: >-
+            Graphics extension search list:
+            [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+            \AppendGraphicsExtensions.
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty'
+            range:
+              start: 456
+              end: 456
+          log:
+            file: hw4.log
+            range:
+              start: 993
+              end: 996
+        - severity: info
+          name: pdfTeX
+          category: Package hyperref
+          text: Link coloring OFF
+          source:
+            file: hw4.tex
+            range:
+              start: 47
+              end: 47
+          log:
+            file: hw4.log
+            range:
+              start: 999
+              end: 999
+        - name: pdfTeX
+          severity: info
+          text: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+          source:
+            file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty'
+          log:
+            file: hw4.log
+            range:
+              start: 1001
+              end: 1001
+        - name: pdfTeX
+          severity: info
+          text: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+          source:
+            file: >-
+              C:\Program Files\MiKTeX
+              2.9\tex\generic\oberdiek\gettitlestring.sty
+          log:
+            file: hw4.log
+            range:
+              start: 1003
+              end: 1003
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \ref
+          source:
+            file: hw4.tex
+            range:
+              start: 47
+              end: 47
+          log:
+            file: hw4.log
+            range:
+              start: 1007
+              end: 1007
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \pageref
+          source:
+            file: hw4.tex
+            range:
+              start: 47
+              end: 47
+          log:
+            file: hw4.log
+            range:
+              start: 1008
+              end: 1008
+        - severity: info
+          name: pdfTeX
+          category: LaTeX
+          text: Redefining \nameref
+          source:
+            file: hw4.tex
+            range:
+              start: 47
+              end: 47
+          log:
+            file: hw4.log
+            range:
+              start: 1009
+              end: 1009
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Try loading font information for OT1+ppl
+          source:
+            file: hw4.tex
+            range:
+              start: 50
+              end: 50
+          log:
+            file: hw4.log
+            range:
+              start: 1015
+              end: 1015
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Try loading font information for U+zeur
+          source:
+            file: hw4.tex
+            range:
+              start: 50
+              end: 50
+          log:
+            file: hw4.log
+            range:
+              start: 1019
+              end: 1019
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Try loading font information for U+zeus
+          source:
+            file: hw4.tex
+            range:
+              start: 50
+              end: 50
+          log:
+            file: hw4.log
+            range:
+              start: 1023
+              end: 1023
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Try loading font information for U+zeuex
+          source:
+            file: hw4.tex
+            range:
+              start: 50
+              end: 50
+          log:
+            file: hw4.log
+            range:
+              start: 1027
+              end: 1027
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Try loading font information for OT1+zplm
+          source:
+            file: hw4.tex
+            range:
+              start: 50
+              end: 50
+          log:
+            file: hw4.log
+            range:
+              start: 1031
+              end: 1031
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: >-
+            Font shape `T1/ppl/bx/n' in size <17.28> not available Font shape
+            `T1/ppl/b/n' tried instead.
+          source:
+            file: hw4.tex
+            range:
+              start: 51
+              end: 51
+          log:
+            file: hw4.log
+            range:
+              start: 1036
+              end: 1037
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: >-
+            Font shape `T1/ppl/bx/n' in size <14.4> not available Font shape
+            `T1/ppl/b/n' tried instead.
+          source:
+            file: hw4.tex
+            range:
+              start: 55
+              end: 55
+          log:
+            file: hw4.log
+            range:
+              start: 1038
+              end: 1039
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figure1.png used Requested size: 289.07928pt x 216.80946pt.'
+          source:
+            file: hw4.tex
+            range:
+              start: 57
+              end: 57
+          log:
+            file: hw4.log
+            range:
+              start: 1043
+              end: 1044
+        - severity: warning
+          name: pdfTeX
+          category: LaTeX
+          text: File `figure2.png' not found
+          source:
+            file: hw4.tex
+            range:
+              start: 65
+              end: 65
+          log:
+            file: hw4.log
+            range:
+              start: 1046
+              end: 1046
+        - severity: error
+          name: pdfTeX
+          text: 'File `figure2.png'' not found: using draft setting'
+          log:
+            file: hw4.log
+            range:
+              start: 1049
+              end: 1050
+          source:
+            file: hw4.tex
+            range:
+              start: 65
+              end: 65
+          category: Package pdftex.def
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Try loading font information for T1+cmtt
+          source:
+            file: hw4.tex
+            range:
+              start: 65
+              end: 65
+          log:
+            file: hw4.log
+            range:
+              start: 1057
+              end: 1057
+        - severity: warning
+          name: pdfTeX
+          category: LaTeX
+          text: File `figure3.png' not found
+          source:
+            file: hw4.tex
+            range:
+              start: 66
+              end: 66
+          log:
+            file: hw4.log
+            range:
+              start: 1063
+              end: 1063
+        - severity: error
+          name: pdfTeX
+          text: 'File `figure3.png'' not found: using draft setting'
+          log:
+            file: hw4.log
+            range:
+              start: 1067
+              end: 1068
+          source:
+            file: hw4.tex
+            range:
+              start: 66
+              end: 66
+          category: Package pdftex.def
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figure4.png used Requested size: 289.07928pt x 216.80946pt.'
+          source:
+            file: hw4.tex
+            range:
+              start: 72
+              end: 72
+          log:
+            file: hw4.log
+            range:
+              start: 1084
+              end: 1085
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figure5.png used Requested size: 289.07928pt x 216.80946pt.'
+          source:
+            file: hw4.tex
+            range:
+              start: 78
+              end: 78
+          log:
+            file: hw4.log
+            range:
+              start: 1089
+              end: 1090
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figure6.png used Requested size: 144.53964pt x 108.40472pt.'
+          source:
+            file: hw4.tex
+            range:
+              start: 80
+              end: 80
+          log:
+            file: hw4.log
+            range:
+              start: 1097
+              end: 1098
+        - severity: info
+          name: pdfTeX
+          category: Package pdftex.def
+          text: 'figure7.png used Requested size: 144.53964pt x 108.40472pt.'
+          source:
+            file: hw4.tex
+            range:
+              start: 81
+              end: 81
+          log:
+            file: hw4.log
+            range:
+              start: 1102
+              end: 1103
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Try loading font information for OMS+ppl
+          source:
+            file: hw4.tex
+            range:
+              start: 104
+              end: 104
+          log:
+            file: hw4.log
+            range:
+              start: 1104
+              end: 1104
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: >-
+            Font shape `OMS/ppl/m/n' in size <12> not available Font shape
+            `OMS/cmsy/m/n' tried instead.
+          source:
+            file: hw4.tex
+            range:
+              start: 104
+              end: 104
+          log:
+            file: hw4.log
+            range:
+              start: 1110
+              end: 1111
+        - severity: info
+          name: pdfTeX
+          category: Package atveryend
+          text: Empty hook `BeforeClearDocument'
+          source:
+            file: hw4.tex
+            range:
+              start: 387
+              end: 387
+          log:
+            file: hw4.log
+            range:
+              start: 1125
+              end: 1125
+        - severity: info
+          name: pdfTeX
+          category: Package atveryend
+          text: Empty hook `AfterLastShipout'
+          source:
+            file: hw4.tex
+            range:
+              start: 387
+              end: 387
+          log:
+            file: hw4.log
+            range:
+              start: 1126
+              end: 1126
+        - severity: info
+          name: pdfTeX
+          category: Package atveryend
+          text: Executing hook `AtVeryEndDocument'
+          source:
+            file: hw4.tex
+            range:
+              start: 387
+              end: 387
+          log:
+            file: hw4.log
+            range:
+              start: 1129
+              end: 1129
+        - severity: info
+          name: pdfTeX
+          category: Package atveryend
+          text: Executing hook `AtEndAfterFileList'
+          source:
+            file: hw4.tex
+            range:
+              start: 387
+              end: 387
+          log:
+            file: hw4.log
+            range:
+              start: 1130
+              end: 1130
+        - severity: info
+          name: pdfTeX
+          category: Package rerunfilecheck
+          text: >-
+            File `hw4.out' has not changed. Checksum:
+            F5B7E9B615F7D59D211391C8F5E32F90;269.
+          source:
+            file: hw4.tex
+          log:
+            file: hw4.log
+            range:
+              start: 1131
+              end: 1132
+      inputs: []
+      outputs:
+        - hw4.pdf
+      calls: []
+    type: ParsedLaTeXLog
+  hw4.aux:
+    timeStamp: 2019-02-24T22:48:18.806Z
+    jobNames: []
+    hash: XeV091kYecTWpZawtptmQh2fZbYYCksmGKX+mx1CPgI=
+    type: LaTeXAuxilary
+  hw4.fls:
+    timeStamp: 2019-02-24T22:48:19.051Z
+    jobNames: []
+    hash: Jq21Wdcql8TeBW+E3k5OAI22Gn9IZobKQs/zqXPVpqE=
+    type: FileListing
+  hw4.log:
+    timeStamp: 2019-02-24T22:48:18.941Z
+    jobNames: []
+    hash: UNlHXiJUUPUAJB2etvUFsjpkOjj6rDhpVl/s7MvAKj8=
+    type: LaTeXLog
+    subType: pdfTeX
+  hw4.synctex.gz:
+    timeStamp: 2019-02-24T22:48:18.927Z
+    jobNames: []
+    hash: e9lVlvHGwBphRgxxAaMi+h1IboS4Z5KHO4sEwIJQnpM=
+    type: SyncTeX
+  hw4.pdf:
+    timeStamp: 2019-02-24T22:48:18.920Z
+    jobNames: []
+    hash: PsoXr3inS5xw8aTWcH5aTFeUw5EbNlASZzb1avQHaYw=
+    type: PortableDocumentFormat
+  hw4.aux-ParsedLaTeXAuxilary:
+    timeStamp: 2019-02-24T22:13:03.252Z
+    jobNames: []
+    value:
+      commands:
+        - relax
+        - providecommand
+        - providecommand
+        - HyperFirstAtBeginDocument
+        - global
+        - gdef
+        - global
+        - gdef
+        - gdef
+        - AtEndDocument
+        - let
+        - let
+        - fi
+        - fi
+        - global
+        - gdef
+        - providecommand
+        - providecommand
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+    type: ParsedLaTeXAuxilary
+  'C:\Program Files\MiKTeX 2.9\fonts\enc\dvips\base\8r.enc':
+    timeStamp: 2016-03-20T11:38:07.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplb7t.tfm':
+    timeStamp: 2006-01-09T07:04:14.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplb8r.tfm':
+    timeStamp: 2006-01-09T07:04:14.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplb8t.tfm':
+    timeStamp: 2006-01-09T07:04:14.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplr7t.tfm':
+    timeStamp: 2006-01-09T07:04:14.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplr8r.tfm':
+    timeStamp: 2006-01-09T07:04:14.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplr8t.tfm':
+    timeStamp: 2006-01-09T07:04:14.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\jknappen\ec\ecrm1200.tfm':
+    timeStamp: 2001-06-20T18:35:26.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm':
+    timeStamp: 2009-02-06T20:24:14.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam7.tfm':
+    timeStamp: 2009-02-06T20:24:14.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm':
+    timeStamp: 2009-02-06T20:24:14.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm':
+    timeStamp: 2009-02-06T20:24:14.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr10.tfm':
+    timeStamp: 2006-01-09T00:04:13.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr12.tfm':
+    timeStamp: 2006-01-09T00:04:13.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeuex10.tfm':
+    timeStamp: 2005-01-11T20:51:54.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeurb10.tfm':
+    timeStamp: 2005-01-11T20:51:56.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeurb7.tfm':
+    timeStamp: 2005-01-11T20:51:56.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeurm10.tfm':
+    timeStamp: 2005-01-11T20:51:52.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeurm7.tfm':
+    timeStamp: 2005-01-11T20:51:50.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeusb10.tfm':
+    timeStamp: 2005-01-11T20:51:58.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeusb7.tfm':
+    timeStamp: 2005-01-11T20:51:58.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeusm10.tfm':
+    timeStamp: 2005-01-11T20:51:54.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeusm7.tfm':
+    timeStamp: 2005-01-11T20:51:52.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\mathpazo\zplmb7t.tfm':
+    timeStamp: 2006-01-09T07:04:14.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\mathpazo\zplmr7t.tfm':
+    timeStamp: 2006-01-09T07:04:14.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\type1\urw\palatino\uplb8a.pfb':
+    timeStamp: 2006-01-10T05:35:48.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\type1\urw\palatino\uplr8a.pfb':
+    timeStamp: 2006-01-10T05:35:48.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\vf\adobe\palatino\pplb8t.vf':
+    timeStamp: 2006-01-09T07:04:14.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\vf\adobe\palatino\pplr8t.vf':
+    timeStamp: 2006-01-09T07:04:14.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii':
+    timeStamp: 2011-06-01T08:54:21.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty':
+    timeStamp: 2010-09-12T03:06:29.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty':
+    timeStamp: 2018-11-30T12:31:18.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty':
+    timeStamp: 2018-11-30T12:31:18.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty':
+    timeStamp: 2018-11-30T12:31:18.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty':
+    timeStamp: 2018-11-30T12:31:19.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty':
+    timeStamp: 2018-11-30T12:31:19.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcore.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorearrows.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreexternal.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoregraphicstate.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreimage.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorelayers.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreobjects.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathconstruct.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathprocessing.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathusage.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepatterns.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepoints.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorequick.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorerdf.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorescopes.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreshade.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoretransformations.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoretransparency.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytopaths.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryplothandlers.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathcalc.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfloat.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.base.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.basic.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.comparison.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.integerarithmetics.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.misc.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.random.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.round.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.trigonometric.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathparser.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathutil.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\modules\pgfmodulematrix.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduleplot.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduleshapes.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\pgf.revision.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgf.cfg':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys-common-pdf.def':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys-pdftex.def':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgffor.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeysfiltered.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfrcs.code.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common-lists.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common.tex':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-latex.def':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\generic\unicode-data\UnicodeData.txt':
+    timeStamp: 2018-06-09T05:40:44.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\keyval.tex':
+    timeStamp: 2014-12-22T17:52:18.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex':
+    timeStamp: 2014-12-22T17:52:18.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkvutils.tex':
+    timeStamp: 2014-12-22T17:52:18.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg':
+    timeStamp: 2006-01-02T22:53:43.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty':
+    timeStamp: 2017-10-31T15:15:00.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty':
+    timeStamp: 2013-01-14T21:09:32.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty':
+    timeStamp: 2013-01-14T21:09:32.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty':
+    timeStamp: 2018-12-18T21:24:18.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty':
+    timeStamp: 2018-12-18T21:24:19.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty':
+    timeStamp: 2018-12-18T21:24:19.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty':
+    timeStamp: 2018-12-18T21:24:19.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty':
+    timeStamp: 2018-12-18T21:24:20.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls':
+    timeStamp: 2018-12-10T19:45:04.000Z
+    jobNames: []
+    type: LaTeXClass
+  'C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty':
+    timeStamp: 2018-12-10T19:45:12.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty':
+    timeStamp: 2018-12-10T19:45:10.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty':
+    timeStamp: 2018-12-10T19:45:12.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo':
+    timeStamp: 2018-12-10T19:45:02.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def':
+    timeStamp: 2018-12-10T19:45:04.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\breqn.sty':
+    timeStamp: 2018-09-16T20:55:02.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym':
+    timeStamp: 2018-09-16T20:55:02.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\flexisym.sty':
+    timeStamp: 2018-09-16T20:55:02.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\mathstyle.sty':
+    timeStamp: 2018-09-16T20:55:02.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\comment\comment.sty':
+    timeStamp: 2016-07-16T17:48:02.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\datetime\datetime-defaults.sty':
+    timeStamp: 2015-04-20T13:43:02.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\datetime\datetime.sty':
+    timeStamp: 2015-04-20T13:43:02.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\enumitem\enumitem.sty':
+    timeStamp: 2019-01-14T15:11:00.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty':
+    timeStamp: 2018-08-19T08:44:24.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\eulervm\eulervm.sty':
+    timeStamp: 2005-01-11T20:56:50.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\eulervm\uzeuex.fd':
+    timeStamp: 2005-01-11T20:56:50.000Z
+    jobNames: []
+    type: FontDescription
+  'C:\Program Files\MiKTeX 2.9\tex\latex\eulervm\uzeur.fd':
+    timeStamp: 2005-01-11T20:56:50.000Z
+    jobNames: []
+    type: FontDescription
+  'C:\Program Files\MiKTeX 2.9\tex\latex\eulervm\uzeus.fd':
+    timeStamp: 2005-01-11T20:56:50.000Z
+    jobNames: []
+    type: FontDescription
+  'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fc-english.def':
+    timeStamp: 2017-12-26T21:11:59.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fcnumparser.sty':
+    timeStamp: 2017-12-26T21:11:59.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fcprefix.sty':
+    timeStamp: 2017-12-26T21:11:59.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fmtcount.sty':
+    timeStamp: 2017-12-26T21:11:59.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg':
+    timeStamp: 2018-05-12T19:04:09.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty':
+    timeStamp: 2018-05-12T19:04:09.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg':
+    timeStamp: 2016-06-14T08:51:32.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg':
+    timeStamp: 2016-06-14T08:51:32.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def':
+    timeStamp: 2018-01-08T21:51:40.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty':
+    timeStamp: 2018-04-08T08:26:25.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty':
+    timeStamp: 2018-04-08T08:26:25.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty':
+    timeStamp: 2018-04-08T08:26:25.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def':
+    timeStamp: 2018-11-30T20:59:35.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty':
+    timeStamp: 2018-11-30T20:59:35.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty':
+    timeStamp: 2018-11-30T20:59:35.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def':
+    timeStamp: 2018-11-30T20:59:35.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\expl3-code.tex':
+    timeStamp: 2019-01-13T22:50:54.000Z
+    jobNames: []
+    type: TeX
+  'C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\expl3.sty':
+    timeStamp: 2019-01-13T22:50:54.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3pdfmode.def':
+    timeStamp: 2019-01-13T22:50:56.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\l3packages\xparse\xparse.sty':
+    timeStamp: 2018-10-17T17:53:56.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg':
+    timeStamp: 2018-09-04T13:19:02.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty':
+    timeStamp: 2018-09-04T13:19:02.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty':
+    timeStamp: 2018-09-04T13:19:02.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\ms\everyshi.sty':
+    timeStamp: 2011-11-01T11:39:51.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty':
+    timeStamp: 2019-01-03T10:12:14.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty':
+    timeStamp: 2010-12-13T14:04:41.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty':
+    timeStamp: 2018-11-30T12:31:26.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty':
+    timeStamp: 2018-11-30T12:31:28.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty':
+    timeStamp: 2018-11-30T12:31:28.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty':
+    timeStamp: 2018-11-30T12:31:30.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty':
+    timeStamp: 2018-11-30T12:31:32.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgfcore.sty':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\math\pgfmath.sty':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\systemlayer\pgfsys.sty':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgffor.sty':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgfkeys.sty':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgfrcs.sty':
+    timeStamp: 2019-01-05T11:17:56.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\physics\physics.sty':
+    timeStamp: 2012-12-20T11:14:22.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\mathpazo.sty':
+    timeStamp: 2006-08-28T01:14:14.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ppl.fd':
+    timeStamp: 2006-01-13T06:03:50.000Z
+    jobNames: []
+    type: FontDescription
+  'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1zplm.fd':
+    timeStamp: 2006-01-13T06:03:50.000Z
+    jobNames: []
+    type: FontDescription
+  'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1ppl.fd':
+    timeStamp: 2006-01-13T06:03:50.000Z
+    jobNames: []
+    type: FontDescription
+  'C:\Program Files\MiKTeX 2.9\tex\latex\setspace\setspace.sty':
+    timeStamp: 2011-12-19T11:27:57.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty':
+    timeStamp: 2019-01-05T17:16:38.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\tools\bm.sty':
+    timeStamp: 2019-01-05T17:16:40.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty':
+    timeStamp: 2019-01-05T17:16:38.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\tools\enumerate.sty':
+    timeStamp: 2019-01-05T17:16:40.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty':
+    timeStamp: 2013-12-31T11:47:32.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty':
+    timeStamp: 2016-05-13T10:33:01.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty':
+    timeStamp: 2014-12-22T17:52:18.000Z
+    jobNames: []
+    type: LaTeXStyle
+  'C:\Users\Alejandro\AppData\Local\MiKTeX\2.9\miktex\data\le\pdftex\pdflatex.fmt':
+    timeStamp: 2019-01-27T06:50:16.101Z
+    jobNames: []
+  'C:\Users\Alejandro\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map':
+    timeStamp: 2019-01-27T06:48:43.315Z
+    jobNames: []
+  hw4.out:
+    timeStamp: 2019-02-24T22:48:18.813Z
+    jobNames: []
+    hash: conwrtVPQsryMxjNxYk7yAcKc7Q+jNL1fcU3yCaUZVw=
+    type: OUT
+  'C:\Program Files\MiKTeX 2.9\fonts\enc\dvips\cm-super\cm-super-t1.enc':
+    timeStamp: 2001-09-29T14:57:00.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\jknappen\ec\ectt1200.tfm':
+    timeStamp: 2001-06-20T18:39:04.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\type1\public\cm-super\sftt1200.pfb':
+    timeStamp: 2008-07-09T15:45:00.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd':
+    timeStamp: 2018-12-10T19:45:10.000Z
+    jobNames: []
+    type: FontDescription
+  'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy10.tfm':
+    timeStamp: 2006-01-09T00:04:13.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb':
+    timeStamp: 2009-07-14T18:37:47.000Z
+    jobNames: []
+  'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsppl.fd':
+    timeStamp: 2006-01-13T06:03:50.000Z
+    jobNames: []
+    type: FontDescription
+  figure1.png:
+    timeStamp: 2019-02-24T22:39:47.505Z
+    jobNames: []
+    hash: CJfDjk27AF2fOIeVthXEKFt+V1GIdZXMSUpB9uRzD4w=
+  figure5.png:
+    timeStamp: 2019-02-24T22:43:20.497Z
+    jobNames: []
+    hash: ktLDUicVL2FaR0pZTpQvKSMyrce+PqbLyeMZjitlqwU=
+  figure6.png:
+    timeStamp: 2019-02-24T22:42:50.347Z
+    jobNames: []
+    hash: mI/9nXuvxPBzS+ZMvrAWzDQhD1r41z6m/Wfw+Sqo2zs=
+  figure7.png:
+    timeStamp: 2019-02-24T22:42:31.697Z
+    jobNames: []
+    hash: rxfGlpnJ3ShDZAhQ++582zjXHUQL4xnQAI5COpyVcDs=
+  figure4.png:
+    timeStamp: 2019-02-24T22:41:31.483Z
+    jobNames: []
+    hash: U6Nm/7cik6EG7BGORf922fqHkLVhnNZk2zl2sh4S2wY=
+rules:
+  - name: ApplyOptions
+    command: load
+    phase: initialize
+    parameters: []
+    inputs:
+      - file: dicy.yaml-ParsedYAML
+        type: default
+      - file: hw4.yaml-ParsedYAML
+        type: default
+      - file: hw4.tex-ParsedLaTeXMagic
+        type: default
+      - file: dicy-instance.yaml-ParsedYAML
+        type: default
+      - file: 'C:\Users\Alejandro\AppData\Roaming\dicy\config.yaml-ParsedYAML'
+        type: default
+    outputs: []
+  - name: LoadAndValidateCache
+    command: load
+    phase: initialize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: Migrate
+    command: load
+    phase: initialize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: ApplyOptions
+    command: load
+    phase: execute
+    parameters: []
+    inputs:
+      - file: dicy.yaml-ParsedYAML
+        type: default
+      - file: hw4.yaml-ParsedYAML
+        type: default
+      - file: hw4.tex-ParsedLaTeXMagic
+        type: default
+      - file: dicy-instance.yaml-ParsedYAML
+        type: default
+      - file: 'C:\Users\Alejandro\AppData\Roaming\dicy\config.yaml-ParsedYAML'
+        type: default
+    outputs: []
+  - name: ParseOptionsFile
+    command: load
+    phase: execute
+    parameters: []
+    inputs:
+      - file: 'C:\Users\Alejandro\AppData\Roaming\dicy\config.yaml'
+        type: default
+    outputs:
+      - file: 'C:\Users\Alejandro\AppData\Roaming\dicy\config.yaml-ParsedYAML'
+        type: default
+  - name: ParseLaTeXMagic
+    command: load
+    phase: execute
+    parameters:
+      - hw4.tex
+    inputs:
+      - file: hw4.tex
+        type: default
+    outputs:
+      - file: hw4.tex-ParsedLaTeXMagic
+        type: default
+  - name: AssignJobNames
+    command: load
+    phase: finalize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: FindLogFiles
+    command: build
+    phase: initialize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: LaTeX
+    command: build
+    phase: execute
+    parameters:
+      - hw4.tex
+    inputs:
+      - file: hw4.tex
+        type: default
+      - file: hw4.fls-ParsedFileListing
+        type: default
+      - file: hw4.log-ParsedLaTeXLog
+        type: default
+      - file: hw4.aux
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\enc\dvips\base\8r.enc'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplb7t.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplb8r.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplb8t.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplr7t.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplr8r.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\adobe\palatino\pplr8t.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\jknappen\ec\ecrm1200.tfm'
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr10.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr12.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeuex10.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeurb10.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeurb7.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeurm10.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeurm7.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeusb10.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeusb7.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeusm10.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\eulervm\zeusm7.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\mathpazo\zplmb7t.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\mathpazo\zplmr7t.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\type1\urw\palatino\uplb8a.pfb'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\type1\urw\palatino\uplr8a.pfb'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\vf\adobe\palatino\pplb8t.vf'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\vf\adobe\palatino\pplr8t.vf'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty'
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcore.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorearrows.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcoreexternal.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcoregraphicstate.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcoreimage.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorelayers.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcoreobjects.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorepathconstruct.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorepathprocessing.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorepathusage.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorepatterns.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorepoints.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorequick.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorerdf.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcorescopes.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcoreshade.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcoretransformations.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\basiclayer\pgfcoretransparency.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytopaths.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\libraries\pgflibraryplothandlers.code.tex
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathcalc.code.tex'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfloat.code.tex'
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.base.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.basic.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.comparison.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.integerarithmetics.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.misc.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.random.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.round.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathfunctions.trigonometric.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\math\pgfmathparser.code.tex
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathutil.code.tex'
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\modules\pgfmodulematrix.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\modules\pgfmoduleplot.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\modules\pgfmoduleshapes.code.tex
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\pgf.revision.tex'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgf.cfg'
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\systemlayer\pgfsys-common-pdf.def
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\systemlayer\pgfsys-pdftex.def
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\systemlayer\pgfsys.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.tex
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgffor.code.tex'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex'
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\utilities\pgfkeysfiltered.code.tex
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfrcs.code.tex'
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\utilities\pgfutil-common-lists.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\utilities\pgfutil-common.tex
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\generic\pgf\utilities\pgfutil-latex.def
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\unicode-data\UnicodeData.txt'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\keyval.tex'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkvutils.tex'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\breqn.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\cmbase.sym'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\flexisym.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\breqn\mathstyle.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\comment\comment.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\datetime\datetime-defaults.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\datetime\datetime.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\enumitem\enumitem.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\eulervm\eulervm.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\eulervm\uzeuex.fd'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\eulervm\uzeur.fd'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\eulervm\uzeus.fd'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fc-english.def'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fcnumparser.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fcprefix.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\fmtcount\fmtcount.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\expl3-code.tex'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\expl3.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3pdfmode.def'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\l3packages\xparse\xparse.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\ms\everyshi.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgfcore.sty'
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
+        type: default
+      - file: >-
+          C:\Program Files\MiKTeX
+          2.9\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\math\pgfmath.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\systemlayer\pgfsys.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgffor.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgfkeys.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgfrcs.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\physics\physics.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\mathpazo.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ppl.fd'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1zplm.fd'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1ppl.fd'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\setspace\setspace.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\bm.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\tools\enumerate.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty'
+        type: default
+      - file: >-
+          C:\Users\Alejandro\AppData\Local\MiKTeX\2.9\miktex\data\le\pdftex\pdflatex.fmt
+        type: default
+      - file: 'C:\Users\Alejandro\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map'
+        type: default
+      - file: hw4.out
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\enc\dvips\cm-super\cm-super-t1.enc'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\jknappen\ec\ectt1200.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\type1\public\cm-super\sftt1200.pfb'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy10.tfm'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb'
+        type: default
+      - file: 'C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsppl.fd'
+        type: default
+      - file: figure1.png
+        type: default
+      - file: figure5.png
+        type: default
+      - file: figure6.png
+        type: default
+      - file: figure7.png
+        type: default
+      - file: figure4.png
+        type: default
+    outputs:
+      - file: hw4.aux
+        type: default
+      - file: hw4.fls
+        type: default
+      - file: hw4.log
+        type: default
+      - file: hw4.synctex.gz
+        type: target
+      - file: hw4.pdf
+        type: target
+      - file: hw4.out
+        type: default
+  - name: ParseLaTeXAuxilary
+    command: build
+    phase: execute
+    parameters:
+      - hw4.aux
+    inputs:
+      - file: hw4.aux
+        type: default
+    outputs:
+      - file: hw4.aux-ParsedLaTeXAuxilary
+        type: default
+  - name: ParseFileListing
+    command: build
+    phase: execute
+    parameters:
+      - hw4.fls
+    inputs:
+      - file: hw4.fls
+        type: default
+    outputs:
+      - file: hw4.fls-ParsedFileListing
+        type: default
+  - name: ParseLaTeXLog
+    command: build
+    phase: execute
+    parameters:
+      - hw4.log
+    inputs:
+      - file: hw4.log
+        type: default
+    outputs:
+      - file: hw4.log-ParsedLaTeXLog
+        type: default
+  - name: LogProducedTargets
+    command: build
+    phase: finalize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: CheckForMissingBuildRule
+    command: build
+    phase: finalize
+    parameters:
+      - hw4.tex
+    inputs:
+      - file: hw4.tex
+        type: default
+    outputs: []
+  - name: FindLogFiles
+    command: log
+    phase: initialize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: ReportLogMessages
+    command: log
+    phase: execute
+    parameters:
+      - hw4.log-ParsedLaTeXLog
+    inputs:
+      - file: hw4.log-ParsedLaTeXLog
+        type: default
+    outputs: []
+  - name: ParseLaTeXLog
+    command: log
+    phase: execute
+    parameters:
+      - hw4.log
+    inputs:
+      - file: hw4.log
+        type: default
+    outputs:
+      - file: hw4.log-ParsedLaTeXLog
+        type: default
+  - name: SaveCache
+    command: save
+    phase: execute
+    parameters: []
+    inputs: []
+    outputs: []
