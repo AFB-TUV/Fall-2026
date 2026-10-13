@@ -1,0 +1,147 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage[normalem]{ulem}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Worksheet 8}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+	\maketitle
+
+    \section{W 8-1}
+
+    The initial cashflow is \(\$100000\), the project's life is \(5\) years, we expect \(100,000\) cupcakes to be sold per year with an expected price of \(\$0.75\) per unit sold and an expected variable cost of \(\$0.25\) per unit sold. Annual fixed costs are \(\$10,000\) and taxes are \(30\%\). 
+
+    \begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Year & 0 & 1-5 \\
+		\hline
+		Sales&  & \(75000\) \\
+        \hline
+        - Costs & & \(-35000\) \\
+        \hline
+        - Depreciation & & \(-20000\) \\
+        \hline
+        \hline
+        EBIT & & \(20000\) \\
+        \hline
+        - taxes & & \(-6000\) \\
+        \hline
+        \hline
+        Net Income & & \(14000\) \\
+        \hline
+        + Depreciation & & \(20000\) \\
+        \hline
+        \hline
+        Operating CF & & \(34000\) \\
+        \hline
+        - capital spending & \(-100000\) & \(0\) \\
+        \hline
+        - change in NWC & & \(0\) \\
+        \hline
+        \hline
+        Project CF & \(-100000\) & \(34000\) \\
+        \hline
+	\end{tabular}
+	\end{center}
+
+    NPV: 
+    \[ \Ex{R} = -100000 + \frac{34000}{1.1} + \frac{34000}{1.1^2} + \frac{34000}{1.1^3} + \frac{34000}{1.1^4} + \frac{34000}{1.1^5} = 28886.75 \]
+
+    \section{W 8-2}
+
+    \subsection{part A}
+
+    We now want to conduct a sensitivity analysis. Let the units sold be \(u \in (70000,100000,130000)\). Build a table.
+
+    \begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Year & 0 & High Sales & Medium Sales (base case) & Low Sales \\
+		\hline
+		Sales & & \(130000\) & \(75000\) & \(52500\) \\
+        \hline
+        - Costs & & \(-42500\) & \(-35000\) & \(-27500\)\\
+        \hline
+        - Depreciation & & \(-20000\) &  \(-20000\) & \(-20000\) \\
+        \hline
+        \hline
+        EBIT & & \(67500\) & \(20000\) & \(5000\) \\
+        \hline
+        - taxes & & \(-20250\) & \(-6000\) & \(-1500\) \\
+        \hline
+        \hline
+        Net Income & & \(47250\) & \(14000\) & \(3500\) \\
+        \hline
+        + Depreciation & & \(20000\) & \(20000\) & \(20000\) \\
+        \hline
+        \hline
+        Operating CF & & \(67250\) & \(34000\) & \(23500\) \\
+        \hline
+        - capital spending & \(-100000\) & \(0\) & \(0\) & \(0\) \\
+        \hline
+        - change in NWC & & \(0\) & \(0\) & \(0\) \\
+        \hline
+        \hline
+        Project CF & \(-100000\) & \(67250\) & \(34000\) & \(23500\) \\
+        \hline
+        \hline
+        NPV & & \(154930.41\) & \(28886.75\) & \(-10916.51\) \\
+        \hline 
+	\end{tabular}
+	\end{center}
+
+    We could also back-solve these equations to find how many sales we need to break even. This comes out to \(75485\) sales per year.
+
+    \subsection{part B}
+
+    We now want to do a scenario analysis. The idea behind a scenario analysis is to look at several changes in economic conditions to see how your cashflows might change. (e.g. scenario 1 here has high demand, higher per unit price, and lower variable costs). [ran out of time in class for this problem]
+
+\end{document}

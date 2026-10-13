@@ -1,0 +1,261 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage[normalem]{ulem}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Homework 7}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+	\maketitle
+
+    \section{Notes on Video Lectures}
+
+    \subsection{Video 1}
+
+    Capital budgeting was a Theory of Interest topic but is more complicated with corporate finance theory.
+
+    Idea: how do we decide whether to undertake a project? Answer: need idea of expected return. This requires adding up cashflows. Question: which ones count and which ones don't count? We only consider cashflows from assets; financing will eventually matter but we consider it here as part of the weighted average cost of capital (WACC). 
+
+    Which cashflows count? Say Coca-Cola develops new product, Coke Infinity. Include . . . 
+
+    \begin{enumerate}
+    \item Revenue from sales of \emph{Coke Infinity}: yes
+    \item Cost of production: yes
+    \item existing factory: \sout{no} yes? because it would be a future cashflow
+    \item marketing of new product: \sout{no} yes -- difference between this and the next two is that the latter would be taken whether or not the new product is introduced; they represent costs already paid (sunk costs)
+    \item cost of focus group: no
+    \item research \& development: no
+    \item taxes: yes
+    \item reduced consumption of other coke products? \sout{no} can't ignore effect (does it matter that they can't be projected easily??)
+    \end{enumerate}
+
+    Also should consider: increase in net working capital, NWA (could be temporary!); also depreciating fixed assets to reduce taxes could count in here.
+
+    project cash flow:
+
+    (sales - costs - depreciation) - taxes + depreciation - (capital spending + change in NWC) = project cash flow
+    Also intermediate values! EBIT (earnings before interest \& taxes): include up to taxes. Net income: include taxes. Operating cash flow: include depreciation.
+
+    NPV of project cash flows: \(NPV = \sum_{t \geq 0} CF_t (1+i)^{-t}\). \(i\) represents the WACC and will be discussed later. Obviously the firm wants to undertake the project if the NPV is positive.
+
+    Depreciation only affects CF through taxes. If project requires initial investment \(X\), then it should get a tax credit \(\tau X\). US laws says tax cannot be taken all at once if the project is taken over several years; we calculate this using depreciation of the book value of the asset. (easy: divide the total tax credit over the length of the project.) n.b.: because of time value of money, firms would rather not do this!
+
+    Modified Accelerated Cost Recovery System (MACRS): faster depreciation realizes tax credit earlier, though it also assumes things are bought in the middle of the year rather than the beginning. (is this actually used? the previous discussion said US law requires the other schedule.)
+
+    \subsection{Video 2}
+
+    Project has initial cost of \(\$500,000\) and is also the amount depreciated using a three-year MACRS schedule. 
+
+    \begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Year & Depreciation rate & Depreciation & Book value at year end \\
+		\hline
+		\(0\) &  &  & \(500000\) \\
+        \hline
+        \(1\) & \(33.33\%\) & \(166650\) & \(333350\) \\
+		\hline
+        \(2\) & \(44.45\%\) & \(222250\) & \(111100\) \\
+        \hline
+        \(3\) & \(14.81\%\) & \(74050\) & \(37050\) \\
+        \hline
+        \(4\) & \(7.41\%\) & \(37050\) & \(0\) \\
+        \hline
+	\end{tabular}
+	\end{center}
+
+    Capital spending: spend \(\$500000\) in year 0, sell assset and receive salvage value of \(\$50000\) in year 4. less \(40\%\) in taxes gives \(\$30000\). 
+
+    change to NWC: spend \(\$40000\) at 0, get money back at 4. 
+
+    Pro-forma income \& CF statement: 
+
+    \begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		Year & 0 & 1 & 2 & 3 & 4 \\
+		\hline
+		Sales &  & \(600000\) & \(600000\) & \(600000\) & \(600000\) \\
+        \hline
+        - Costs & & \(400000\) & \(400000\) & \(400000\) & \(400000\) \\
+		\hline
+        - Depreciation & & \(166650\) & \(222250\) & \(74050\) & \((37050)\) \\
+        \hline
+        \hline
+        EBIT & & \(33350\) & \((22250)\) & \(125950\) & \(162950\) \\
+        \hline
+        - taxes & & \((13340)\) & \(8900\) & \((50380)\) & \((65180)\) \\
+        \hline
+        \hline
+        Net Income & & \(20010\) & \((13350)\) & \(75570\) & \(97750\) \\
+        \hline
+        + Depreciation & & \(166650\) & \(222250\) & \(74050\) & \((37050)\) \\
+        \hline
+        \hline
+        Operating CF & & \(186660\) & \(208900\) & \(149620\) & \(134820\) \\
+        \hline
+        - capital spending & \((500000)\) & \(0\) & \(0\) & \(0\) & \(30000\) \\
+        \hline
+        - change in NWC &\((40000)\) & \(0\) & \(0\) & \(0\) & \(40000\) \\
+        \hline
+        \hline
+        Project CF & \((540000)\) & \(-186660\) & \(208900\) & \(149620\) & \(204820\) \\
+        \hline
+	\end{tabular}
+	\end{center}
+
+    NPV: \( -540000 + \frac{186660}{1.10} + \frac{208900}{1.10^2} + \frac{149620}{1.10^3} + \frac{204820}{1.10^4} = 54642.07\). This value is positive, so the firm should undertake the project.
+
+    \subsection{Video 3}
+
+    Start with a depreciation table:
+
+    \begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Year & Depreciation (old eq.) & BV (old eq.) & Depreciation (new eq. & BV (new eq.)) \\
+		\hline
+		\(0\) &  & \(250000\) & & \(760000\) \\
+        \hline
+        \(1\) & \(50000\) & \(200000\) & \(152000\) & \(608000\) \\
+		\hline
+        \(2\) & \(50000\) & \(150000\) & \(152000\) & \(456000\) \\
+        \hline
+        \(3\) & \(50000\) & \(100000\) & \(152000\) & \(304000\) \\
+        \hline
+        \(4\) & \(50000\) & \(50000\) & \(152000\) & \(152000\) \\
+        \hline
+        \(5\) & \(50000\) & \(0\) & \(152000\) & \(0\) \\
+        \hline 
+	\end{tabular}
+	\end{center}
+
+    so depreciation increases by \(102000\) each year.
+
+    Capital spending: spend \(760000\) at \(0\). sell old equipment, minus taxes: \(200000 \times (1-30\%) = 140000\). Firm is entitled to tax credit of \(30\% \times \text{book value} = 30\% \times 250000 = 75000\). So total capital spending is \(-545000\). At time 5: sell new equipment, minus taxes: \(150000 \times (1-30\%) = 105000\). 
+
+    Incremental income/CF statement can now be generated. 
+
+    \begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Year & 0 & 1-4 & 5 \\
+		\hline
+		Sales - costs &  & \(200000\) & \(200000\) \\
+        \hline
+        - Depreciation & & \((102000)\) & \((102000)\)\\
+        \hline
+        \hline
+        EBIT & & \(98000\) & \(98000\) \\
+        \hline
+        - taxes & & \((29400)\) & \((29400)\) \\
+        \hline
+        \hline
+        Net Income & & \(68600\) & \(68600\) \\
+        \hline
+        + Depreciation & & \(102000\) & \(102000\) \\
+        \hline
+        \hline
+        Operating CF & & \(170600\) & \(170600\) \\
+        \hline
+        - capital spending & \((545000)\) & \(0\) & \(105000\) \\
+        \hline
+        - change in NWC &\((20000)\) & \(0\) & \(20000\) \\
+        \hline
+        \hline
+        Project CF & \((565000)\) & \(170600\) & \(295600\) \\
+        \hline
+	\end{tabular}
+	\end{center}
+
+    NPV: \( -565000 + \frac{170600}{1.15} + \dots + \frac{170600}{1.15^4} + \frac{295000}{1.15^5} \approx 69025 > 0\) so replace the equipment.
+
+    \section{H 7-1}
+
+    The depreciation schedule is created entirely ad-hoc by an act of law, so there is no need to calculate depreciation. Thus we skip straight to building the table.
+
+    \begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Year & 0 & 1 & 2 & 3 \\
+		\hline
+		Sales - costs & & \(30000\) & \(30000\) & \(30000\) \\
+        \hline
+        - Depreciation & & \((40000)\) & \((5000)\) & \((5000)\) \\
+        \hline
+        \hline
+        EBIT & & \((10000)\) & \(25000\) & \(25000\) \\
+        \hline
+        - taxes & & \(0\) & \( 10000 \) & \(10000\) \\
+        \hline
+        \hline
+        Net Income & & \((10000)\) & \(15000\) & \(15000\) \\
+        \hline
+        + Depreciation & & \(40000\) & \(5000\) & \(5000\) \\
+        \hline
+        \hline
+        Operating CF & & \(30000\) & \(20000\) & \(20000\) \\
+        \hline
+        - capital spending & \((50000)\) & \(0\) & \(0\) & \(10000\) \\
+        \hline
+        - change in NWC & \((12000)\) & \(0\) & \(0\) &  \(12000\) \\
+        \hline
+        \hline
+        Project CF & \((62000)\) & \(30000\) & \(20000\) & \(42000\) \\
+        \hline
+	\end{tabular}
+	\end{center}
+
+    Based on this analysis, the net present value is given by
+
+    \[ \text{NPV} = -62000 + \frac{30000}{1.15} + \frac{20000}{1.15^2} + \frac{42000}{1.15^3} = 6825.51    \]
+
+    The net present value is positive, so the project is worth the investment.
+
+\end{document}

@@ -1,0 +1,85 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage[normalem]{ulem}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Homework 10}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+	\maketitle
+
+    \section{H 10-1}
+
+    This is the same project from the worksheet, so we have a \(50\%\) chance of a cashflow of \(140\) and a \(50\%\) chance of a cashflow of \(90\), which means that after discounting at a weighted average cost of capital of \(15\%\) our cashflow has a present value of \(\frac{0.5 \times (140 + 90)}{1.15} = 100\). We assume the entrepreneur raises \(70\) in debt, so the equityholder's cashflow is \( 0.5 \times 0.7 \times (140 + 90) = 80.5 \) and they need to hold \(\frac{80.5}{1.15} = 70\%\) of the company to be adequately compensated for their risk.
+
+    \section{H 10-2}
+
+    We are given that the debt-to-equity ratio of \(0.4\), an equity beta of \(1.4\), and a debt beta of \(0.2\). We can interpret the first as \(\frac{D}{E} = 0.4\), which means all further ratios will be satisfied if we write \(D = 0.4\) and \(E = 1\). That lets us solve for the unlevered equity beta:
+
+    \[ \beta_U = \frac{E}{D+E} \beta_E + \frac{D}{D+E} \beta_D = \frac{1}{1.4} \times 1.4 + \frac{0.4}{1.4} \times 0.2 = 1 + \frac{0.4}{7} = \frac{1.4}{7} = 0.2   \]
+
+    Now we hold this fixed and reverse-engineer the equity beta of \(1.2\):
+    
+    \[ 0.2 = \frac{1}{1.4} \times 1.2 + \frac{0.4}{1.4} \beta_D \implies \beta_D = \frac{7}{2} \left( 0.2 - \frac{5}{7} \right) = \frac{7}{10} - \frac{5}{2} = 0.7 - 2.5 = -1.8  \]
+
+
+
+    \section{H 10-3}
+
+    The weighted average cost of capital is given by
+
+    \[ r_U = \frac{E}{D+E-C} r_E + \frac{D}{D+E-C} r_D - \frac{C}{D+E-C} r_f = \frac{20}{20 + 40 - 4} \left( 0.04 + 1.2 \times 0.06 \right) + \frac{40}{20 + 40 - 4} \left( 0.04 + 0.1 \times 0.06 \right) - \frac{4}{20 + 40 - 4} \times 0.04  \]
+
+    If we instead use the cash to clear debt and hold the betas constant, we instead can find an unlevered equity beta so that we have a beta for the asset:
+
+    \[ \beta_U = \frac{40}{40 + 16} \times 1.2 + \frac{16}{40 + 16} \times 0.1    \]
+
+
+\end{document}

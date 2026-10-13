@@ -1,0 +1,129 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage[normalem]{ulem}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Worksheet 9}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+	\maketitle
+
+    \section{W 9-1}
+
+    \subsection{Part A}
+
+    We are given an investment opportunity that would require an initial investment of \(\$80M\) and yield cashflows of either \(\$140M\) or \(\$90M\). These are equally likely. The entrepreneur has \(\$80M\) in capital from a prior company that he exited, and an all-equity company with comparable risk has a \(\beta\) of \(1.67\). The market risk premium is \(6\%\) and the risk-free rate is \(5\%\). Should he invest?
+
+    We start by getting the net present value by adding the discounted cashflows:
+
+    \[ \Ex{NPV} = -80 + \Ex{R_p} = -80 + (0.5 \times 140 + 0.5 \times 90)/(1+r_p) =  \]
+
+    where \(R_p\) is the return on the project and \(r_p\) is the associated cost of capital. We can find this through CAPM:
+
+    \[ \Ex{R_E} = r_f + \beta_{E} \times MRP = 0.05 + 1.67 \times 0.06 = 0.15    \]
+
+    so we get 
+
+    \[  \Ex{NPV} = -80 + \Ex{R_p} = -80 + (0.5 \times 140 + 0.5 \times 90)/1.15 = \boxed{20 > 0}\]
+
+    The expected return of the project is positive, so assuming the probability structure of the economy is correct, he should invest.
+
+    \subsection{Part B}
+
+    We now suppose that the entrepreneur borrows \(\$80M\) to finance the project. What is the probability of default?
+
+    The entrepreneur will not default if the interest rate is less than \(\frac{90}{80} - 1 = 12.5\%\). This roughly corresponds to an AAA grade on this debt --- which means the entrepreneur should be charged the risk-free rate. This would be \(5\%\).
+
+    \subsection{Part C}
+
+    Now we suppose the entrepreneur wants to raise the \(80M\) by issuing public equity. How much of the firm would equityholders need to own to ensure they are compensated?
+
+    The project has a cost of capital of \(15\%\), so 
+
+    Suppose the correct share is \(80\%\). Then the equity holders can expect to receive \(112M\) in the good state and \(72M\) in the bad state. This works out to \(\frac{72 \times 0.5 + 112 \times 0.5}{1.15} = 80\) so the equityholders are fairly compensated. We could have figured this out from first principles by taking \(80 \times 1.15 = 92\) and setting \(92 = 0.5 \times (140 + 90) x\), which solves to \(x = 0.8\) for the share held by equityholders. (The remaining share, and the claim on the remaining \(20\%\) of cashflows, is held by the entrepreneur.)
+
+    \subsection{Part D}
+
+    Now we suppose the firm issues \(\$50M\) in bonds and cashes in with an IPO that issues \(100\%\) of equity to public investors. How much money can the entrepreneur expect?
+
+    We see that the initial investment is \(\$100M\), and given that we are trying to raise \(\$80M\) to finance the project we must have the \(\$50M\) from the bonds and an additional \(\$30M\) from equity. That leaves an additional \(\$20M\) in additional equity that can expect to be raised from the IPO.
+    
+
+    \subsection{Part E} 
+
+    What is the expected rate of return for levered equityholders?
+
+    We can see that under the previous scenario, the bank will always get \(\$52.5M = \$50M \times 0.05\) lending at the risk-free rate, and the entrepreneurs (who bear the risk!) will get the additional \(87.5M\) in good times and \(37.5M\) in bad times. This means their rate of return is either \(75\%\) or \(-25\%\), which puts the expected rate of return in the middle at \(25\%\). This is notably higher than the base return of \(15\%\)! This is the effect of leverage: the return is higher but more volatile. (We call the \(15\%\) unlevered equity return and the \(25\%\) levered equity return.) We want the levered equity return here, which is \(25\%\).
+    
+    What about an average investor? We assume they hold debt and equity in the same proportion as the funding was split: \(50\%\) debt and \(50\%\) equity. That means they get \(0.5 \times 0.05 + 0.5 \times 0.25 = 0.15\) so they receive the unlevered equity return.
+
+    In perfect markets, we can then work out the weighted average cost of capital! Because the unlevered cost of equity \(r_U\) is just this unlevered equity return:
+
+    \[ r_U = \frac{D}{V} r_D + \frac{D}{V} r_E   \]
+    
+    with \(V = E + D\). Similarly, we have
+
+    \[ r_E = r_U + \frac{D}{E} (r_U - r_D)   \]
+
+    \subsection{Part F}
+
+    How does the compensation of equityholders of unlevered equity versus levered equity relate to their risk exposure?
+
+    We know that \(\Ex{r_E^U} = 15\%\) and \(\Ex{r_E^L} = 20\%\). If we now attempt to see their variance:
+
+    \begin{align*}
+    (\sigma_{r_E^U})^2 &= \Ex{(r_E^U)^2} - \Ex{r_E^U}^2 = \left(0.5 \times 0.4^2 + 0.5 \times -0.1^2\right) - 0.15^2 = 0.0625 &\implies \sigma_{r_E^U} = 0.25 \\
+    \sigma_{r_E^L}^2 &= \Ex{(r_E^L)^2} - \Ex{r_E^L}^2 = \left( 0.5 \times 0.75^2 + 0.5 \times -0.25^2 \right) - 0.25^2 = 0.25 &\implies \sigma_{r_E^L} = 0.5
+    \end{align*}
+
+    This gives a Sharpe ratio of \(\frac{0.15 - 0.05}{0.25} = 0.4\) for the unlevered return and \(\frac{0.25 - 0.05}{0.5} = 0.4\) for the levered return.
+
+    Essentially, equityholders are paid more because they are exposed to more risk, as is shown by the higher volatility.
+
+\end{document}

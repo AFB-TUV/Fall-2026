@@ -1,0 +1,75 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage[normalem]{ulem}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Homework 8}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+	\maketitle
+
+    \section{}
+
+    Staring at the table, the outlier stock is stock \(C\) --- the others have expected return increase by \(0.07\) each time their \(\beta\) increases by \(0.1\). The expected return of stock \(C\), based on the slope of the SML and the given values for stock \(D\), is \(0.068 + 3 \times 0.07 = 0.089\), so the stock's alpha is \( \boxed{\alpha_C = 0.103 - 0.089 = 0.014} \) since this gives the extra return above the expected value from the SML. 
+
+    \section{}
+    
+    The two non-systemic biases are familiarity bias and overconfidence bias --- these are evidenced more for individual investors than for the broader population as a whole. 
+
+    \section{}
+
+    Under a multi-factor model, we write the expected return as 
+
+    \[ \Ex{R} = r_f + \sum \beta_S^{F_n} \left( \Ex{R_{F_n}} - r_f \right)    \]
+
+    We are given \(\Ex{R_A} = 0.25\) and \(\Ex{R_B} = 0.2\), \(\beta_S^A = 0.1\) and \(\beta_S^B = 0.15\), and \(r_f = 0.05\). Thus, under the two-factor model, we can write
+
+    \[  \Ex{R_S} = 0.05 + 0.1 \times (0.25 - 0.05) + 0.15 \times (0.2 - 0.05) = \boxed{0.0925 = \Ex{R_S}} \]
+
+\end{document}

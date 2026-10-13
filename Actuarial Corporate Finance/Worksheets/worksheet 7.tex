@@ -1,0 +1,130 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Worksheet 7 \\ Actuarial Corporate Finance}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+    \maketitle
+
+    \section{}
+
+    We are given a Sharpe ratio of \(0.4\) for the market, as well as a Sharpe ratio of \(0.33\) for the QRS stock, a correlation of \(0.8\) of the stock with the market, and a volatility of \(0.3\). We want to find the alpha for the stock. The equation for \(\alpha\) is given by
+    
+    \[ \alpha_{QRS} = \Ex{R_{QRS}} - r_{QRS} \]
+
+    where the return \(r_{QRS}\) is given by 
+
+    \[ r_{QRS} = r_f + \beta \left( \Ex{R_M} - r_f \right) \]
+
+    The Sharpe ratio is given by \(\frac{\Ex{R_{QRS}} - r_f}{\sigma_{QRS}}\) so we can write
+
+    \[ 0.33 = \frac{\Ex{R_{QRS}} - r_f}{\sigma_{QRS}}\]
+
+    We can find the expected return by using the correlation to find the \(\beta\) for the stock, which will then yield the expected return via the CAPM. We have \(\beta_{QRS} = \rho \frac{\sigma_{QRS}}{\sigma_{M}} = 0.8 * \frac{0.3}{\sigma_M} \), but this still needs a volatility for the market. But by the market's Sharpe ratio we know 
+
+    \[ 0.4 = \frac{\Ex{R_M} - r_f}{\sigma_M}  \]
+
+    Substituting everything, we can write
+
+    \[  \alpha_{QRS} = \Ex{R_{QRS}} - r_f - \beta \left( \Ex{R_M} - r_f \right) = \Ex{R_{QRS}} - r_f - \rho \frac{\sigma_{QRS}}{\sigma_M} (\Ex{R_M} - r_f)  \]
+
+    Looking at this, we can see that the right-hand quantity contains the Sharpe ratio of the market! The first term of the right-hand side can also be transformed into a Sharpe ratio if we divide through by \(\sigma_{QRS}\):
+
+    \[ \frac{\alpha}{\sigma_{QRS}} = \frac{\Ex{R_{QRS}} - r_f}{\sigma_{QRS}} - \rho SR_M = SR_{QRS} - \rho SR_M \]
+
+    Now we can substitute numbers:
+
+    \[ \frac{\alpha}{0.3} = 0.33 - 0.8 \times 0.4 \implies \boxed{\alpha = 0.003}   \]
+
+    \section{}
+
+    We are given a stock price of \(60\) and future earnings of \(10\%\). No other fundamentals have changed. What happens to the stock price? We can set the stock price as 
+
+    \[ S_0 = PV(Div_{t})  \]
+
+    where the right-hand side is the present value of future dividends. Assuming the dividend is a perpetuity (i.e. dividend payments happen forever), dividends across time are constant,  and no probability of the company failing, we have \(PV(\sum(Div_t)) = \frac{Div}{r}\), which gives
+
+    \[ S_1 = \frac{Div}{r} = S_0 \]
+
+    If we then assume dividends go up by \(1.1\) in conjunction with the future earnings increasing, we then have 
+     
+    \[ S_1 = \frac{1.1 Div}{r} = 1.1 S_0  \]
+
+    so the stock price goes up \(10\%\) to \(\boxed{S_1 = 66}\).
+
+    \section{}
+
+    Suppose \(ABC\) and \(XYZ\) are both expected to pay \(2.2\) million dividends into perpetuity (per year). \(ABC\)'s cost of capital is \(12\%\); \(XYZ\)'s is \(16\%\). We recall that we could set the return equal to the cost of capital.
+
+    \subsection{}
+
+    Which has the higher market value? We write 
+    \(\frac{D}{r_i} = V_i\)
+    so it immediately follows that since \(\frac{D}{r_1} = \frac{D_{ABC}}{0.12}\) is higher, it must have higher market value \(V_1\).
+
+    \subsection{}
+
+    As said before, firm \(XYZ\) should have higher expected return since it is equal to the cost of capital.
+
+    \subsection{}
+
+    By definition we know 
+
+    \[ \alpha_s = \Ex{R_s} - r_s \]
+
+    which means that XYZ has the higher \(\alpha\) since \(r_{XYZ} = 16\% - 15\% = 1\%\) while \(\alpha_{ABC} = -3\%\).
+    
+    \subsection{}
+
+    The logic of the previous problems immediately implies that a higher \(\alpha\) implies a lower market value, since market value is inversely related to expected return.
+
+
+
+\end{document}

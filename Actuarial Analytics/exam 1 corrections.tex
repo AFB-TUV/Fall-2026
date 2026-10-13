@@ -1,0 +1,125 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage{tabularx}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Exam 1 Corrections}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+	\maketitle
+
+    I had to take pictures to keep my exam eligible for UEC credit, and those pictures were not very good so I have to rewrite them. It is faster and more convenient for me to type these into a \LaTeX\ document and upload them than to rewrite everything and scan them in (plus it creates a document that's easier to keep track of and refer back to in my files!) so I will do that here. Hopefully that's fine.
+
+    \section{Multiple Choice Questions}
+
+    These appear to all be right (unless I am missing something?) No corrections to be done.
+
+    \section{Computation Question 1}
+
+    Part A was entirely correct. On Part B I simply forgot what K-nearest neighbors regression is -- the idea is that in K-nearest neighbors \emph{regression}, you identify predictions for point values based on their numerical closeness to others in the dataset. This requires that the points be quantitative, which this dataset is not because the y-value is a choice between Cherry and White. (The dataset could presumably be transformed into an appropriate one by turning y into an indicator variable, but this is still a transformation fo the existing dataset.)
+
+    \section{Computation Question 2}
+
+    I lost half a point on this question because I did not specify that \(R^2\) measures the amount of variation captured in the response variable by a \emph{linear} relationship with the predictor variable. I assumed that would be obvious since we are doing linear regression, but I should have been more clear here.
+
+    \section{Computation Question 3}
+
+    We are asked to calculate the residual standard error \(s = \sqrt{15}\). The marking on my test says I did the residual standard error right, so I will simply copy this step:
+
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \(x\) & \(y\) & \(\hat{y}\) & \(e_i = y - \hat{y}\) \\
+        \hline
+        \(2\) & \(5\) & \(10\) & \(-5\) \\
+        \hline
+        \(5\) & \(21\) & \(19\) & \(2\) \\
+        \hline
+        \(7\) & \(30\) & \(25\) & \(5\) \\
+        \hline
+        \(10\) & \(35\) & \(34\) & \(1\) \\
+        \hline
+        \(14\) & \(44\) & \(46\) & \(-2\) \\
+        \hline
+        \(17\) & \(54\) & \(55\) & \(-1\) \\
+        \hline    
+    \end{tabular}
+
+    The sum of the standard errors is \(SSE = -5^2 + 2^2 + 5^2 + 1^2 + -2^2 + -1^2 = 25 + 4 + 25 + 1 + 4 + 1 = 50 + 8 = 60\). There are \(6\) data points and \(2\) degrees of freedom are used, so we get the MSE by computing \(\frac{60}{6 - 2} = 15\), so the RSE is \(\sqrt{15}\), which is what we want. My problem here was that I forgot that I had to increase the number of predictors by \(1\) to get the degrees of freedom. I am honestly not sure why I did that; I am fine with the concept.
+
+    \section{Computation Question 4}
+
+    My picture is blurry here, but it looks like we are given \(\sum x_i = 18\), \(\sum x_i^2 = 70\), and \(SSE = \sum \left( y_i - \hat{y}_i \right)^2 = 24\). It also appears we are summing six values, which means we have \(n = 6\) data points. We want the estimated variance of \(\hat{\beta}_1\) (I think; my picture is not great!) which should just be the square of the standard error of \(b_1\). If we do this problem right we should get \(se(b1) = \frac{3}{8}\) here.
+
+    We have \(SSE = 24\), so we can calculate \(MSE = \frac{24}{6 - 2} = 6 = s^2\). We know that we can write \(se(b_1) = s \sqrt{\frac{1}{\sum \left( x_i - \bar{x} \right)}}\), which we can rearrange to the variance by writing 
+
+    \[ se^2(b_1) = \frac{s^2}{\sum x_i^2 - n \bar{x}^2} = \frac{6}{70 - 6 \times \left(\frac{18}{6}\right)^2} = \frac{6}{70 - 18 \times 3} = \frac{6}{16} = \frac{3}{8}   \]
+
+    which is what we want! I did two things wrong here: first, I repeated the same mistake using \(n-1\) instead of \(n-2\) for the degrees of freedom, and second, I wrote down \(\sum x_i^2 - n \bar{x}\) for the variance of \(x\) instead of \(\sum x_i^2 - n \bar{x}^2\). 
+
+    \section{Computation Question 5}
+
+    We are given here \(n = 10\), \(se^2(x) = 100\), \(SST = 300\), and \(SSReg = 100\); this immediately means that \(SSE = 200\). We need to calculate the F-statistic, which really means we need to calculate the t-statistic since \(F = t^2\). We should get \(F = 4\) in the end. 
+
+    According to the study guide, we can actually shortcut this since it's simple linear regression: 
+
+    \[ F = \frac{SSReg}{MSE} = \frac{100}{\frac{200}{10 - 2}} = \frac{100}{25} = 4  \]
+
+    However, let's solve this as \(F = t^2\) since that was the approach I used on the test. This means we need to find \(t = \frac{b_1}{se(b_1)}\). I didn't remember the appropriate formula for \(b_1\) here, and I even had a question mark written on the test on the part I was unsure about! Looking back, what I should have done for my approach was use
+
+    \[ SSReg = b_1^2 \sum (x_i - \bar{x})^2 \implies 100 = b_1^2 \times 100 \implies b_1^2 = 1   \]
+
+    So as usual, this problem just devolves to finding the standard error of \(b_1\). We found before that \(MSE = \frac{200}{10 - 2} = 25\), so we get \(se^2(b_1) = \frac{25}{100} = \frac{1}{4}\) and thus 
+
+    \[ F = \frac{b_1^2}{se^2(b_1)} = \frac{1}{\frac{1}{4}} = 4  \]
+
+    as required.
+
+
+\end{document}

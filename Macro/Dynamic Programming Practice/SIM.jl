@@ -165,6 +165,7 @@ end
 D = distribution_ss(Π, a, a_grid)
 #size(D)
 
+#=
 cplot = plot((ones(7)*a_grid')',c')
 cplot_zoom1 = plot((ones(7)*a_grid')'[1:121,:],c'[1:121,:])
 cplot_zoom2 = plot((ones(7)*a_grid')'[1:121,1:4],c'[1:121,1:4])
@@ -184,7 +185,7 @@ end
 cwdplot = plot_cwd(a_grid,D,length(a_grid))
 cwdplot_zoom1 = plot_cwd(a_grid,D,argmax(a_grid .> 20))
 cwdplot_zoom2 = plot_cwd(a_grid,D,argmax(a_grid .> 2))
-
+=#
 #=
 function steady_state(Π, a_grid, y, r, β, σ)
     Va, a, c = policy_ss(Π, a_grid, y, r, β, σ)
@@ -198,6 +199,8 @@ end
 ss = steady_state(Π, a_grid, y, r, β, σ)
 =#
 
+
+#=
 println("Conducting comparative statics on interest rates...")
 
 rs = range(-0.02,0.015,15) .+ r
@@ -240,3 +243,4 @@ end
 
 σcsplot = plot(σs,As3)
 
+=#

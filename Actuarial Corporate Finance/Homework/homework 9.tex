@@ -1,0 +1,262 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage[normalem]{ulem}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Homework 7}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+	\maketitle
+
+    \section{Part A}
+
+    Construct the table:
+
+    \begin{table}[!ht]
+    \centering
+    \caption{Baseline Project Analysis}
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
+    \hline
+        Year & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+        Sales & ~ &  \$70,000  &  \$70,000  &  \$70,000  &  \$70,000  &  \$70,000 \\ \hline
+        Costs & ~ &  \$(41,000) &  \$(41,000) &  \$(41,000) &  \$(41,000) &  \$(41,000) \\ \hline
+        Operating CFs & ~ &  \$29,000  &  \$29,000  &  \$29,000  &  \$29,000  &  \$29,000 \\ \hline
+        Capital Spending &  \$(75,000) & ~ & ~ & ~ & ~ & ~ \\ \hline
+        Project CF &  \$(75,000) &  \$29,000  &  \$29,000  &  \$29,000  &  \$29,000  &  \$29,000 \\ \hline
+        Interest Rate &  1.00  &  0.87  &  0.76  &  0.66  &  0.57  &  0.50 \\ \hline
+        Cash Flow &  \$(75,000.00) &  \$25,217.39  &  \$21,928.17  &  \$19,067.97  &  \$16,580.84  &  \$14,418.13 \\ \hline
+    \end{tabularx}
+\end{table}
+
+This yields a total net present value of \(\$22,212.50\).
+
+\section{Part B}
+
+The break-even cost of capital is given by
+
+\[ \left( (1+i)^{-1} + (1+i)^{-2} + (1+i)^{-3} + (1+i)^{-4} + (1+i)^{-5} \right) * 29,000 - 75,000 = 0 \]
+
+I think there is an Excel function (or a BA-II+ function!) that makes solving this simple, but it is a nonlinear equation monotonic in \(i\) that is solved straightforwardly by bisection so I wrote a simple Julia script to do that instead (appended at the bottom of this document). This yields a break-even cost of capital of \(26.93\%\). 
+
+\section{Part C}
+
+Keeping all other variables constant, to break even on student subscribers we must have
+
+\[ \left( (1.15)^{-1} + (1.15)^{-2} + (1.15)^{-3} + (1.15)^{-4} + (1.15)^{-5} \right) * ( S (350 - 80) - 25000 ) - 75,000 = 0     \]
+Letting the combined expression for yearly cost of capital be represented by \(I\), we have
+
+\[ S = \left[\left(\frac{75000}{I}\right) + 25000\right] \div 270 \approx 175.46   \]
+
+so we need at least 176 subscribers to break even.
+
+\section{Part D}
+
+We create two tables, first for the optimistic scenario and second for the pessimistic scenario. The first produces a NPV of \(\$146242.24\), while the second produces a NPV of \(-\$73323.92\). 
+
+\begin{table}[!ht]
+    \centering
+    \caption{Optimistic Sensitivity Test}
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
+    \hline
+        Year & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+        Sales & ~ &  \$105,000  &  \$105,000  &  \$105,000  &  \$105,000  &  \$105,000  \\ \hline
+        Costs & ~ &  \$(39,000) &  \$(39,000) &  \$(39,000) &  \$(39,000) &  \$(39,000) \\ \hline
+        Operating CFs & ~ &  \$66,000  &  \$66,000  &  \$66,000  &  \$66,000  &  \$66,000  \\ \hline
+        Capital Spending &  \$(75,000) & ~ & ~ & ~ & ~ & ~ \\ \hline
+        Project CF &  \$(75,000) &  \$66,000  &  \$66,000  &  \$66,000  &  \$66,000  &  \$66,000  \\ \hline
+        Interest Rate &  1.00  &  0.87  &  0.76  &  0.66  &  0.57  &  0.50  \\ \hline
+        Cash Flow &  \$(75,000.00) &  \$57,391.30  &  \$49,905.48  &  \$43,396.07  &  \$37,735.71  &  \$32,813.66 \\ \hline
+    \end{tabularx}
+\end{table}
+
+\begin{table}[!ht]
+    \centering
+    \caption{Pessimistic Sensitivity Test}
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
+    \hline
+        Year & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+        Sales & ~ &  \$52,500  &  \$52,500  &  \$52,500  &  \$52,500  &  \$52,500  \\ \hline
+        Costs & ~ &  \$(52,000) &  \$(52,000) &  \$(52,000) &  \$(52,000) &  \$(52,000) \\ \hline
+        Operating CFs & ~ &  \$500  &  \$500  &  \$500  &  \$500  &  \$500  \\ \hline
+        Capital Spending &  \$(75,000) & ~ & ~ & ~ & ~ & ~ \\ \hline
+        Project CF &  \$(75,000) &  \$500  &  \$500  &  \$500  &  \$500  &  \$500  \\ \hline
+        Interest Rate &  1.00  &  0.87  &  0.76  &  0.66  &  0.57  &  0.50  \\ \hline
+        Cash Flow &  \$(75,000.00) &  \$434.78  &  \$378.07  &  \$328.76  &  \$285.88  &  \$248.59 \\ \hline
+    \end{tabularx}
+\end{table}
+
+\section{Part E}
+
+Starting from the baseline assumptions, I allow the cost of capital to vary from the baseline \(0.15\) to \(0.1\) and \(0.2\). The first scenario produces a NPV of \(\$34,932.82\), while the second produces a NPV of \(\$11,727.75\).
+
+\begin{table}[!ht]
+    \centering
+    \caption{Cost of Capital: 10\%}
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
+    \hline
+        Year & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+        Sales & ~ &  \$70,000  &  \$70,000  &  \$70,000  &  \$70,000  &  \$70,000  \\ \hline
+        Costs & ~ &  \$(41,000) &  \$(41,000) &  \$(41,000) &  \$(41,000) &  \$(41,000) \\ \hline
+        Operating CFs & ~ &  \$29,000  &  \$29,000  &  \$29,000  &  \$29,000  &  \$29,000  \\ \hline
+        Capital Spending &  \$(75,000) & ~ & ~ & ~ & ~ & ~ \\ \hline
+        Project CF &  \$(75,000) &  \$29,000  &  \$29,000  &  \$29,000  &  \$29,000  &  \$29,000  \\ \hline
+        Interest Rate &  1.00  &  0.91  &  0.83  &  0.75  &  0.68  &  0.62  \\ \hline
+        Cash Flow &  \$(75,000.00) &  \$26,363.64  &  \$23,966.94  &  \$21,788.13  &  \$19,807.39  &  \$18,006.72 \\ \hline
+    \end{tabularx}
+\end{table}
+
+\begin{table}[!ht]
+    \centering
+    \caption{Cost of Capital: 20\%}
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
+    \hline
+        Year & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+        Sales & ~ &  \$70,000  &  \$70,000  &  \$70,000  &  \$70,000  &  \$70,000  \\ \hline
+        Costs & ~ &  \$(41,000) &  \$(41,000) &  \$(41,000) &  \$(41,000) &  \$(41,000) \\ \hline
+        Operating CFs & ~ &  \$29,000  &  \$29,000  &  \$29,000  &  \$29,000  &  \$29,000  \\ \hline
+        Capital Spending &  \$(75,000) & ~ & ~ & ~ & ~ & ~ \\ \hline
+        Project CF &  \$(75,000) &  \$29,000  &  \$29,000  &  \$29,000  &  \$29,000  &  \$29,000  \\ \hline
+        Interest Rate &  1.00  &  0.83  &  0.69  &  0.58  &  0.48  &  0.40  \\ \hline
+        Cash Flow &  \$(75,000.00) &  \$24,166.67  &  \$20,138.89  &  \$16,782.41  &  \$13,985.34  &  \$11,654.45 \\ \hline
+    \end{tabularx}
+\end{table}
+
+\section{Part F}
+
+One scenario: good economic conditions lead more students to sign up, but also cause interest rates to rise: subscribers increases to \(300\) and the cost of capital increases to \(0.2\). This results in a net present value of \(\$92474.28\) for the project.
+
+\begin{table}[!ht]
+    \centering
+    \caption{Subscribers: 300, Cost of Capital: 20\%}
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
+    \hline
+        Year & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+        Sales & ~ &  \$105,000  &  \$105,000  &  \$105,000  &  \$105,000  &  \$105,000  \\ \hline
+        Costs & ~ &  \$(49,000) &  \$(49,000) &  \$(49,000) &  \$(49,000) &  \$(49,000) \\ \hline
+        Operating CFs & ~ &  \$56,000  &  \$56,000  &  \$56,000  &  \$56,000  &  \$56,000  \\ \hline
+        Capital Spending &  \$(75,000) & ~ & ~ & ~ & ~ & ~ \\ \hline
+        Project CF &  \$(75,000) &  \$56,000  &  \$56,000  &  \$56,000  &  \$56,000  &  \$56,000  \\ \hline
+        Interest Rate &  1.00  &  0.83  &  0.69  &  0.58  &  0.48  &  0.40  \\ \hline
+        Cash Flow &  \$(75,000.00) &  \$46,666.67  &  \$38,888.89  &  \$32,407.41  &  \$27,006.17  &  \$22,505.14 \\ \hline
+    \end{tabularx}
+\end{table}
+
+Another scenario: the increased workload of the new job requires the professor to hire a part-time assistant. This increases fixed costs by \(10000\) and variable costs by \(40\) per student. This results in a net present value of \(-\$38126.29\) for the project.
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
+    \hline
+        Year & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+        Sales & ~ &  \$70,000  &  \$70,000  &  \$70,000  &  \$70,000  &  \$70,000  \\ \hline
+        Costs & ~ &  \$(59,000) &  \$(59,000) &  \$(59,000) &  \$(59,000) &  \$(59,000) \\ \hline
+        Operating CFs & ~ &  \$11,000  &  \$11,000  &  \$11,000  &  \$11,000  &  \$11,000  \\ \hline
+        Capital Spending &  \$(75,000) & ~ & ~ & ~ & ~ & ~ \\ \hline
+        Project CF &  \$(75,000) &  \$11,000  &  \$11,000  &  \$11,000  &  \$11,000  &  \$11,000  \\ \hline
+        Interest Rate &  1.00  &  0.87  &  0.76  &  0.66  &  0.57  &  0.50  \\ \hline
+        Cash Flow &  \$(75,000.00) &  \$9,565.22  &  \$8,317.58  &  \$7,232.68  &  \$6,289.29  &  \$5,468.94 \\ \hline
+    \end{tabularx}
+\end{table}
+
+\section{Part G}
+
+Besides taxes (which we deliberately extracted from), this analysis excludes any use of capital already possessed by the professor that might go on our books under use of capital already owned, such as a computer. It also ignored any depreciation of the video equipment bought for the project.
+
+\section{Part H}
+
+The correct decision depends on the professor's personal tolerance for risk, but I would recommend creating the course. Most realistic sensitivity tests seem to still yield at least a small positive cashflow, and the one negative test conducted requires several things to go wrong to go very negative.
+
+\newpage
+
+Julia code for Part B:
+
+\begin{verbatim}
+capcost_0 = 75000
+subs_0 = 200
+price_0 = 350
+fixcost_0 = 25000
+varcost_0 = 80
+interest_0 = 0.15
+
+cf_0 = (subs_0 * price_0) - (fixcost_0 + varcost_0 * subs_0)
+
+function npv_rates(i)
+    return (1+i)^(-1) + (1+i)^(-2) + (1+i)^(-3) + (1+i)^(-4) + (1+i)^(-5)
+end
+
+function npv(i, cf, cc)
+    return npv_rates(i) * cf - cc
+end
+
+function breakeven_capcost(a, b, cf, cc, tol = 1e-5, maxits = 1000)
+    fa, fb = npv(a, cf, cc), npv(b, cf, cc)
+    i = 0
+    local fc
+    for i in 1:maxits
+        c = (a+b)/2
+        fc = npv(c, cf, cc)
+        if b - a < tol
+            return c
+        elseif fa*fc > 0
+            a = c
+            fa = fc
+        else
+            b = c
+            fb = fc
+        end
+    end
+    println("Maximum iterations exceeded!")
+    return 0
+end
+
+i_be = breakeven_capcost(0.0, 1.0, cf_0, capcost_0)
+\end{verbatim}
+
+\end{document}

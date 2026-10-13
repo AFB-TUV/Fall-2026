@@ -1,0 +1,394 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Homework 3 \\ Macroeconomic Theory I}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+	\maketitle
+
+    \section{Theory}
+
+    \subsection{Two-Period Labor Supply Problem with Savings}
+
+    
+    \subsubsection{First-Order Conditions}
+
+    We begin by solving the household problem. Given the maximization problem
+
+    \[ \max_{c1, c2, h1, h2, s}{\ln(c_1) - B \frac{h_1^{1 + \frac{1}{\nu}}}{1 + \frac{1}{\nu}} + \beta \left[ \ln(c_2) - B \frac{h_2^{1 + \frac{1}{\nu}}}{1 + \frac{1}{\nu}} \right]}   \]
+
+    we write the Lagrangian
+
+    \begin{align*}
+    \mathcal{L} = \ln(c_1) - B \frac{h_1^{1 + \frac{1}{\nu}}}{1 + \frac{1}{\nu}} + \beta \left[ \ln(c_2) - B \frac{h_2^{1 + \frac{1}{\nu}}}{1 + \frac{1}{\nu}} \right] \\ - \lambda_1 \left[ c_1 + s - a_0 - w_1 h_1 \right] - \lambda_2 \left[ c_2 - (1+r) s - w_2 h_2 \right]
+    \end{align*}
+
+    Taking derivatives, we end up with first-order conditions
+
+    \begin{align*}
+        \frac{1}{c_1} &= - \lambda_1 \\
+        \beta \frac{1}{c_2} &= \lambda_2 \\
+        B h_1^{\frac{1}{\nu}} &= \lambda_1 w_1 \\
+        \beta B h_2^{\frac{1}{\nu}} &= \lambda_2 w_2 \\
+        \lambda_1 &= (1 + r) \lambda_2 \\
+        c_1 + s &= a_0 + w_1 h_1 \\
+        c_2  &= (1+r) s + w_2 h_2
+    \end{align*}
+
+    The Frisch elasticity follows immediately from the first-order conditions. Taking the first-order condition for \(h_1\):
+
+    \[ B h_1^{\frac{1}{\nu}} = \lambda_1 w_1 \implies \frac{1}{\nu} ln(h_1) = ln(\lambda_1) + \ln(w_1) - \ln(B)   \]
+
+    Multiplying through by \(\nu\) and taking the derivative of \(\ln(h_1)\) with respect to \(\ln(w_1)\), we find \(\frac{\partial \ln(h_1)}{\partial \ln(w_1)} = \nu\) as required.
+
+    \subsubsection{Permanent Change}
+
+    In the previous problem, we held \(\lambda_1\) constant. Now we let it vary and use it to see the effect of assets on hours. From the first-order conditions we immediately we know \(\lambda_1 = \frac{1}{c_1}\), but we want to instead see \(c_1\) as a function of initial assets. So we solve the intertemporal budget constraint for \(c_1\):
+
+    \[ c_1 = a_0 + w_1 h_1 + \frac{w_2 h_2}{1+r} - \frac{c_2}{1+r} = R - \frac{c_2}{1+r}   \]
+
+    We can go farther here by using the Euler equation, \(\lambda_1 = (1+r) \lambda_2 \implies c_2 = \beta (1+r) c_1\). Substituting, we get
+
+    \[ c_1 = R - \beta c_1 \implies c_1 = \frac{R}{1+\beta}   \]
+
+    We now have a useful expression for \(c_1\)! Substituting this into the equation for hours, we have
+    
+    \[ B h_1^{\frac{1}{\nu}} = \lambda_1 w_1 = \frac{w_1}{c_1} \implies h_1 = \left[ \left(\frac{1+\beta}{B}\right) \left(\frac{w_1}{R}\right)  \right]^\nu   \]
+
+    Of course, this is not enough to fully see how initial assets affect the equation. Writing out \(R\), we have
+
+    \[  h_1 = \left[ \left(\frac{1+\beta}{B}\right) \left(\frac{w_1}{ a_0 + w_1 h_1 + \frac{w_2 h_2}{1+r} }\right)  \right]^\nu   \]
+
+    First we suppose that initial assets are zero and consider a proportional change in \(w_1\) and \(w_2\). In this case the equation becomes 
+
+    \[  h_1 = \left[ \left(\frac{1+\beta}{B}\right) \left(\frac{ \xi w_1}{ \xi w_1 h_1 + \frac{ \xi w_2 h_2}{1+r} }\right)  \right]^\nu = \left[ \left(\frac{1+\beta}{B}\right) \left(\frac{w_1}{ w_1 h_1 + \frac{w_2 h_2}{1+r} }\right)  \right]^\nu  \]
+
+    which shows there is no change in hours. If instead assets \(a_0\) are increased, we can see that \(R\) will increase unless the responding change in total labor income \(w_1 h_1 + \frac{w_2 h_2}{1+r}\) is a decrease that overwhelms the change in \(a_0\) --- which is nonsensical. Since \(h_1\) is decreasing in \(R\), that means that \(h_1\) will be decreasing in \(a_0\). [We should be able to derive a similar relationship for \(h_2\).]
+
+    \subsubsection{Temporary Change}
+
+    budget constraint?
+
+    \subsubsection{A Constrained Household}
+
+    looks weird. is there a way to sub out \(w_1\)?
+
+    \subsubsection{Precautionary Labor Supply}
+
+    will depend on the other stuff
+
+    \subsection{One-period Labor Decisions}
+
+    \subsubsection{Reservation Values}
+
+    The only choice in this economy is to work or not work, so the decision boils down to deriving a break-even value between the value of working or not working. This asks us to set
+
+    \[  \ln((1+r) a + we^* \bar{h}) - \bar{B} = \ln((1+r) a)   \]
+
+    and solve for \(e^*\). To do this, we exponentiate both sides, giving
+
+    \[ \left((1+r) a + we^* \bar{h}\right) e^{-\bar{B}} = (1+r) a \implies e^*(a) = \frac{(1 - e^{-\bar{B}}) (1+r)}{e^{-\beta} w \bar{h}} a  \]
+
+    This allows us to solve for \(e^*(a) = \kappa a\) once we substitute the given parameters. 
+    
+    Given that the productivity draw \(e\) always lies in \([0,1]\), we can immediately see that households with zero assets have \(e^*(a) = 0\) and will always work, while households with assets \(a = \frac{1}{\kappa}\) will have \(e^*(a) = 1\) and never work because productivity cannot rise high enough to make work valuable for them. 
+
+    \subsubsection{Aggregate Employment}
+
+    should be obvious but requires thinking
+
+    \subsubsection{Distributions}
+
+    just run some numbers
+
+    \subsubsection{Transfers}
+
+    just run some numbers
+
+    \subsubsection{Benchmarks}
+
+    think (wait for slides?)
+
+    \subsection{Ben-Porath Model I}
+
+    \subsubsection{Two Periods}
+
+    We can solve this model either by substituting the law of motion into \((c_0 + c_1)\) or by directly using the envelope condition. The latter is simpler, so we will do that here. Given \(T = 2\), we have \(Q_{T - 1} = Q_1 = 0\) and \(Q_0 = w\), which means human capital investment is given by
+    \[ x_0 = (a \alpha \beta Q_0)^{\frac{1}{1 - \alpha}} = (a \alpha \beta w)^{\frac{1}{1-\alpha}}   \]
+    From this solution, \(x_0\) clearly does not depend on \(h_0\). The corner will bind if the worker wants to set \( s_0 = \frac{x_0}{h_0} \geq 1 \implies x_0 \geq h_0\), so initial human capital is under the amount of human capital investment desired. Essentially, this means the corner binds if the worker wants to do more than maintain a similar level of human capital to what they have.
+
+    \subsubsection{Fanning}
+
+    We know that income can be written \(y_t = w h_t (1 - s_t)\) and we know that \(s_1\) will be zero since the worker does not live another period. That means that when we consider two workers with ability \(a_H > a_L\), if we want to see \(y_{1,H} > y_{1,L}\) it is sufficient to have \(h_{1,H} > h_{1,L}\). This is true if the high-ability worker invests more study time, so the rest of this problem devolves into deriving \(s_{0,H} > s_{0,L}\). 
+    
+    We previously derived the investment function as
+    \[ x_0 = (\alpha a \beta)^{\frac{1}{1 - \alpha}} = (\alpha \beta)^{\frac{1}{1-\alpha}} a^{\frac{1}{1-\alpha}}    \]
+    We know that \(\alpha \in (0,1)\), so \(1-\alpha \in (0,1)\) and \(\frac{1}{1-\alpha} > 1\). Thus \(x_0\) is increasing in \(a\) and so \(s_0\) must rise with \(a\) for a given value of \(h_0\). This relationship delivers what we want: \(s_H > s_L\), \(y_{0,H} < y_{0,L}\), and \(y_{1,H} > y_{1,L}\).
+
+    \subsubsection{General T}
+
+    We start with \(x_t\). Given \( x_t = (a \alpha \beta Q_t)^{\frac{1}{1 - \alpha}}\), we can immediately see that \(x_0\) is increasing in \(Q_t\) since we previously showed \(\frac{1}{1-\alpha} > 1\). Looking at \(Q_t\), we have
+
+    \[  Q_t = w \frac{1 - \left[\beta(1-\delta)\right]^{T-1-t}}{1 - \beta (1 - \delta)}  \]
+
+    We could take a derivative here, but it is easier to simply look at the function. We know that \(\beta (1 - \delta) \in [0,1]\) because both \(\beta\) and \(\delta\) lie in \([0,1]\). That means \(\left[\beta(1-\delta)\right]^{T-1-t}\) is decreasing in \(T\), since raising a quantity that lies in \([0,1]\) to a larger exponent will cause it to decrease in absolute value. However, this quantity is subtracted from \(1\), so increasing \(T\) causes the numerator to increase. Thus \(Q_t\) is increasing in \(T\), and therefore \(x_t\) is increasing in \(T\).
+    
+    It is more difficult to analyze \(\delta\). Like before, it is necessary and sufficient to look at \(Q_t\), but here it will be easier to simply take a derivative. Let us make a substitution to make this easier: \(u(\delta) = \beta(1-\delta)\) and \(du = -\beta\). This lets us write
+
+    \[ Q_t = w \left(1 - u(\delta)^{T - 1 - t}\right)(1 - u(\delta))^{-1} \]
+    
+    Taking the derivative, we have
+    
+    \begin{align*}
+    \frac{\partial Q_t}{\partial \delta} = w (1 - u(\delta))^{-1} (-(T - 1 - t) (1 - u(\delta)^{T - t}) (- \beta)) \\ + w \left(1 - u(\delta)^{T - 1 - t}\right) (-1) (1 - u(\delta))^{-2} (-\beta)
+    \end{align*}
+    which simplifies to 
+
+    \[ \frac{\partial Q_t}{\partial \delta} = \beta w \left[ \frac{ (T - 1 - t) (1 - u(\delta))^{T - t}}{(1 - u(\delta))}  + \frac{(1 - u(\delta))^{T - 1 - t}}{(1 - u(\delta))^{2}} \right] = \beta w \left[ \frac{(T - t) (1 - u(\delta))^{T - 1 - t})}{(1 - u(\delta))^2} \right] \]
+    We know that \(T-t\) and \(1 - \beta(1 - \delta)\) are positive quantities, so this derivative is a product of positive quantities and thus must be positive itself. Thus \(Q_t\) is increasing in \(\delta\), and thus \(x_t\) is increasing in \(\delta\). 
+
+    These derivatives being positive means that human capital investment at every age will increase if the retirement age is increased. Because people earn for longer, they will raise their lifetime income by more if they invest more in human capital; thus, the investment increases.
+
+    \subsubsection{The Price of Skill}
+
+    not straightforward; revisit with pencil and paper (or whiteboard) when less tired
+    
+    \subsection{A Basic Earnings Process}
+
+    \subsubsection{Verify Properties}
+
+    The variance of the mixture is given by
+
+    \[ 0.9 \times 0.2^2 + 0.1 \times 0.92^2 = 0.12064 \approx 0.12  \]
+
+    and the kurtosis is given by
+
+    \[ 3 \left(0.9 \times 0.2^4 + 0.1 \times 0.92^4 \right)/(0.12064^2) \approx 15     \]
+
+    as required.
+
+    \subsubsection{Parameters}
+
+    The Lagrangian of this problem is
+
+    \[ \mathcal{L} = -\frac{\e^{-\gamma c_1}}{\gamma} - \beta \Ex{\frac{\e^{-\gamma c_2}}{\gamma}} - \lambda_1 [c_1 + s - 1] - \lambda_2 [c_2 - (1+r) s - (1 + \eta)]    \]
+    It has first-order conditions
+    \begin{align*}
+    \e^{-\gamma c_1} &= \lambda_1 \\
+    \beta \Ex{\e^{-\gamma c_2}} &= \lambda_2 \\
+    \lambda_1 &= (1+r) \lambda_2 \\
+    c_1 &= 1 - s \\
+    c_2 &= (1+r) s + (1 + \eta)  
+    \end{align*}
+    
+    From the Euler equation we immediately have the typical \( \e^{-\gamma c_1} = \beta (1+r) \Ex{\e^{-\gamma c_2}}  \), but we can go farther. Substituting the budget constraints, we have
+    \[  \e^{-\gamma (1 - s)} = \beta (1+r) \Ex{\e^{-\gamma ((1+r) s + (1+\eta))}}   \]
+    We now move the non-stochastic parts of the income process out of the expectation. The \(1\) in the income process is obviously non-stochastic, and savings are also non-stochastic since they are chosen at \(t=1\) and not \(t=2\). We also are given \(\beta(1+r) = 1\) to simplify this equation. That leaves it as 
+
+    \[  \e^{-\gamma (1 - s)} = \e^{-\gamma ((1+r) s + 1)} \Ex{\e^{-\gamma \eta}}   \]
+    Now we take logs, giving us
+
+    \[ -\gamma (1-s) = - \gamma ((1+r) s + 1) + \ln\left(\Ex{\e^{-\gamma \eta}}\right)  \]
+
+    Expanding this equation and using the given \(r = 0\), we have
+
+    \[ \gamma s - \gamma = -(\gamma s + + \gamma) + \ln\left(\Ex{\e^{-\gamma \eta}}\right) \]
+
+    which simplifies to
+
+    \[ s = \frac{1}{2\gamma} \ln\left(\Ex{\e^{-\gamma \eta}}\right)  \]
+
+    as required.
+
+    [go back and do proof with convexity]
+
+    \subsubsection{Considering Calibrations}
+
+    We now compute the savings rates. This gives us
+
+    \begin{align*}
+    s_G &= \gamma \frac{\sigma^2}{4} = 2 \times \frac{0.12064}{4} &= 0.06032 \\
+    s_M &= \frac{1}{2\gamma} \ln\left( 0.9 \e^{\frac{\gamma^2 \sigma_1^2}{2}} + 0.1 \e^{\frac{\gamma^2 \sigma_2^2}{2}}\right) = \frac{1}{4} \ln \left( 0.9 \e^{2 \times 0.2^2} + 0.1 \e^{2 \times 0.92^2} \right) &= 0.10442
+    \end{align*}
+
+    By inspection of the formula given for the risk premium, we can also see that it must be half the savings, so we immediately get \(\pi_G = 0.03016\) and \(\pi_M = 0.05221\). This means that a model calibrated to the Gaussian distribution understates the welfare cost of risk by \(1 - \frac{0.03016}{0.05221} \approx 42\%\)!
+
+    \subsubsection{Adding a Borrowing Constraint}
+
+    A \(2\sigma\) draw from the first distribution is \(2 \times 0.2 = 0.4\), while a \(2\sigma\) draw from the second is \(1.84\). Given that the nonstochastic part of income is \(1\), this means that the first distribution would give an income of \(0.6\) in the worst possible realistic case, while the second distribution would give an income of \(-0.84\)! Given first-period income is fixed at \(1\), the first distribution would not require any savings to achieve consumption above the \(0.5\) target, but the second would be impossible even if all income was saved! This particular construction of the income uncertainty distribution is important because it reflects what we know about wages and unemployment. Wages appear to be at least somewhat rigid, so we do not expect to see large income losses in the form of people taking pay cuts; instead, large income losses come in the form of unemployment spells, which are massive events where \emph{all} labor income is lost. What this model shows is that it would be easy for people to insure against pay cuts, but the unemployment spells that actually reflect what we see in the data cause income losses large enough that they are almost impossible to insure against with savings.
+
+    \subsection{Static KMS Problem}
+
+    \subsubsection{First-Order Conditions}
+
+    The maximization problem is given by
+
+    \[ \max_{w} \left(u(a+w) - u(a+b)\right)^{\gamma} \left(z - w\right)^{1-\gamma}  \]
+
+    This problem has one first-order condition:
+
+    \[ \gamma (u(a+w) - u(a+b))^{\gamma - 1} u'(a+w) (z-w)^{1 - \gamma} - (1 - \gamma) (u(a+w) - u(a+b))^\gamma (z - w)^{-\gamma} = 0     \]
+
+    which immediately rearranges to
+
+    \[ \gamma (z - w) u'(a+w) = (1 - \gamma) (u(a+w) - u(a + b))   \]
+
+    First we consider the linear utility case. In this case, \(u'(a+w) = 1\) and \(u(a+w) - u(a+b) = w - b\). This collapses the equation to \(\gamma (z - w) = (1 - \gamma) (w - b)\) which immediately solves to \(w = \gamma z + (1 - \gamma) b\). The harder part is considering the case of a concave \(u(c)\). 
+
+    \subsubsection{Adding Risk Aversion}
+
+    Suppose \(u(c) = \ln(c)\). Then the first-order condition becomes
+
+    \[ \frac{\gamma}{1 - \gamma} \frac{z - w}{a + w} = \ln(\frac{a + w}{a + b})      \]
+
+    Rearranging, we have 
+
+    \[  \frac{\gamma}{1 - \gamma} z - \frac{\gamma}{1 - \gamma} w = \ln(\frac{a + w}{a + b}) a + \ln(\frac{a + w}{a + b}) w  \]
+
+    which gives us
+
+    \[ \frac{\gamma}{1 - \gamma} z - \ln(\frac{a + w}{a + b}) a = w \left(\ln(\frac{a + w}{a + b}) + \frac{\gamma}{1 - \gamma} \right)   \]
+
+    \subsubsection{Further Properties of Preferences}
+
+    \subsubsection{Comparative Statics}
+
+    \subsubsection{Compare to DMP}
+
+    \subsection{Ben-Porath Model II}
+
+    \subsubsection{Separation}
+
+    First we suppose the constraint is slack. The easiest way I have found to solve this problem is to substitute the budget constraints and law of motion directly into the utility functions and solve:
+
+    \[ \max_{s_0, q} \ln\left(h_0(1-s_0) + q\right) + \ln\left((1-\delta) h_0 + a (s_0 h_0)^\alpha - q\right) \] 
+
+    This problem yields first order conditions for \(s_0\) and \(q\):
+
+    \begin{align*}
+    \frac{h_0}{h_0 (1 - s_0) + q} &= \frac{a \alpha s_0^{\alpha - 1} h_0^\alpha}{(1-\delta) h_0 + a (s_0 h_0)^\alpha - q} \\
+    \frac{1}{h_0 (1 - s_0) + q} &= \frac{1}{(1-\delta) h_0 + a (s_0 h_0)^\alpha - q}
+    \end{align*}
+
+    The second first-order condition is the typical Euler equation: \(c_0 = c_1\). It shows up in the first-order condition for \(s_0\) as well, so we can simply cancel the denominators and solve
+
+    \[ h_0 = a \alpha s_0^{\alpha - 1} h_0^\alpha  \]
+
+    Inspection reveals that this is the same problem we solved in Part 3, and thus it yields the same solution 
+
+    \[ x_0 = (a \alpha)^{\frac{1}{1 - \alpha}}  \]
+
+    The general principle here is simple: with complete markets, the worker can always spread her income evenly across time because borrowing and savings instruments are always available, so the worker's problem defaults to maximizing \emph{total} income across time --- which is also the solution for the worker with linear utility! The functions for determining lifetime resources have not changed in the setting with bargaining, so the solution also remains the same.
+
+    \subsubsection{Constrained}
+
+    We now assume the constraint binds. Like before, we substitute the budget constraints and law of motion directly into the utility functions, yielding 
+
+    \[  \max_{s_0} \ln\left(h_0(1-s_0)\right) + \ln\left((1-\delta) h_0 + a (s_0 h_0)^\alpha\right)   \]
+
+    This problem's first-order condition is the same as the previous with \(q=0\): 
+
+    \[ \frac{h_0}{h_0 (1 - s_0)} = \frac{a \alpha s_0^{\alpha - 1} h_0^\alpha}{(1-\delta) h_0 + a (s_0 h_0)^\alpha}  \]
+
+    However, this time we do not have the Euler condition to set consumption equal! To simplify this problem, we instead write \(\frac{1}{c_t} = u'(c_t)\):
+
+    \[ h_0 u'(c_0) = a \alpha s_0^{\alpha - 1} h_0^\alpha u'(c_1)  \]
+    From here we can follow our previous work and write
+    \[ x_0^{1 - \alpha} \equiv (s_0 h_0)^{1 - \alpha} = a \alpha \frac{u'(c_1)}{u'(c_0)} \implies x_0 = \left(a \alpha \frac{u'(c_1)}{u'(c_0)}\right)^{\frac{1}{1-\alpha}}  \]
+    This looks exactly the same as before except with a wedge \(\frac{u'(c_1)}{u'(c_0)}\). We know that \(c_1 > c_0\) because the worker wants to borrow but cannot, so because the utility functions are concave we must have \( u'(c_1) < u'(c_0)\) and thus a wedge that is less than \(1\). This shows that investment must be smaller for the constrained worker. 
+
+    Why does this worker value study time less than the unconstrained worker? This is not precisely the right question: rather than valuing study time less, she values work \emph{more} because she has no other way to guarantee income! Effectively, what this result says is that the worker values consumption more relative to study time when it is the difference between starving and not starving.
+
+    \subsubsection{Transfers}
+
+    Now suppose that the worker receives a lump-sum transfer \(\tau\) at \(t = 0\). The maximization problem thus becomes 
+
+    \[ \max_{s_0, q} \ln\left(h_0(1-s_0) + \tau + q\right) + \ln\left((1-\delta) h_0 + a (s_0 h_0)^\alpha - q\right) \] 
+
+    It should be immediately apparent that this lump-sum transfer does not actually change the solution to either problem so long as the constrained worker stays constrained: \(\tau\) does not affect the decision variables \(s_0\) or \(q\) directly, so the unconstrained worker still sets consumption equal in each period, while the constrained worker still has the marginal utility wedge in her investment function. However, the wedge \(\frac{u'(c_1)}{u'(c_0)}\) will now be smaller because \(\tau\) raises \(c_0\) and thus lowers \(u'(c_0)\), so her investment will increase. 
+
+    \subsubsection{Schooling}
+
+    It should be readily apparent that with no borrowing, full-schooling is never optimal; this would set \(c_0 = 0\) and \(ln(c_0) = - \infty\)! So workers will not choose to go to school full-time unless they are in a world like that of the previous problem, where they receive a lump-sum that is large enough to fully fund consumption equal to \(c_1\). Practically, what this means is that students attending school full-time requires them to receive some sort of transfer or other support -- whether that means student loans providing a mechanism for borrowing, inter vivos transfers from parents paying for school tuition and providing a source of funds for living, or some form of social support. The linear utility model, and its predictions for full-time schooling, is a useful abstraction for workers attempting to maximize lifetime earnings so long as we assume that a source of financial support for students exists and is readily available, but we need a more complete model of the financial structure of the economy to justify the existence of full-time students.
+
+    \section{Computation}
+
+    \subsection{Computing the Ben-Porath Model}
+
+    \subsubsection{Closed-Form Solution}
+
+    \subsubsection{Heterogeneous Income Profiles}
+
+    \subsubsection{Simulated Panel Statistics}
+
+    \subsubsection{Transitory Shocks}
+
+    \subsection{Partial Equilibrium Labor Supply Decision}
+
+    \subsubsection{Properties of the Stationary Distribution}
+
+    \subsubsection{Micro-elasticity}
+
+    \subsubsection{Macro-elasticity, divisible labor}
+
+    \subsubsection{Macro-elasticity, indivisible labor}
+
+    \subsection{Partial Equilibrium Extensive Margin Problem}
+
+    \subsubsection{Consumption and Savings Policies}
+
+    \subsubsection{Welfare Cost of Unemployment Risk}
+
+    \subsubsection{Willingness to Pay for Insurance}
+
+    \subsubsection{Compare to Hagedorn-Manovskii Calibration}    
+
+\end{document}
