@@ -57,7 +57,25 @@
 
     \section{H 10-1}
 
-    This is the same project from the worksheet, so we have a \(50\%\) chance of a cashflow of \(140\) and a \(50\%\) chance of a cashflow of \(90\), which means that after discounting at a weighted average cost of capital of \(15\%\) our cashflow has a present value of \(\frac{0.5 \times (140 + 90)}{1.15} = 100\). We assume the entrepreneur raises \(70\) in debt, so the equityholder's cashflow is \( 0.5 \times 0.7 \times (140 + 90) = 80.5 \) and they need to hold \(\frac{80.5}{1.15} = 70\%\) of the company to be adequately compensated for their risk.
+    \subsection{}
+
+    The project still costs \(80\), so the entrepreneur is investing \(10\) and raising \(70\) from equityholders. We previously showed that the project has total discounted cashflows of \( \frac{0.5 \times (140 + 90)}{1.15} = 100  \), so the equityholders should have a stake to \( \frac{70}{100} = 70\% \) of cashflows. That puts the equityholder's rate of return at exactly the assumed weighted average cost of capital: \(\frac{0.5 \times 0.7 \times (140 + 90) - 70}{70} = 15\%\). 
+
+    %This is the same project from the worksheet, so we have a \(50\%\) chance of a cashflow of \(140\) and a \(50\%\) chance of a cashflow of \(90\), which means that after discounting at a weighted average cost of capital of \(15\%\) our cashflow has a present value of \(\frac{0.5 \times (140 + 90)}{1.15} = 100\). We assume the entrepreneur raises \(70\) in debt, so the equityholder's cashflow is \( 0.5 \times 0.7 \times (140 + 90) = 80.5 \) and they need to hold \(\frac{80.5}{1.15} = 70\%\) of the company to be adequately compensated for their risk. 
+    
+    %The equity cost of capital is ultimately just the return to equity for the equityholders, which is given by 
+
+    %\[ \frac{0.7 \times 0.5 \times (140 + 90) - 70}{70} = 15\%    \]
+
+    %(I actually think this part is wrong, but I ran out of time to work on it and fix the errors, sorry!)
+
+    \subsection{}
+
+    The equityholder is effectively bearing all the risk since there is no debt being contributed by a bank; therefore, their return should be the unlevered return. It thus makes sense that the equityholders have the same rate of return as the project itself.
+
+    %In this scenario, the equityholders hold \(100\%\) of the risk of the firm since they provide all the funding.
+
+
 
     \section{H 10-2}
 
@@ -67,7 +85,9 @@
 
     Now we hold this fixed and reverse-engineer the equity beta of \(1.2\):
     
-    \[ 0.2 = \frac{1}{1.4} \times 1.2 + \frac{0.4}{1.4} \beta_D \implies \beta_D = \frac{7}{2} \left( 0.2 - \frac{5}{7} \right) = \frac{7}{10} - \frac{5}{2} = 0.7 - 2.5 = -1.8  \]
+    \[ 0.2 = \frac{1}{1.4} \times 1.2 + \frac{0.4}{1.4} \beta_D \implies \beta_D = \frac{7}{2} \left( 0.2 - \frac{5}{7} \right) = \frac{7}{10} - \frac{5}{2} = 0.7 - 2.5 \] 
+
+    so \(\boxed{\beta_D = -1.8}\).
 
 
 
@@ -75,11 +95,21 @@
 
     The weighted average cost of capital is given by
 
-    \[ r_U = \frac{E}{D+E-C} r_E + \frac{D}{D+E-C} r_D - \frac{C}{D+E-C} r_f = \frac{20}{20 + 40 - 4} \left( 0.04 + 1.2 \times 0.06 \right) + \frac{40}{20 + 40 - 4} \left( 0.04 + 0.1 \times 0.06 \right) - \frac{4}{20 + 40 - 4} \times 0.04  \]
+    \[
+    r_U = \frac{E}{D+E-C} r_E + \frac{D}{D+E-C} r_D - \frac{C}{D+E-C} r_f \]
+    
+    Plugging in the numbers, we have
+    
+    \[  r_U = \frac{20}{20 + 40 - 4} \left( 0.04 + 1.2 \times 0.06 \right) + \frac{40}{20 + 40 - 4} \left( 0.04 + 0.1 \times 0.06 \right) - \frac{4}{20 + 40 - 4} \times 0.04 \]
+
+    which solves to 
+
+    \[ r_U = \frac{20}{56} (0.112) + \frac{40}{56} (0.046) - \frac{4}{56} (0.04) \implies \boxed{r_U = 7.57\%}    \]
+    
 
     If we instead use the cash to clear debt and hold the betas constant, we instead can find an unlevered equity beta so that we have a beta for the asset:
 
-    \[ \beta_U = \frac{40}{40 + 16} \times 1.2 + \frac{16}{40 + 16} \times 0.1    \]
+    \[ \boxed{\beta_U = \frac{40}{40 + 16} \times 1.2 + \frac{16}{40 + 16} \times 0.1  = 0.886}   \]
 
 
 \end{document}

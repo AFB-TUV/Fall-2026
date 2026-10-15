@@ -111,15 +111,77 @@
 
     \[  h_1 = \left[ \left(\frac{1+\beta}{B}\right) \left(\frac{ \xi w_1}{ \xi w_1 h_1 + \frac{ \xi w_2 h_2}{1+r} }\right)  \right]^\nu = \left[ \left(\frac{1+\beta}{B}\right) \left(\frac{w_1}{ w_1 h_1 + \frac{w_2 h_2}{1+r} }\right)  \right]^\nu  \]
 
-    which shows there is no change in hours. If instead assets \(a_0\) are increased, we can see that \(R\) will increase unless the responding change in total labor income \(w_1 h_1 + \frac{w_2 h_2}{1+r}\) is a decrease that overwhelms the change in \(a_0\) --- which is nonsensical. Since \(h_1\) is decreasing in \(R\), that means that \(h_1\) will be decreasing in \(a_0\). [We should be able to derive a similar relationship for \(h_2\).]
+    which shows there is no change in hours. If instead assets \(a_0\) are increased, we can see that \(R\) will increase unless the responding change in total labor income \(w_1 h_1 + \frac{w_2 h_2}{1+r}\) is a decrease that overwhelms the change in \(a_0\) --- which is nonsensical. Since \(h_1\) is decreasing in \(R\), that means that \(h_1\) will be decreasing in \(a_0\). 
+    
+    Similarly, because we have \(c_1 = \frac{1}{1+\beta} R\), we can write \(c_2 = \frac{\beta (1+r)}{1 + \beta} R\). That lets us write
+
+    \[  h_2 = \left[ \left(\frac{1}{\beta B}\right) \left(\frac{1+\beta}{\beta(1+r)}\right) \left( \frac{w_2}{R} \right) \right]^\nu   \]
+
+    and the same logic for the effect of \(a_0\) on \(h_1\) follows for \(h_2\). 
 
     \subsubsection{Temporary Change}
 
-    budget constraint?
+    We return to the first-order condition for hours. Taking logs:
+
+    \[ \ln(h_1) = \nu \left[\ln(1+\beta) - \ln(B) + \ln(w_1) - \ln(R) \right]  ^\nu   \]
+
+    We now take the derivative of \(\ln(h_1)\) with respect to \(\ln(w_1)\), though it will not prove to be sufficient to find the solution. \(\beta\) and \(B\) are constants, so the elasticity simplifies to
+
+    \[  \frac{d \ln(h_1)}{d \ln(w_1)} = \nu \left[ 1 - \frac{\ln(R)}{\ln(w_1)} \right] = \nu \left[1 - \frac{dR}{dw_1} \frac{w_1}{R}\right] \]
+    
+    where we use the fact \( \frac{d \ln(y)}{d \ln(x)} = \frac{dy}{dx} \frac{x}{y}  \) for any two variables \(x\) and \(y\). We now take the derivative of \(R\) with respect to \(w_1\):
+
+    \[ \frac{dR}{dw_1} = h_1 + \frac{w_2}{1+r} \frac{dh_2}{dw_1} = h_1 + \frac{w_2}{1+r} \frac{h_2}{w_1} \frac{d \ln(h_2)}{d \ln(w_1)}  \]
+
+    This is obviously not enough since we also need to find the effect of \(w_1\) on \(h_2\)! We now look at the condition for \(h_2\):
+
+    \[  h_2 = \left[ \left(\frac{1}{\beta B}\right) \left(\frac{1+\beta}{\beta(1+r)}\right) \left( \frac{w_2}{R} \right) \right]^\nu \implies \ln(h_2) = \nu \left[ \ln(C) + \ln(w_2) - \ln(R) \right]  \]
+
+    where \(C\) is used to represent a mess of variables that will drop out once the derivative is taken. Doing so, we get
+
+    \[ \frac{d \ln(h_2)}{d \ln(w_1)} = - \nu \frac{d\ln(R)}{d \ln(w_1)} = - \nu \frac{dR}{dw_1} \frac{w_1}{R}   \]
+    
+    We now begin substituting. We can now write
+
+    \[ \frac{dR}{dw_1} = h_1 - \nu \frac{w_2}{1+r} \frac{h_2}{w_1} \frac{w_1}{R} \frac{dR}{dw_1} = h_1 - \nu \frac{w_2 h_2}{(1+r) R} \frac{dR}{dw_1} = h_1 - \nu \phi_2 \frac{dR}{dw_1} \]
+
+    and solve for \(\frac{dR}{dw_1}\):
+
+    \[ \frac{dR}{dw_1} = \frac{h_1}{1 + \nu \phi_2}   \]
+
+    then substitute it back into the original equation for the elasticity to find
+    
+    \[  \frac{d \ln(h_1)}{d \ln(w_1)} = \nu \left[1 - \frac{dR}{dw_1} \frac{w_1}{R}\right] = \nu \left[ 1 - \frac{w_1 h_1}{R} \frac{1}{1 + \nu \phi_2} \right] = \nu \left[1 - \frac{\phi_1}{1 + \nu \phi_2}\right] \]
+
+    which simplifies to 
+
+    \[ \frac{d \ln(h_1)}{d \ln(w_1)} = \nu \left[  \frac{1 - \phi_1 + \nu \phi_2}{1 + \nu \phi_2}\right]  \]
 
     \subsubsection{A Constrained Household}
 
-    looks weird. is there a way to sub out \(w_1\)?
+    Now we assume that the constraint binds, requiring \(s = -\bar{a}\) and 
+    
+    \(c_1 + s = w_1 h_1 + a_0 \implies c_1 = w_1 h_1 + a_0 + \bar{a} = w_1 h_1\) and \(c_2 = w_1 h_1 - (1+r) \bar{a} \). The Lagrangian for the constrained worker is
+
+    \begin{align*}
+    \mathcal{L} = \ln(c_1) - B \frac{h_1^{1 + \frac{1}{\nu}}}{1 + \frac{1}{\nu}} + \beta \left[ \ln(c_2) - B \frac{h_2^{1 + \frac{1}{\nu}}}{1 + \frac{1}{\nu}} \right] - \lambda_1 \left[ c_1 - w_1 h_1 \right] - \lambda_2 \left[ c_2 + (1+r) \bar{a} - w_2 h_2 \right]
+    \end{align*}
+
+    with first-order conditions
+
+        \begin{align*}
+        \frac{1}{c_1} &= - \lambda_1 \\
+        \beta \frac{1}{c_2} &= \lambda_2 \\
+        B h_1^{\frac{1}{\nu}} &= \lambda_1 w_1 \\
+        \beta B h_2^{\frac{1}{\nu}} &= \lambda_2 w_2 \\
+        c_1 &= w_1 h_1 \\
+        c_2  &= w_2 h_2 - (1+r) \bar{a}
+    \end{align*}
+
+    Substituting for \(\lambda_1\) in the condition for hours, we have
+    \[ B h_1^{\frac{1}{\nu}} = \frac{w_1}{c_1} = \frac{w_1}{w_1 h_1} = \frac{1}{h_1}     \]
+
+    Clearly this condition no longer depends on the wage.
 
     \subsubsection{Precautionary Labor Supply}
 
@@ -137,13 +199,21 @@
 
     \[ \left((1+r) a + we^* \bar{h}\right) e^{-\bar{B}} = (1+r) a \implies e^*(a) = \frac{(1 - e^{-\bar{B}}) (1+r)}{e^{-\beta} w \bar{h}} a  \]
 
-    This allows us to solve for \(e^*(a) = \kappa a\) once we substitute the given parameters. 
+    This allows us to solve for \(e^*(a) = \kappa a \approx 1.0916 a\) once we substitute the given parameters. 
     
     Given that the productivity draw \(e\) always lies in \([0,1]\), we can immediately see that households with zero assets have \(e^*(a) = 0\) and will always work, while households with assets \(a = \frac{1}{\kappa}\) will have \(e^*(a) = 1\) and never work because productivity cannot rise high enough to make work valuable for them. 
 
     \subsubsection{Aggregate Employment}
 
-    should be obvious but requires thinking
+    The distribution of assets implies a distribution of reservation productivities based on the draws from the distribution of \(e\). A worker who does not work has effective labor of \(0\), while one who does work will only do so if their productivity draw is above their reservation productivity. Given the asset distribution, this lets us write the total labor force as
+
+    \[ N(w) = \int \max{\{0,1-e^*(a,w)\}} dGa    \]
+
+    where we need to include the max operator so we do not subtract people who choose not to work because their reservation productivity is above \(1\) from the labor force.
+
+    We now need to derive the aggregate employment elasticity. The easiest way to do this will be to write
+    \[ \epsilon_N = \frac{d \ln(N)}{d \ln(w)} = \frac{dN}{dw} \frac{w}{N}  \]
+    
 
     \subsubsection{Distributions}
 
@@ -297,7 +367,50 @@
 
     \[ \frac{\gamma}{1 - \gamma} z - \ln(\frac{a + w}{a + b}) a = w \left(\ln(\frac{a + w}{a + b}) + \frac{\gamma}{1 - \gamma} \right)   \]
 
+    This term can immediately be rearranged to 
+
+    \[ w = \frac{\frac{\gamma}{1 - \gamma} z - \ln(\frac{a + w}{a + b}) a}{\ln(\frac{a + w}{a + b}) + \frac{\gamma}{1 - \gamma}} = \frac{\gamma z - (1 - \gamma)\ln(\frac{a + w}{a + b}) a}{(1 - \gamma)\ln(\frac{a + w}{a + b}) + \gamma}    \]
+
+    Now we take the limit as \(a\) becomes large. This gives us
+
+    \[ \lim_{a \rightarrow \infty} w = \frac{\lim_{a \rightarrow \infty} \gamma z - (1 - \gamma)\ln(\frac{a + w}{a + b}) a}{\lim_{a \rightarrow \infty} (1 - \gamma)\ln(\frac{a + w}{a + b}) + \gamma} = \gamma z - \frac{(1 - \gamma)}{\gamma} \lim_{a \rightarrow \infty} \ln(\frac{a + w}{a + b}) a   \]
+
+    because it is obvious that \(ln(\frac{a+w}{a+b}) = \ln(1) = 0\) as \(a\) becomes large. However, the limit in the numerator has the form \(0 \times \infty\) so we need to solve it via L'Hopital's rule. 
+
+    Isolating the problematic limit and applying the rule, we get
+
+    \[ \lim_{a \rightarrow \infty} \ln(\frac{a + w}{a + b}) a = \lim_{a \rightarrow \infty} \frac{\ln(\frac{a + w}{a + b})}{a^{-1}} = \lim_{a \rightarrow \infty} - \frac{\left(\frac{a+b}{a+w}\right) \left( \frac{1}{a+b} - \frac{a+w}{(a+b)^2} \right)}{a^{-2}}     \]
+
+    Distributing the numerator, we simplify and get
+
+    \[ \lim_{a \rightarrow \infty} \frac{\frac{1}{a+b} - \frac{1}{a+w}}{a^{-2}} = \lim_{a \rightarrow \infty} \frac{a^2 \left(a + w - a - b\right)}{(a+b)(a+w)} = \lim_{a \rightarrow \infty} a^2 \frac{w - b}{(a+b)(a+w)}  \]
+
+    We now have a solution to the limit! Pulling out \(w - b\), we get
+
+    \[w - b \lim_{a \rightarrow \infty} \frac{a^2}{(a+b)(a+w)} = w - b\]
+
+    This lets us substitute back into the initial limit and find
+
+    \[ \lim_{a \rightarrow \infty} w = z + (1 - \gamma) \frac{b - w}{\gamma} \]
+
+    So in the limit, we have
+
+    \[ \gamma w = \gamma z + (1 - \gamma) (b - w) \implies w = \gamma z + (1 - \gamma) b  \]
+
+    as required.
+
+
     \subsubsection{Further Properties of Preferences}
+
+    Now we suppose \(u(c) = -\e^{-\theta c}\), giving \(u'(c) = \theta \e^{-\theta c}\). This lets us write the first-order condition as
+
+    \[  \frac{\gamma}{1 - \gamma} \theta (z - w) \e^{- \theta (a + w)} = \theta \e^{- \theta (a+w)} - \theta \e^{-\theta (a+b)}  \]
+
+    We can divide out \(\theta \e^{-\theta a}\) from each term, giving
+
+    \[ \frac{\gamma}{1 - \gamma} (z - w) \e^{-\theta w} = \e^{-\theta w} - \e^{-\theta b}  \]
+
+    This condition still must be solved for \(w\), but it clearly is independent of \(a\). Why? Exponential utility is also known for having constant absolute risk aversion --- which implies that the dependence of \(w\) on \(a\) is derived from the worker's risk aversion changing as they acquire more resources. This is consistent with the risk-neutral worker's wage being independent of \(a\); as workers with non-special-case utility gain more resources, their utility functions become closer and closer to linearity as they care less about risk.
 
     \subsubsection{Comparative Statics}
 
