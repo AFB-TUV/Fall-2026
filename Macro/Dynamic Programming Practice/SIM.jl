@@ -83,7 +83,7 @@ function backward_iteration(Va, Π, a_grid, y, r, β, σ)
 end
 
 function policy_ss(Π, a_grid, y, r, β, σ, tol = 1E-9)
-    coh = broadcast(+,y,(1+r).*a_grid')
+    coh = y .+ (1.0 + r).*a_grid'
     c = 0.05 .* coh
     Va = (1+r) .* c .^ (-1/σ)
     #println(Va)

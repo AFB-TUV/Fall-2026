@@ -10,7 +10,7 @@ du(x) = 1/x
 function consumer_problem(; r = 0.01, β = 0.96, Π = [0.6 0.4; 0.05 0.95], zgrid = [0.5, 1.0], b = 0.0, grid_max = 16, grid_size = 50)
     R = 1+r 
     agrid = range(-b, grid_max, length = grid_size)
-    return (; r, R, β, b, Π, z_vals, agrid) 
+    return (; r, R, β, b, Π, zgrid, agrid) 
 end
 
 function T!(cp, V, out; ret_policy = false)
@@ -95,10 +95,10 @@ N = 80
 
 V, c = initialize(cp)
 println("Starting value function iteration")
-for i in 1:N
-    V = T(cp, V)
-end
-c1 = T(cp, V, ret_policy = true)
+#for i in 1:N
+#    V = T(cp, V)
+#end
+#c1 = T(cp, V, ret_policy = true)
 
 V2, c2 = initialize(cp)
 println("Starting policy function iteration")

@@ -47,3 +47,5 @@ for i in 2:length(xvec)
     svec[i] = s(xvec[i],hvec[i])
     evec[i] = earnings(svec[i], hvec[i])
 end
+
+bins = range(0.12,0.18,7)
