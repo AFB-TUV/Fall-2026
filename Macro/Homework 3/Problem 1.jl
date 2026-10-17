@@ -27,12 +27,13 @@ end
 
 #part a
 
-tvec = range(0.0, 41.0, 42)
+tvec = range(0.0, 40.0, 41)
 svec = zeros(length(tvec))
 hvec = zeros(length(tvec))
 hvec[1] = h0_p1
 xvec = zeros(length(tvec))
 evec = zeros(length(tvec))
+Qvec = zeros(length(tvec))
 
 
 for i in 1:length(tvec) - 1
@@ -40,9 +41,11 @@ for i in 1:length(tvec) - 1
 end
 
 svec[1] = s(xvec[1],hvec[1])
-evec[1] = earnings(s,h)
+evec[1] = earnings(svec[1],hvec[1])
 
 for i in 2:length(xvec)
+    println("Iteration ", i)
+    Qvec[i] = Q(δ_p1, β_p1, T_p1, tvec[i], w_p1)
     hvec[i] = h_evo(δ_p1, 0.15, α_p1, svec[i-1], hvec[i-1])
     svec[i] = s(xvec[i],hvec[i])
     evec[i] = earnings(svec[i], hvec[i])

@@ -54,6 +54,8 @@
 
 	\maketitle
 
+    Permanent link plus a code repository \href{https://github.com/AFB-TUV/Fall-2026/tree/main/Macro/Homework%203}{here}
+
     \section{Theory}
 
     \subsection{Two-Period Labor Supply Problem with Savings}
@@ -192,7 +194,7 @@
 
     \[  h_1 = \left[ \left(\frac{1+\beta}{B}\right) \left(\frac{w_1}{ a_0 + w_1 h_1 + \frac{w_2 h_2}{1+r} + \Ex{y}}\right)  \right]^\nu   \]
 
-    There is no obvious reason why \(h_1\) should directly depend on the variance here. However, the variance enters this problem through the borrowing constraint: if there is a very bad shock in period \(2\), the worker will be worse off. As such, she is willing to save more to make Period \(2\)'s income more stable. 
+    There is no obvious reason why \(h_1\) should directly depend on the variance here. However, the variance enters this problem through the borrowing constraint: if there is a very bad shock in period \(2\) that pushes the worker to her borrowing constraint, she will be worse off. As such, she is willing to save more to make period \(2\)'s income more stable. 
 
     \subsection{One-period Labor Decisions}
 
@@ -224,15 +226,15 @@
 
     \subsubsection{Distributions}
 
-    just run some numbers
+    I compute \(N = 0.535\) for each distribution, but with elasticities \(0.217\) in case 1, \(0.393\) in case 2, and \(0.434\) in case 3. The substantial upward movement in elasticities shows that labor will respond more as the distribution of wealth becomes more extreme; this is because of the response of the asset-poor workers, who will naturally have lower reservation productivities in this setup.
 
     \subsubsection{Transfers}
 
-    just run some numbers
+    The elasticity is now \(0.356\) --- a decrease from the \(0.393\) in economy 2. This matters because it shows that we cannot pre-calibrate the "aggregate labor supply elasticity"; it is an endogenous object that emerges based on the consumption, savings, and labor choices of workers everywhere on the asset distribution.  
 
     \subsubsection{Benchmarks}
 
-    think (wait for slides?)
+    We see from these experiments that the same preferences can produce wildly different elasticities --- from the infinite elasticity implied by the Hansen-Rogerson complete markets trick to a zero elasticity for a worker at the borrowing constraint! The thing that ultimately determines the aggregate elasticity is the smoothing mechanism available through assets: if workers can smooth income without help due to asset availability (as in the complete markets case), they are free to substitute between labor and leisure as much as they'd like, while if they have little to no access to income-smoothing assets (like the constrained worker), they cannot dramatically move their labor-leisure choice. 
 
     \subsection{Ben-Porath Model I}
 
@@ -276,7 +278,9 @@
 
     \subsubsection{The Price of Skill}
 
-    not straightforward; revisit with pencil and paper (or whiteboard) when less tired
+    We have \(x_t = f(Q_t)\) and \(Q_t\) increasing in \(w\), so it is not obvious to me why a proportional change in \(w\) would leave the whole path of \(s_t\) unchanged, and I am out of time to derive a different result.
+
+    Regardless, suppose the model \(y_{it} = \alpha + \beta_i t\) is fit to this model as proposed. The true model is given by \(y_t = w_t h_t (1 - s_t)\), and there is no way to separate \(w\) from the confounding \(h (1-s)\) term without some form of identification, so the regression model will estimate \(\beta = w_t h_t (1 - s_t) = w_t h_t - w_t x_t\). This of course implies that earnings growth is not enough to estimate \(a\); one would also need data on hours over time to isolate \(s_t\) at minimum.
     
     \subsection{A Basic Earnings Process}
 
@@ -428,6 +432,24 @@
 
     \subsubsection{Comparative Statics}
 
+    I compute the wages for given parameters using a bisection algorithm since the wage condition is nonlinear.
+
+    \begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		 & \(w^{RN}\) & \(w | a = 0\) & \(w | a = 10\) \\
+		\hline
+		\(b = 0.4\) & \(0.700\) & \(0.664\) & \(0.698\) \\
+		\hline
+
+        \(b = 0.5\) & \(0.750\) & \(0.727\) & \(0.749\) \\
+
+        \hline
+	\end{tabular}
+	\end{center}
+
+    The more generous UI benefit raises the wage more for the poor worker, though the change is small. This implies that the poor worker benefits more from their outside option improving since they have less bargaining power; the rich worker, however, benefits less because they are already closer to risk neutrality! Rich workers already have the ability to smooth income, so they only get the benefit of a better outside option and not the benefits of additional income smoothing.
+
     \subsubsection{Compare to DMP}
 
     If firms could direct their vacancies, they clearly would direct them towards the part of the distribution with less assets --- after all, these workers have less bargaining power, so the firm would keep a greater share of the match surplus. Such a world would create an interesting trade-off between accumulating wealth and not, as saving could directly lower future expected income through lowering the job-finding rate, though the overall impact would be unclear and require a quantitative experiment. However, the assumption of one matching technology in KMS rules this out --- effectively, all matches must draw from the same pool of workers. 
@@ -494,6 +516,8 @@
 
     \subsection{Computing the Ben-Porath Model}
 
+    I left this question too late and was unable to complete any of the parts. Sorry.
+
     \subsubsection{Closed-Form Solution}
 
     \subsubsection{Heterogeneous Income Profiles}
@@ -506,20 +530,66 @@
 
     \subsubsection{Properties of the Stationary Distribution}
 
+    The mean assets of the distribution are \(0.152\). The hours policy at the median productivity state is given by
+
+    \begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\(a = 0\) & \(a = 1\) & \(a = 2\) & \(a = 5\) & \(a = 10\) \\
+		\hline
+		\(0.339\) & \(0.295\) & \(0.274\) & \(0.235\) & \(0.198\) \\
+		\hline
+
+	\end{tabular}
+	\end{center}
+
+    I also compute a mean correlation between hours and wealth of \(-0.914\), indicating a very strong negative relationship. This means that hours fall as wealth rises because as workers gain the ability to smooth consumption through spending down their assets, they need to work less because they no longer need to accumulate income as assets to buffer against a future shock. 
+
     \subsubsection{Micro-elasticity}
+
+    I do not understand how to back the Frisch elasticity out of my model numerically --- this may be because my code uses the endogenous grid method? Regardless, I do not understand how to do this question and I am out of time to figure it out.
 
     \subsubsection{Macro-elasticity, divisible labor}
 
+    The calculated impact elasticity from raising \(w\) by \(2\%\) is only \(0.03\%\), with an implied elasticity of \(0.016\). This very small elasticity is because the wealth effect works primarily through low-income households, and they are already at (or close to) their borrowing constraints! In the long run, the new effective labor barely rises above the old effective labor --- too small to show up in my typical three digits of reporting accuracy! --- with an implied long-run elasticity of \(0.00655\). This is presumably because the small change in the wage does not move the asset distribution enough to make a big change to people's labor choices.
+
     \subsubsection{Macro-elasticity, indivisible labor}
+
+    My maximization operator does not appear to be working (everyone is choosing to work), so I cannot answer this question with no time left to debug.
 
     \subsection{Partial Equilibrium Extensive Margin Problem}
 
     \subsubsection{Consumption and Savings Policies}
 
+    I report the consumption-saving policies for employed and unemployed households here.
+
+    \begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		 & \(a = 0\) & \(a = 1\) & \(a = 5\) & \(a = 20\) \\
+		\hline
+		Consumption (Employed) & \(0.902\) & \(0.973\) & \(1.092\) & \(1.174\) \\
+		\hline
+        Savings (Employed) & \(0.098\) & \(0.030\) & \(-0.077\) & \(-0.144\) \\
+        \hline
+        Consumption (Unemployed) & \(0.400\) & \(0.818\) & \(1.061\) & \(1.155\) \\
+		\hline
+        Savings (Unemployed) & \(0.000\) & \(-0.415\) & \(-0.646\) & \(-0.725\) \\
+        \hline
+	\end{tabular}
+	\end{center}
+
+    The stationary wealth distribution has a mean of about \(1.333\). The mean duration of unemployment is \(2.222\), which means a household holds (on average) enough wages to fully replace income for the mean duration of an unemployment spell --- the difference between \(w\) and \(b\) is \(0.6\), and we see numerically that we have approximately \( \bar{a}/(w-b) = \frac{1}{\lambda_w}\).
+
     \subsubsection{Welfare Cost of Unemployment Risk}
+
+    I could not figure out how to compute the consumption-equivalent welfare cost, so I could not do this part or the next.
 
     \subsubsection{Willingness to Pay for Insurance}
 
     \subsubsection{Compare to Hagedorn-Manovskii Calibration}    
+
+
+
 
 \end{document}

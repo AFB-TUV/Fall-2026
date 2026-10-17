@@ -183,6 +183,7 @@ L_p2 = dot(p2.z_grid .* h_p2,D_p2)
 #part 1
 
 #[1] = 0.0, [21] = 1.0, [41] = 2.0, [101] = 5.0, [201] = 10.0
+abar_p2 = dot(a_p2, D_p2)
 h_out_2 = [h_p2[4,1], h_p2[4,21], h_p2[4,41], h_p2[4,101], h_p2[4,201]]
 corrs = zeros(length(p2.z_grid))
 for (i,z) in enumerate(p2.z_grid)
@@ -197,8 +198,10 @@ p2c = P2(w = 1.02)
 Va_p2c, a_p2c, c_p2c, h_p2c, D_p2c = household(p2c, B_p2)
 
 L_impact = dot(p2.z_grid .* h_p2c,D_p2)
+L_p2c = dot(p2c.z_grid .* h_p2c, D_p2c)
 ΔL = (L_impact - L_p2)/L_p2
 ϵL = ΔL/(p2c.w - p2.w)
+ϵL_lr = ((L_p2c - L_p2)/L_p2)/(p2c.w - p2.w)
 
 println("Parts I through III done!")
 
