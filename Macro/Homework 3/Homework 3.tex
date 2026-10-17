@@ -58,7 +58,6 @@
 
     \subsection{Two-Period Labor Supply Problem with Savings}
 
-    
     \subsubsection{First-Order Conditions}
 
     We begin by solving the household problem. Given the maximization problem
@@ -89,6 +88,8 @@
 
     Multiplying through by \(\nu\) and taking the derivative of \(\ln(h_1)\) with respect to \(\ln(w_1)\), we find \(\frac{\partial \ln(h_1)}{\partial \ln(w_1)} = \nu\) as required.
 
+    The Frisch elasticity measures the change in labor in response to a wage change while holding the marginal utility of consumption constant, which means it only accurately measures changes in the labor supply over a short period of time when the household does not have the ability to acquire other sources of income. However, over the length of a worker's lifespan, they will accumulate resources through saving, increase their income, and thus lower their marginal utility of consumption; the Frisch elasticity will not reflect these changes.
+
     \subsubsection{Permanent Change}
 
     In the previous problem, we held \(\lambda_1\) constant. Now we let it vary and use it to see the effect of assets on hours. From the first-order conditions we immediately we know \(\lambda_1 = \frac{1}{c_1}\), but we want to instead see \(c_1\) as a function of initial assets. So we solve the intertemporal budget constraint for \(c_1\):
@@ -118,6 +119,8 @@
     \[  h_2 = \left[ \left(\frac{1}{\beta B}\right) \left(\frac{1+\beta}{\beta(1+r)}\right) \left( \frac{w_2}{R} \right) \right]^\nu   \]
 
     and the same logic for the effect of \(a_0\) on \(h_1\) follows for \(h_2\). 
+
+    Why does the change in hours depend on \(a_0\)? With no household wealth, the income and substitution effects exactly offset: the worker would want to work less, but the increased income causes them to want to work more, and so the hours choice remains unchanged. However, with some household wealth, the substitution effect dominates: because households already have more total resources thanks to their initial wealth endowment, they are more willing to substitute towards leisure and away from labor, so they decrease their working hours in both periods.
 
     \subsubsection{Temporary Change}
 
@@ -169,7 +172,7 @@
 
     with first-order conditions
 
-        \begin{align*}
+    \begin{align*}
         \frac{1}{c_1} &= - \lambda_1 \\
         \beta \frac{1}{c_2} &= \lambda_2 \\
         B h_1^{\frac{1}{\nu}} &= \lambda_1 w_1 \\
@@ -181,11 +184,15 @@
     Substituting for \(\lambda_1\) in the condition for hours, we have
     \[ B h_1^{\frac{1}{\nu}} = \frac{w_1}{c_1} = \frac{w_1}{w_1 h_1} = \frac{1}{h_1}     \]
 
-    Clearly this condition no longer depends on the wage.
+    Clearly this condition no longer depends on the wage, instead being solely dependent on the disutility from work measured by \(B\). Why? Consider the case above where we showed that \(h_1\) decreases when \(a_0\) increases. If we instead consider a world where \(a_0\) drops, we will actually see hours increase! Effectively, the constrained worker is at the maximum she will ever be willing to work already -- she responds to being in the bad income state by working the maximum that it is reasonable to do so, which is only measured by \(B\). Thus, hours \emph{are} a valuable insurance margin for the constrained worker -- they are just being used to their fullest here.
 
     \subsubsection{Precautionary Labor Supply}
 
-    will depend on the other stuff
+    Rewriting the condition for hours with the newly-stochastic period \(2\) income, we have
+
+    \[  h_1 = \left[ \left(\frac{1+\beta}{B}\right) \left(\frac{w_1}{ a_0 + w_1 h_1 + \frac{w_2 h_2}{1+r} + \Ex{y}}\right)  \right]^\nu   \]
+
+    There is no obvious reason why \(h_1\) should directly depend on the variance here. However, the variance enters this problem through the borrowing constraint: if there is a very bad shock in period \(2\), the worker will be worse off. As such, she is willing to save more to make Period \(2\)'s income more stable. 
 
     \subsection{One-period Labor Decisions}
 
@@ -318,7 +325,14 @@
 
     as required.
 
-    [go back and do proof with convexity]
+    It is easy to show that we must have \(s_M > s_G\). We can rewrite \(s_G\) as 
+    
+    \[\gamma \frac{\sigma^2}{4} = \frac{1}{2 \gamma} \ln(\e^{\gamma^2 \frac{\sigma^2}{2}}) = \frac{1}{2 \gamma} \ln(0.9 \e^{\gamma^2 \frac{\sigma^2}{2}} + 0.1 \e^{\gamma^2 \frac{\sigma^2}{2}})  \]
+
+    This should be less than \(s_M\) since a convex function has 
+    \[f(t x_1 + (1-t) x_2) \leq tf(x_1) + (1-t) f(x_2)\] 
+
+    What this tells us is that the precautionary motive responds to the tails of the distribution and not just the overall variance -- if a very bad shock is given higher probability, the worker should save more even if the overall variance stays the same.
 
     \subsubsection{Considering Calibrations}
 
@@ -416,6 +430,8 @@
 
     \subsubsection{Compare to DMP}
 
+    If firms could direct their vacancies, they clearly would direct them towards the part of the distribution with less assets --- after all, these workers have less bargaining power, so the firm would keep a greater share of the match surplus. Such a world would create an interesting trade-off between accumulating wealth and not, as saving could directly lower future expected income through lowering the job-finding rate, though the overall impact would be unclear and require a quantitative experiment. However, the assumption of one matching technology in KMS rules this out --- effectively, all matches must draw from the same pool of workers. 
+
     \subsection{Ben-Porath Model II}
 
     \subsubsection{Separation}
@@ -467,6 +483,8 @@
     \[ \max_{s_0, q} \ln\left(h_0(1-s_0) + \tau + q\right) + \ln\left((1-\delta) h_0 + a (s_0 h_0)^\alpha - q\right) \] 
 
     It should be immediately apparent that this lump-sum transfer does not actually change the solution to either problem so long as the constrained worker stays constrained: \(\tau\) does not affect the decision variables \(s_0\) or \(q\) directly, so the unconstrained worker still sets consumption equal in each period, while the constrained worker still has the marginal utility wedge in her investment function. However, the wedge \(\frac{u'(c_1)}{u'(c_0)}\) will now be smaller because \(\tau\) raises \(c_0\) and thus lowers \(u'(c_0)\), so her investment will increase. 
+
+    While investment will be increasing in the initial assets, it is easy to see that it will always be less than that of the unconstrained worker so long as the constraint binds -- and in particular, it should be clear that \(x\) will increase by less when \(a\) increases because the derivative will be the same, expect with a multiplier \(\frac{u'(c_1)}{u'(c_0)} < 1\). This means that in any economy with credit constraints, there will be less schooling and appear to be a less able population than in the analogous economy without credit constraints, even if they are otherwise identical! This means that attributing inequality to initial conditions is wrong if said initial conditions do not consider the overall welfare of the population --- if workers are poor and unable to borrow, they will also look less able than they truly are.
 
     \subsubsection{Schooling}
 

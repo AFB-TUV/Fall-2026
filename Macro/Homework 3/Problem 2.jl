@@ -180,17 +180,6 @@ Va_p2, a_p2, c_p2, h_p2, D_p2 = household(p2, B_p2)
 hbar_p2 = dot(h_p2, D_p2)
 L_p2 = dot(p2.z_grid .* h_p2,D_p2)
 
-#cplot = plot((ones(7)*p2.a_grid')',c_p2')
-#cplot_zoom1 = plot((ones(7)*p2.a_grid')'[1:121,:],c_p2'[1:121,:])
-#cplot_zoom2 = plot((ones(7)*p2.a_grid')'[1:121,1:4],c_p2'[1:121,1:4])
-#splot_zoom1 = plot((ones(7)*p2.a_grid')'[1:301,:], a_p2'[1:301,:] - (ones(7)*p2.a_grid')'[1:301,:])
-
-#hplot = plot((ones(7)*p2.a_grid')',h_p2')
-#hplot_zoom1 = plot((ones(7)*p2.a_grid')'[1:121,:],h_p2'[1:121,:])
-#hplot_zoom2 = plot((ones(7)*p2.a_grid')'[1:121,1:4],h_p2'[1:121,1:4])
-
-
-
 #part 1
 
 #[1] = 0.0, [21] = 1.0, [41] = 2.0, [101] = 5.0, [201] = 10.0
@@ -211,35 +200,83 @@ L_impact = dot(p2.z_grid .* h_p2c,D_p2)
 ΔL = (L_impact - L_p2)/L_p2
 ϵL = ΔL/(p2c.w - p2.w)
 
+println("Parts I through III done!")
+
 #part 4
-#=
+
 function backward_iteration_d(Va, model)
 
-    (; β, Π, w, ν, r, a_grid, z_grid) = model
+    (; β, Π, w, ν, r, a_grid, z_grid, hbar, B) = model
     Wa = (β .* Π) * Va
 
     c_endog = Wa .^ -1.0
-    coh = w .* z_grid .* h_endog .+ (1.0 + r) .* a_grid'
-    a = zeros(size(coh))
-    for e in 1:length(z_grid)
-        itp_c = LinearInterpolator(c_endog[e,:] + a_grid, a_grid,NoBoundaries())
-        a[e,:] = itp_c.(coh[e,:])
+    coh_e = w .* z_grid .* hbar .+ (1.0 + r) .* a_grid'
+    coh_n = ones(length(z_grid)) .* (1.0 + r) .* a_grid'
+    a_e = zeros(size(coh_e))
+    a_n = zeros(size(coh_e))
+    for i in 1:size(coh_e)[1]
+        itp_e = LinearInterpolator(c_endog[i,:] + a_grid, a_grid,NoBoundaries())
+        for j in 1:size(coh_e)[2]
+            a_e[i,j] = itp_e(coh_e[i,j])
+            a_n[i,j] = itp_e(coh_n[i,j])
+        end
     end
 
-    a = max.(a,a_grid[1])
-    c = coh - a
-    h = ((w .* z_grid ./ B) .* (c .^ -1)) .^ ν
-    Va = (1+r) .* (c .^ -1)
+    a_e = max.(a_e,a_grid[1])
+    a_n = max.(a_n,a_grid[1])
+    c_e = coh_e - a_e .+ B
+    c_n = coh_n - a_n
+    h_e = (1/3) .* ones(size(coh_e))
+    h_n = 0.0 .* ones(size(coh_n)) 
+    Va_e = (1+r) .* (c_e .^ -1)
+    Va_n = (1+r) .* (c_n .^ -1)
 
+    Va, a, c, h = zeros(size(coh_e)), zeros(size(coh_e)), zeros(size(coh_e)), zeros(size(coh_e))
+    #we want to pick the higher value function => should pick the lower marginal utility
+    for i in 1:length(z_grid)
+        for j in 1:length(a_grid)
+            if Va_e[i,j] < Va_n[i,j]
+                Va[i,j] = Va_e[i,j]
+                a[i,j]  = a_e[i,j]
+                c[i,j] = c_e[i,j]
+                h[i,j] = h_e[i,j]
+            else
+                Va[i,j] = Va_n[i,j]
+                a[i,j] = a_n[i,j]
+                c[i,j] = c_n[i,j]
+                h[i,j] = h_n[i,j]
+            end
+        end
+    end
     return Va, a, c, h
 end
 
-function P2d(; β = 0.94, r = 0.04, w = 1.0, ν = 0.5, B = 1.0, h = 1/3, ρ = 0.95, σ = 0.4, n_e = 7, amin = 0.0, amax = 50.0, n_a = 1001)
+function policy_ss_d(model, tol = 1e-9)
+    (; w, r, a_grid, z_grid) = model
+    coh = w .* z_grid .+ (1.0 + r) .* a_grid'
+    c = 0.05 .* coh
+    Va = (1.0+r) ./ c
+    a_old = zeros(size(coh))
+    for i in 1:10_000
+        Va, a, c, h = backward_iteration_d(Va, model)
+        if i > 1 && maximum(abs.(a - a_old)) < tol
+            return Va, a, c, h
+        end
+        a_old = a
+    end
+end    
+
+function P2d(; β = 0.94, r = 0.04, w = 1.0, ν = 0.5, B = 1.0, hbar = 1/3, ρ = 0.95, σ = 0.4, n_e = 7, amin = 0.0, amax = 50.0, n_a = 1001)
     z_grid, π, Π = discretize_productivity(ρ, σ, n_e)
     a_grid = range(amin, amax, n_a)
     return (; β, r, w, ν, ρ, σ, n_e, B, hbar, z_grid, π, Π, a_grid, amin, amax, n_a)
 end
 
+function household_d(model)
+    Va, a, c, h = policy_ss_d(model)
+    D = distribution_ss(model, a)
+    return Va, a, c, h, D
+end
+
 p2d = P2d()
-Va_p2d, a_p2d, c_p2d, h_p2d, D_p2d = household(p2d, p2d.B)
-=#
+Va_p2d, a_p2d, c_p2d, h_p2d, D_p2d = household_d(p2d)
