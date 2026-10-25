@@ -1,0 +1,165 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Homework 4 \\ Macroeconomic Theory I}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+	\maketitle
+
+	\section{}
+
+	first question
+
+	\subsection{}
+
+	check flow budget constraint construction
+
+	\subsection{}
+
+	\subsubsection{}
+
+	We now construct a two-agent economy. Constrained agents can only eat what income they receive, and thus have utility 
+
+	\[ u(c_t) = u(y_t + T_t) \]  
+
+	where \(T_t\) represents total lump-sum transfers in period \(t\). Unconstrained agents can choose consumption and savings and thus solve
+
+	\[ \max_{c_1, c_2, a_1} u(c_1) + \beta u(c_2) - \lambda_1 \left[ c_1 + a_1 - y_1 - T_1 \right] - \lambda_2 \left[ c_2 - (1+r) a_2 - y_2 + (1+r) T   \right] \]
+
+	It will be helpful for later results to combine savings and lump-sum transfers:
+
+	\[ \max_{c_1, c_2, a_1} \mathcal{L} = u(c_1) + \beta u(c_2) - \lambda_1 \left[ c_1 + (a_1 - T) - y_1 \right] - \lambda_2 \left[ c_2 - (1+r) (a_2 - T) - y_2  \right] \]
+
+	This illustrates that lump-sum transfers are effectively a different form of saving for the unconstrained agent: because they are financed at the same rate \(1+r\) as savings, all they do for the unconstrained consumer is shift her savings decision to offset the transfer. This model yields the typical Euler equation, same as it would be if the government transfers were absent:
+
+	\[  \frac{u'(c_1)}{u'(c_2)} = \beta (1+r)      \]
+
+	This shows that the unconstrained agent's consumption will not change with \(T\). She will just shift her savings decision such that consumption is balanced across periods after taking the taxes into account. However, the constrained agent's consumption will increase and decrease in accordance with the lump-sum taxes, since she does not have access to saving or borrowing:
+
+	\begin{align*}
+	c_1 &= y_1 + T \\
+	c_2 &= y_2 - (1+r) T
+	\end{align*}
+
+	We now want to show what happens when \(T\) decreases by \(\Delta\) in period \(1\) and increases by \(\Delta\) in period \(2\). Let us denote the old aggregate consumption in each period as \(C_t\) and the new aggregate consumption as \(C'_t\).  Let us also assume without loss of generality that \(\beta (1+r) = 1\) so that for the unconstrained consumer, \(u'(c_1) = u'(c_2) \implies c_1 = c_2 \equiv c\). Then we can write per-period aggregate consumption as 
+	\begin{align*}
+	C_1 &= (1 - \mu) c + \mu (y_1 + T) \\
+	C'_1 &= (1 - \mu) c + \mu (y_1 + T + \Delta) \\
+	C_2 &= (1 - \mu) c + \mu (y_2 - (1+r) T) \\
+	C'_2 &= (1 - \mu) c + \mu (y_2 - (1+r) T - (1+r) \Delta)
+	\end{align*}
+	Inspection shows that the change in aggregate consumption is given by
+	\begin{align*}
+	\Delta C_1 &= \mu \Delta \\
+	\Delta C_2 &= - \mu (1+r) \Delta
+	\end{align*}
+	
+	as required.
+
+	\subsubsection{}
+
+	Ricardian equivalence as shown on the slides requires that the flow budget constraints be linked period-by-period. However, this implicitly requires that the household has a way to transfer income across periods! With the borrowing constraint, we see that the lump-sum tax-and-transfer effectively serves as a savings instrument for the constrained consumer: it shows up where the net savings after transfers \(a_t - T\) does for the unconstrained consumer, meaning the government effectively picks an asset position for the constrained household via the tax system. For a positive \(T\), this is equivalent to the household taking out a loan in period \(1\) repaid in period \(2\).
+
+	\subsubsection{}
+
+	Under a lump-sum tax, the only thing that changes for the household is its period-by-period resources; since all the government does here is redistribute income across time instead of transferring income between populations, the lifetime resource constraint does not change, and so the decisions for unconstrained consumers do not change. However, a proportional labor tax would further break Ricardian equivalence because it would alter the labor decision, making workers alter their hours choice because they are compensated less per hour of work. This would in turn change the worker's total resources and thus change the total income in the economy, and thus alter the tax revenue.
+	
+	\section{}
+
+	The representative household solves
+
+	\[ \max_{c_t, h_t, k_{t+1}} \beta^t \left( \ln(c_t) + \alpha \ln(1 - h_t) \right)     \]
+
+	subject to the period-by-period budget constraint 
+
+	\[ c_t + k_{t+1} = (1 - \tau) w_t h_t + (1 + r - \delta) k_t  \]
+
+	Taking first-order conditions, we have:
+
+	\begin{align*}
+	0 &= \beta^t \frac{1}{c_t} - \beta^t \lambda_t \\
+	0 &= - \beta^t \alpha \frac{1}{1 - h_t} + \beta^t (1 - \tau) w_t \lambda_t \\
+	0 &= - \beta^t \lambda_t + \beta^{t+1} \lambda_{t+1} (1 + r - \delta)
+	\end{align*}
+
+	We will only need the first two first-order conditions for this problem. Rearranging the first for \(w_t\), we have
+	\[ w_t = \frac{\alpha c_t }{(1 - h_t) (1 - \tau)}  \]
+	Now we need to equate this to the wage determined by the marginal product of labor for the representative firm:
+	\[ w_t = (1 - \theta) A \left(\frac{k_t}{h_t}\right)^\theta = \frac{\alpha c_t}{(1 - h_t)(1-\tau)}  \] 
+	We now write total output as \(y = A k^\theta h^{1-\theta} = A \left(\frac{k_t}{h_t}\right)^\theta h \), which lets us rewrite this equation as 
+	\[ (1 - \theta) \frac{y_t}{h_t} = \frac{\alpha c_t}{(1 - h_t)(1 - \tau)}    \] 
+	We now want to solve for \(h_t\). Multiplying both sides to remove the denominators, we have
+	\[ (1 - \theta) y_t (1 - h_t) (1 - \tau) = \alpha c_t h_t = (1 - \theta)(1 - \tau) y_t - (1 - \theta)(1 - \tau) y_t h_t       \]
+	Moving \(h_t\) to one side and dividing, we have
+	\[ h_t = \frac{(1 - \tau)(1 - \theta) y_t}{(1 - \theta)(1 - \tau) y_t + \alpha c_t}   \]
+	and then we divide the top and bottom by \(y_t\) to get 
+	\[ h_t = \frac{(1 - \tau)(1 - \theta)}{(1 - \tau)(1 - \theta) + \alpha \frac{c_t}{y_t}}   \]
+	as required.
+
+	The uncompensated wage elasticity of log-log preferences is zero, but this elasticity is not uncompensated: the labor tax is rebated to the worker in its entirety! The lack of change in lifetime resources means the worker only feels work becoming relatively less worth it, which means the worker only substitutes away from work. If the revenue were instead lit on fire so the worker did not receive anything, we would expect the income and substitution effects to cancel. If instead the revenue were spent on transfers decreasing in labor hours, we would expect to see an even more extreme hours decrease in response to the labor tax since the worker would want to decrease her working hours to receive the transfer.
+
+	\section{}
+	
+	full depreciation question
+
+	\subsection{}
+
+	guess and verify
+
+	\subsection{}
+
+	compute closed form solution
+
+	\subsection{}
+
+	compute algorithmic solution
+
+\end{document}

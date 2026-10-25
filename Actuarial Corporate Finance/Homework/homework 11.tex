@@ -1,0 +1,100 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Homework 4}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+	\maketitle
+
+	\section{}
+
+	We are told that the firm plans to pay interest on a loan for \(8\) years and then repay the principal, so the value of the interest tax shield becomes an annuity-immediate paid over the course of those \(8\) years rather than a perpetuity-immediate. The per-year interest payment is \(60\) million and the tax rate is \(\tau = 39\% = 0.39\), so we have a per-year value for the interest tax shield as \(60 \times 0.39 = 23.4\) million. Extending this over eight years, we then produce
+
+	\[ V_{ITS} = 23.4 \left(\frac{1}{1.06} + \frac{1}{1.06^2} + \dots + \frac{1}{1.08^2}\right) = 23.4 \left( \frac{1 - \left( \frac{1}{1.06} \right)^8}{0.06} \right) = 145.309\ \text{million}    \]
+
+	\section{}
+
+	We can write the after-tax WACC as 
+	\[ \text{WACC} = \frac{E}{D+E} + \frac{D}{D+E} r_D (1 - \tau)    \]
+	We are given \(\frac{D}{D+E} = 0.45\), \(r_E = 0.103\), \(r_D = 0.064\), and \(\tau = 0.35\). This gives us
+
+	\[ \text{WACC} = 0.55 \times 0.103 + 0.45 \times 0.064 \times 0.35 = 0.06673 = 6.673\%   \]
+
+	\section{}
+
+	We are given a company with with earnings of \(3.6\) and outstanding shares of \(0.9\) (in millions). We want to consider the effect of a stock recapitalization. To do this, we will have to derive the firm's pre-tax income by backing out information from the balance sheet before re-solving for post-tax income after debt has been issued. Let's do this using a table. We will start from the Net Income for unleveraged Firm U, solve back up the column to get the earnings before income and taxes EBIT, copy this to the leveraged Firm L, then re-solve down the table with the impact of the debt included.
+
+	    \begin{tabular}{|c|c|c|}
+        \hline
+        \hline 
+        & Firm U & Firm L \\
+         \hline
+         \hline
+         EBIT & \(\frac{60}{11}\) & \(\frac{60}{11}\) \\
+         \hline
+         Interest & \(0\) & \(\frac{60}{11} - 10 \times 0.1 = \frac{60 - 11}{11} = \frac{49}{11}\) \\
+         \hline
+         \hline
+         Taxable Income & \(\frac{3.6}{1 - 0.34} = \frac{60}{11}\) & \(\frac{49}{11}\) \\
+         \hline
+         Tax & & \(-0.34 \times \frac{49}{11}\) \\
+         \hline
+         \hline
+         Net Income & \(3.6\) & \(\frac{49}{11} \times (1 - 0.34) = 2.94\) \\
+         \hline
+         \hline
+    \end{tabular}
+
+	This gives us a new net income of \(2.94\) million. We now need to divide this by the new number of shares to find the new earnings per share. We assumed the share price was unchanged by the debt transaction, so the new number of shares should be \(900000 - \frac{10000000}{40} = 650000\). That finally gives our new earnings per share as
+
+	\[ \frac{2.94}{0.65} = 4.5231\ \text{million}    \]
+
+\end{document}

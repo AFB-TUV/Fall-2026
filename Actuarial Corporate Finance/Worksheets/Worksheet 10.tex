@@ -1,0 +1,117 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Worksheet 10}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+	\maketitle
+
+    \section{W 10-1}
+
+    We are given an annual EBIT of \(140\), a tax rate of \(\tau = 0.3\),  firm U with \(50\) shares outstanding and \(\beta_U = 1.0\), firm L with a debt of \(500\) and \(30\) outstanding and bonds with an interest rate of \(r_{L,B} = 0.06\), a risk-free rate of \(r_f = 0.03\), and a market risk premium of \(\Ex{r_M - r_f} = 0.06\).
+    
+    \subsection{}
+    
+    We want to find the total annual payments to investors and dividends per share.
+
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \hline 
+        & Firm U & Firm L \\
+         \hline
+         \hline
+         EBIT & \(140\) & \(140\) \\
+         \hline
+         Interest & \(0\) & \(500 \times 0.06 = 30\) \\
+         \hline
+         \hline
+         Taxable Income & \(140\) & \(110\) \\
+         \hline
+         Tax & \(-0.3 \times 140 = -42\) & \(-0.3 \times 110 = -33\) \\
+         \hline
+         \hline
+         Net Income & \(98\) & \(77\) \\
+         \hline
+         \hline
+         Total Payments & \(98\) & \(107\) \\
+         \hline
+         \hline
+    \end{tabular}
+
+    The \(9\) million difference between the two firms is because of what we call the \emph{Interest Tax Shield}: the income spent paying down interest is shielded from taxes, which in turn changes the firm's payment structure. This also means that if we now look at dividends per share, Firm U pays \(\frac{98}{50} = \$1.96\) per share, while Firm L pays \(\frac{77}{30} = \$2.57\) per share. This shows why the interest tax shield is valuable to the equityholders: while the \emph{total} payments may be less without debt, each share of Firm L is more valuable to its equityholders because it carries debt.    
+
+    \subsection{}
+
+    We now want to calculate the market value of Firm U. We start by solving for 
+    \[ r_U = r_F + \beta_U \Ex{r_M - r_f} = 0.03 + 1.0 \times 0.06 = 0.09  \]
+    which in turn lets us find the share price expressed as a perpetuity of constant dividends:
+    \[ S_U = \frac{1.96}{0.09} = 21.78  \]
+    Multiplying by the \(50\) million outstanding shares, we have a total firm value of 
+    \[ V_U = 50 \times 21.78 = 1089   \]
+    or a total value of \(1.09\) billion.
+
+    \subsection{}
+
+    Now we calculate the value for firm L. We have already found that \(V_U = 1089\), and (using the revised Modigliani-Miller theorem) we can write
+    \[ V_L = V_U + V_{ITS}   \]
+    where \(V_{ITS}\) represents the value of the interest tax shield. We previously calculated the interest tax shield as \(9\), so the value in perpetuity\footnote{Do note that this assumes the firm intends to maintain its debt level \(D\) forever: if it changes (or is expected to change!), this clean perpetuity valuation should not hold. However, that would be a much more complicated problem.} is 
+    \[ V_{ITS} = \frac{9}{0.06} = 150 \]
+    That lets us write the value of firm L as 
+    \[ V_L = 1089 + 150 = 1239  \]
+
+    \section{W 10-2}
+
+    A company issues 5-year bonds with maturity value \(100\) with semi-annual coupons at rate \(0.06\). The yield rate is also \(0.06\) compounded semi-annually. The tax rate is \(0.21\).
+
+    The interest payments are immediately given as \( 0.06 \times 100 = 6  \), which gives an interest tax shield of \(6 \times 0.21 = 1.26\). The perpetuity value of this tax shield then comes out to about \(5.4\) million.
+    
+
+\end{document}
