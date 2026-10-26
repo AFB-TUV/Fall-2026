@@ -56,8 +56,6 @@
 
 	\section{}
 
-	first question
-
 	\subsection{}
 
 	check flow budget constraint construction
@@ -147,12 +145,59 @@
 	The uncompensated wage elasticity of log-log preferences is zero, but this elasticity is not uncompensated: the labor tax is rebated to the worker in its entirety! The lack of change in lifetime resources means the worker only feels work becoming relatively less worth it, which means the worker only substitutes away from work. If the revenue were instead lit on fire so the worker did not receive anything, we would expect the income and substitution effects to cancel. If instead the revenue were spent on transfers decreasing in labor hours, we would expect to see an even more extreme hours decrease in response to the labor tax since the worker would want to decrease her working hours to receive the transfer.
 
 	\section{}
-	
-	full depreciation question
 
 	\subsection{}
 
-	guess and verify
+	We can write the Lagrangian of this problem as
+
+	\[ \mathcal{L} = \sum \beta^t \ln(c_t) - \beta^t \lambda_t \left[ c_t + k_{t+1} - (1 - \tau) r_t k_t - w_t - T_t \right]    \]
+	
+	Taking first-order conditions, we find 
+
+	\begin{align*}
+	\lambda_t &= \frac{1}{c_t} \\
+	\lambda_t = \beta r_{t+1} (1 - \tau) \lambda_{t+1}
+	\end{align*}
+
+	This obviously solves to \( c_{t+1} = \beta r_{t+1} (1 - \tau) c_t \). We now want to derive a relationship between \(c\) and \(k\) to go further, which means
+
+	\[ c_t = k_t^\theta - k_{t+1}   \]
+
+	We can get here either by observing that \(c_t + k_{t+1}\) must sum to the whole income in the economy, or by manually substituting for \(r_t\), \(w_t\), and \(T_t\) in the budget constraint and observing that the resulting sum is \(k_t^\theta\). Now we guess that \(k_{t+1} = s k_t^\theta\), which gives us
+
+	\[ c_t = (1 - s) k_t^\theta   \]
+
+	Substituting this back into the Euler equation we derived earlier, we find 
+
+	\[ (1 - s) k_{t+1}^\theta = \beta r_{t+1} (1 - \tau) (1 - s) k_{t}^\theta    \]
+
+	We cancel the \(1-s\) term on each side and then substitute for \(r_{t+1}\). This gives us
+
+	\[ k_{t+1}^\theta = \beta \theta (1 - \tau) k_t^\theta k_{t+1}^{\theta - 1}    \]
+
+	which rearranges to 
+
+	\[ k_{t+1} = \beta \theta (1 - \tau) k_t^\theta    \]
+
+	We now substitute for \(k_{t+1}\) and get
+
+	\[ s k_t^\theta = \beta \theta (1 - \tau) k_t^\theta    \]
+
+	which solves to \(s = \beta \theta (1 - \tau)\) like we want. 
+
+	We can then look at the steady-state values, though these are easy: we see from our successful guess that 
+	
+	\[k_{t+1} = s k_t^\theta \implies k = s k^\theta \implies k = s^{\frac{1}{1 - \theta}} \]
+
+	and we can easily rearrange the equation for consumption to get
+
+	\[ c_t = (1 - s) k_t^\theta \implies c = (1 - s) k^\theta    \]
+
+	in steady-state. We can also take logs of the guess and derive the exact relationship
+
+	\[ k_{t+1} = s k_t \implies \ln(k_{t+1}) = \ln(s) + \ln(k_t)    \]
+
+	for \(s, k > 0\), which should always be the case.
 
 	\subsection{}
 
