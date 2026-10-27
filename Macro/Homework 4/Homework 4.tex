@@ -29,6 +29,7 @@
 \usepackage{hyperref}
 \usepackage{accents}
 \usepackage{graphicx}
+\usepackage{float}
 
 \graphicspath{{Images/}}
 \setlength{\parindent}{0pt}
@@ -58,7 +59,25 @@
 
 	\subsection{}
 
-	check flow budget constraint construction
+	In levels, we can write the flow budget constraint as
+
+	\[ B_{t+1} = (1+r_t) B_t - S_t    \]
+
+	Dividing by \(Y_t\), we have 
+
+	\[ \frac{B_{t+1}}{Y_t} = (1+r_t) \frac{B_t}{Y_t} - \frac{S_t}{Y_t}    \]
+
+	and multiplying the first by \(\frac{1+g}{1+g}\) we have
+
+	\[ \frac{(1+g) B_{t+1}}{(1+g) Y_t} = (1+g) \frac{B_{t+1}}{Y_{t+1}} = (1+r_t) \frac{B_t}{Y_t} - \frac{S_t}{Y_t}   \]
+
+	Then dividing through by \(1 +g\) we have
+
+	\[ \frac{B_{t+1}}{Y_{t+1}} = \frac{1+r_t}{1+g} - \frac{S_t}{(1+g) Y_t}    \]
+
+	which gives us an equation I am told is sufficient here:
+
+	\[ b_{t+1} = \frac{1+r_t}{1+g} b_t - \frac{s_t}{1+g}    \]
 
 	\subsection{}
 
@@ -201,10 +220,36 @@
 
 	\subsection{}
 
-	compute closed form solution
+	We now hit the economy with an unanticipated tax decrease from \(\tau = 0.2\) to \(\tau = 0.0\). 
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.38]{k_plot_cf.png}
+	\includegraphics[scale=0.38]{c_plot_cf.png}
+	\end{figure}
+
+	While capital accumulates monotonically from \(t = 0\), we see that consumption immediately drops about \(-9.55\%\). This is because the representative agent needs to temporarily move income from consumption to saving to increase her capital accumulation so she can move to the new desired level of capital.
 
 	\subsection{}
 
-	compute algorithmic solution
+	The transition as computed by the algorithm we discussed in class is implemented here:
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.38]{k_plot_iter.png}
+	\includegraphics[scale=0.38]{c_plot_iter.png}
+	\end{figure}
+
+	The consumption difference is about \(7 \times 10^{-11}\) and the capital difference is about \(9 \times 10^{-11}\), so clearly the computed solution follows the closed-form prediction up to some numerical error, converging in \(297\) iterations.
+
+	I then tried three more configurations: without the negativity guard, without the dampening, and without either. The run without the negativity guard worked completely as expected, converging in the same number of iterations and producing the same result. Removing dampening, however, resulted in the computation never converging at all!
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.38]{k_plot_bad.png}
+	\includegraphics[scale=0.38]{c_plot_bad.png}
+	\end{figure}
+
+	Some further experimentation reveals that the convergence failure happens for some \(\xi > 0.36\). Finally, the run without either the guard or the dampening failed within three iterations when the computer tried and failed to raise a negative number to a power without complex numbers enabled.
 
 \end{document}
