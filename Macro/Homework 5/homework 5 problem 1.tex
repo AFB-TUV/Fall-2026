@@ -1,0 +1,200 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage{textalpha}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyvrb}
+\usepackage{cancel}
+
+\VerbatimFootnotes
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\begin{document}
+
+	We want to solve the consumer's problem:
+
+	\[ \max_{q(\omega)} Q = \left[ \int_{\Omega} q(\omega)^{\frac{\sigma - 1}{\sigma}} d\omega \right]^{\frac{\sigma}{\sigma - 1}} \text{s.t.} \int_\Omega p(\omega) q(\omega) d\omega \leq E   \]
+
+	This lets us set up the Lagrangian:
+
+	\[ \mathcal{L} = \left[ \int_{\Omega} q(\omega)^{\frac{\sigma - 1}{\sigma}} d\omega \right]^{\frac{\sigma}{\sigma - 1}} + \lambda \left[ E - \int_\Omega p(\omega) q(\omega) d\omega \right]    \]
+
+	Now we take the first-order condition with respect to \(q(\omega)\) and set it equal to zero. This gives
+
+	\[ \cancel{\left( \frac{\sigma}{\sigma - 1} \right)} \left[ \int_{\Omega} q(\omega)^{\frac{\sigma - 1}{\sigma}} d\omega \right]^{\frac{1}{\sigma - 1}} \cancel{\left( \frac{\sigma - 1}{\sigma} \right)} \left( q(\omega)^{-\frac{1}{\sigma}} \right) - \lambda p(\omega) = 0   \]
+
+	We can look at this first-order condition and recognize that the first surviving term is just \( Q^{\frac{1}{\sigma}}  \). Substituting this and rearranging to solve for \(\lambda\), we get 
+
+	\[ \lambda = \frac{1}{p(\omega)} q(\omega)^{-\frac{1}{\sigma}} Q^{\frac{1}{\sigma}}   \]
+
+	Now we consider a second good \(\omega'\), which should be subject to the same logic mutatis mutandis. Both first-order conditions are rearranged to be set equal to \(\lambda\), so we can write
+
+	\[ \frac{1}{p(\omega)} q(\omega)^{-\frac{1}{\sigma}} \cancel{Q^{\frac{1}{\sigma}}}  = \frac{1}{p(\omega')} q(\omega')^{-\frac{1}{\sigma}} \cancel{Q^{\frac{1}{\sigma}}}   \]
+
+	From here it is simple to rearrange this equation to give
+
+	\[ \frac{q(\omega)}{q(\omega')} = \left(\frac{p(\omega)}{p(\omega')}\right)^{-\sigma}    \] 
+
+	as required.
+
+	Now we want to derive the aggregate price index. We eventually do this by integrating the price function for \(\omega\) over the goods index \(\Omega\), but we first need to do it in such a way that we get rid of \(q(\omega)\). We do this by integrating out \(\omega\) such that it becomes the aggregate \(Q\). 
+	
+	We start from our first-order condition rearranged for \(\lambda\), and rearrange it to solve for \(q(\omega)\):
+
+	\[ \lambda = \frac{1}{p(\omega)} q(\omega)^{-\frac{1}{\sigma}} Q^{\frac{1}{\sigma}} \implies \lambda p(\omega) Q^{-\frac{1}{\sigma}} = q(\omega)^{-\frac{1}{\sigma}}  \implies q(\omega) = \lambda^{-\sigma} p(\omega)^{-\sigma} Q    \]
+	
+	We now raise both sides to the power of \( \frac{\sigma - 1}{\sigma} \) to get 
+
+	\[ q(\omega)^{\frac{\sigma - 1}{\sigma}} = \left[\lambda^{-\sigma} p(\omega)^{-\sigma} Q\right]^{\frac{\sigma - 1}{\sigma}} = \lambda^{1 - \sigma} p(\omega)^{1 - \sigma} Q^{\frac{\sigma - 1}{\sigma}} \]
+
+	Then we integrate:
+
+	\[ Q^{\frac{\sigma - 1}{\sigma}} = \int_{\Omega} q(\omega)^{\frac{\sigma - 1}{\sigma}} d\omega = \int_{\Omega} \lambda^{1 - \sigma} p(\omega)^{1 - \sigma} Q^{\frac{\sigma - 1}{\sigma}}  d\omega    \]
+
+	We can pull the \(Q\) and \(\lambda\) terms out of the integral because they are independent of the quantity index \(\omega\), which gives us
+
+	\[ \cancel{Q^{\frac{\sigma - 1}{\sigma}}} = \cancel{Q^{\frac{\sigma - 1}{\sigma}}} \lambda^{1 - \sigma} \int_{\Omega} p(\omega)^{1 - \sigma} d\omega \implies 1 =  \lambda^{1 - \sigma} \int_{\Omega} p(\omega)^{1 - \sigma} d\omega     \]
+
+	We now solve this for \(\lambda\):
+
+	\[ \lambda^{- (\sigma - 1)} = \int_{\Omega} p(\omega)^{1 - \sigma} d\omega \implies \lambda = \left[ \int_{\Omega} p(\omega)^{1 - \sigma} d\omega \right]^{- \frac{1}{1 - \sigma}}  \]
+
+	We can look at the resulting expression and recognize that it can be rewritten
+
+	\[ \lambda = \left(\left[ \int_{\Omega} p(\omega)^{1 - \sigma} d\omega \right]^{\frac{1}{1 - \sigma}}\right)^{-1} = \frac{1}{\left[ \int_{\Omega} p(\omega)^{1 - \sigma} d\omega \right]^{\frac{1}{1 - \sigma}}}  \]
+
+	The term in the denominator is recognizably a CES quantity, so let's call this the price index. Define it as
+
+	\[ P \equiv \left( \int_{\Omega} p(\omega)^{1 - \sigma} d\omega \right)^{\frac{1}{1 - \sigma}}  \]
+
+	so the equation becomes
+
+	\[ \lambda = \frac{1}{P} = P^{-1} \]
+
+	Now, because we have integrated the original first-order condition, our solution for \(\lambda\) is now algebraically distinct from the original first-order condition. This allows us to substitute for \(\lambda\) in the (rearranged) first-order condition:
+
+	\[ q(\omega) = \lambda^{-\sigma} p(\omega)^{-\sigma} Q = P^{\sigma} p(\omega)^{-\sigma} Q = \left(\frac{p(\omega)}{P}\right)^{-\sigma} Q    \]
+
+	Now we derive a way to put expenditures \(E\) into this equation. Our equation for expenditures is the budget constraint \(E = p(\omega) q(\omega)\), so we can get there by multiplying both sides by \(p(\omega)\) and integrating:
+	
+	\[ E = \int_{\Omega} p(\omega) q(\omega) d\omega = \int_{\Omega} p(\omega) \left(\frac{p(\omega)}{P}\right)^{-\sigma} Q  d\omega   \]
+	
+	Now we observe that the aggregate of prices, the bracketed expression \( P \), will not depend on \(\omega\) since we have already taken care of the \(\omega\) by integrating over \(\Omega\)! This lets us pull it (and \(Q\)) out of the integral:
+
+	\[ E = \frac{Q}{P^{-\sigma}} \left( \int_{\Omega} p(\omega) p(\omega)^{-\sigma} d\omega \right) = \frac{Q}{P^{-\sigma}} \int_{\Omega} p(\omega)^{1 -\sigma} d\omega \]
+
+	We recognize that the latter term is just \( P^{1 - \sigma}  \), so we can finally write aggregate expenditures as
+
+	\[ E = Q P^{1 - \sigma + \sigma} = P Q   \]
+
+	which is what we want!
+
+	Now we observe that we obtained \(\lambda\) above as \(\lambda = \frac{1}{P}\). This allows us to derive \(q(\omega)\) as a function of \(P\) from the first-order condition: 
+
+	\[ q(\omega) = \lambda^{-\sigma} p(\omega)^{-\sigma} Q = \left(\frac{p(\omega)}{P}\right)^{-\sigma} Q  \]
+
+	Multiplying the right-hand side by \(1 = \frac{P}{P}\), we derive an equation in terms of total expenditures E:
+
+	\[ q(\omega) = \left(\frac{p(\omega)}{P}\right)^{-\sigma} \frac{PQ}{P} = \left(\frac{p(\omega)}{P}\right)^{-\sigma} \frac{E}{P} \] 
+
+	as required.
+
+	Now we consider the problem of the monopolistically competitive plan. It chooses a price \(p(\omega)\) to solve
+
+	\[ \max_{p(\omega)} \pi = \left( p(\omega) - \frac{w}{\phi} \right)  q(\omega)   \]
+
+	where \(\phi\) represents the idiosyncratic productivity of the firm. We now have an equation for \(q(\omega)\), so we can substitute it to get 
+
+	\[ \max_{p(\omega)} \left( p(\omega) - \frac{w}{\phi} \right) \left(\frac{p(\omega)}{P}\right)^{-\sigma} \frac{E}{P} = \frac{E}{P} \left[ \frac{p(\omega)^{1 - \sigma}}{P} - \frac{w p(\omega)^{-\sigma}}{\phi P} \right]  \]
+
+	We derive the first-order condition as
+
+	\[ 0 = \frac{E}{P} \left[ (1 - \sigma) \frac{p(\omega)^{-\sigma}}{P} + \frac{\sigma w p(\omega)^{-1 - \sigma}}{\phi P} \right]      \]
+
+	We can immediately move one term to the other side of the equation and get rid of \(\frac{E}{P}\) and \(\frac{1}{P}\), which appear in both terms. That gives
+
+	\[ (\sigma - 1) p(\omega)^{-\sigma} = \sigma \frac{w}{\phi} p(\omega)^{-1 - \sigma}    \]
+
+	We can multiply both sides by \(p(\omega)^{- 1 - \sigma}\) and get \(p(\omega)\) on one side, so we do that to get the much better-looking 
+	
+	\[ (\sigma - 1) p(\omega) = \frac{\sigma w}{\phi}   \]
+
+	which becomes
+
+	\[ p(\omega) = \frac{\sigma}{\sigma - 1} \frac{w}{\phi}    \]
+
+	Now we have an equation for the price. Returning to the original firm problem, we maximized profits as
+
+	\[ \pi = \left( p(\omega) - \frac{w}{\phi} \right)  q(\omega)    \]
+
+	We first consider just revenue, dropping the \(- \frac{w}{\phi} q(\omega)\) term. This becomes
+
+	\[ r(\phi) \equiv p(\omega) q(\omega) = \frac{\sigma}{\sigma - 1} \frac{w}{\phi} \left(\frac{p(\omega)}{P}\right)^{-\sigma} \frac{E}{P} = \left( \frac{\sigma}{\sigma - 1} \frac{w}{\phi} \right) p(\omega)^{-\sigma} EP^{\sigma - 1}   \]
+
+	We then substitute for \(p(\omega)\) again:
+
+	\[ r(\phi) = \left( \frac{\sigma}{\sigma - 1} \frac{w}{\phi} \right) \left( \frac{\sigma}{\sigma - 1} \frac{w}{\phi} \right)^{-\sigma} EP^{\sigma - 1} = EP^{\sigma - 1} \left( \frac{\sigma}{\sigma - 1} \frac{w}{\phi} \right)^{1 - \sigma}    \]
+
+	This is exactly the equation we want for revenue! Now we solve for profits:
+
+	\[ \pi(\phi) = r(\phi) - \frac{w}{\phi}  q(\omega) = EP^{\sigma - 1} \left( \frac{\sigma}{\sigma - 1} \frac{w}{\phi} \right)^{1 - \sigma} - \frac{w}{\phi} p(\omega)^{-\sigma} E P^{\sigma - 1}   \]
+
+	and again re-substitute for \(p(\omega)\) to get 
+
+	\[ \pi(\phi) = EP^{\sigma - 1} \left( \frac{\sigma}{\sigma - 1} \frac{w}{\phi} \right)^{1 - \sigma} - \frac{w}{\phi} \left( \frac{\sigma}{\sigma - 1} \frac{w}{\phi} \right)^{-\sigma} E P^{\sigma - 1}     \]
+
+	We multiply the second term by \( 1 = \left(\frac{\sigma} {\sigma - 1}\right) \left(\frac{\sigma - 1} {\sigma}\right)\), which allows us to rewrite it as
+
+	\[ \frac{\sigma - 1}{\sigma} \left( \frac{\sigma}{\sigma - 1} \frac{w}{\phi} \right)^{1-\sigma} E P^{\sigma - 1}   \]
+
+	Thus we can write profits as 
+
+	\[ \pi(\phi) = \left[EP^{\sigma - 1} \left( \frac{\sigma}{\sigma - 1} \frac{w}{\phi} \right)^{1 - \sigma}\right] \left( \frac{\sigma}{\sigma} - \frac{\sigma - 1}{\sigma} \right) = \frac{1}{\sigma} \left[EP^{\sigma - 1} \left( \frac{\sigma}{\sigma - 1} \frac{w}{\phi} \right)^{1 - \sigma}\right] = \frac{r(\phi)}{\sigma}    \]
+
+	as required.
+	
+
+\end{document}

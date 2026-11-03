@@ -7,7 +7,7 @@ r_2 = 0.015
 g_2 = 0.02
 
 function surplus(b, r, g)
-    return ((1+r)/(1+g))*b - b
+    return (((1+r)/(1+g))*b - b)*(1+g)
 end
 
 s1 = surplus(b, r_1, g_1)
@@ -27,3 +27,4 @@ end
 
 h1 = h(α, θ, cy, τ1)
 h2 = h(α, θ, cy, τ2)
+hratio = h2/h1

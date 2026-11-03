@@ -1,0 +1,101 @@
+\documentclass[12pt, letterpaper, parskip = full]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{breqn}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Worksheet 11}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+	\maketitle
+
+	\section{W 11-1}
+
+	purely idiosyncratic risk means zero $\beta$ -- market risk premium is extraneous information!
+
+	\subsection{}
+
+	The firm's expected value at the end of the year is \(0.5 \times 250 + 0.5 \times 90 = 170\) million, which with total equity financing implies a total valuation of \(\frac{170}{1.04 \times 10} = 163.5\) in the current period, and \(\frac{170}{1.04 \times 10} = 16.35\) per share.
+
+	\subsection{}
+
+	With debt financing, we expect to repay \(150\) to debtors in the good state or \(90\) in the bad state. Equityholders will have an asset worth \(100\) in the good state and \(0\) in the bad state. This means that the firm's shares are valued at 
+	
+	\[\frac{0.5 \times 100 + 0.5 \times 0}{1.04} = 48.08 \]
+
+	total and the debt is valued at 
+
+	\[ \frac{0.5 \times 150 + 0.5 \times 90}{1.04} = 115.38 \]
+
+	Note that these sum to \(115.38 + 48.08 = 163.5\), confirming that the firm's valuation is independent of the capital structure as expected under perfect capital markets.
+
+	\subsection{}
+
+	Now we need to consider the case where the firm has to pay bankruptcy costs. Bankruptcy costs are \(20\%\) of firm value, so this means the expected value of the debt will now be
+
+	\[ \frac{0.5 \times 150 + 0.5 \times 90 \times 0.8}{1.04} = 106.73     \]
+
+	However, the equityholders have no exposure to the bankruptcy costs beyond the value of the asset dropping to \(0\), so their valuation of the firm will remain unchanged. This does mean that the value of the leveraged firm is now smaller:
+
+	\[ D + E = V = 106.73 + 48.08 = 154.81  \]
+
+	In other words, the firm facing extra costs (in expectation) lowers its total value. This is a sensible result.
+
+	\subsection{}
+
+	We need to figure out the share price to do this problem. After issuing debt, the firm will have valuation according to the values we found in part \(C\). This gives our share price at
+
+	\[ \frac{115.38 + 48.08}{P} = 10 \implies P = 16.36     \]
+
+	We thus can buy back \(\frac{115.38}{16.36} = 7.05\) million of the original \(10\) million shares. With bankruptcy costs, however, we instead have a share price of
+
+	\[ \frac{106.73 + 48.08}{P} = 10 \implies 15.48   \]
+
+	which means we can purchase only \( \frac{106.73}{15.48} = 6.89 \) million of the original \(10\) million shares in a world with bankruptcy costs.
+
+\end{document}

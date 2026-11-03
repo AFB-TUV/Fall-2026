@@ -30,6 +30,8 @@
 \usepackage{accents}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{fancyvrb}
+\VerbatimFootnotes
 
 \graphicspath{{Images/}}
 \setlength{\parindent}{0pt}
@@ -55,6 +57,8 @@
 
 	\maketitle
 
+	Permanent link plus a code repository \href{https://github.com/AFB-TUV/Fall-2026/tree/main/Macro/Homework%204}{here}
+
 	\section{}
 
 	\subsection{}
@@ -78,6 +82,8 @@
 	which gives us an equation I am told is sufficient here:
 
 	\[ b_{t+1} = \frac{1+r_t}{1+g} b_t - \frac{s_t}{1+g}    \]
+
+	Plugging in the numbers given, the first set gives \(s = 2\%\) while the second set gives \(s = -0.5\%\) as the primary surpluses that fix debt for each allocation. The difference is that with the first allocation, the debt stock grows faster than the economy so the government needs to take money in to balance the budget, while with the second allocation, the economy is growing fast enough that the government can afford to run a small deficit each period. These changes will of course depend on the exact makeup of the economy and the debt stock -- because households do not have a fixed desire to hold capital, the interest rate will be determined in equilibrium and changing the quantity of debt will change the price.
 
 	\subsection{}
 
@@ -106,7 +112,7 @@
 	c_2 &= y_2 - (1+r) T
 	\end{align*}
 
-	We now want to show what happens when \(T\) decreases by \(\triangle\) in period \(1\) and increases by \(\triangle\) in period \(2\). Let us denote the old aggregate consumption in each period as \(C_t\) and the new aggregate consumption as \(C'_t\).  Let us also assume without loss of generality that \(\beta (1+r) = 1\) so that for the unconstrained consumer, \(u'(c_1) = u'(c_2) \implies c_1 = c_2 \equiv c\). (This does not change the result, but it makes it so we have to write slightly less). Then we can write per-period aggregate consumption as 
+	We now want to show what happens when \(T\) decreases by \(\triangle\) in period \(1\) and increases by \(\triangle\)\footnote{For some reason, I do not seem to be able to render \Verb"\Delta" in any font (it shows up as \(\Delta\)). I am using \Verb"\triangle" instead. This annoys me, but it's obviously inconsequential.} in period \(2\). Let us denote the old aggregate consumption in each period as \(C_t\) and the new aggregate consumption as \(C'_t\).  Let us also assume without loss of generality that \(\beta (1+r) = 1\) so that for the unconstrained consumer, \(u'(c_1) = u'(c_2) \implies c_1 = c_2 \equiv c\). (This does not change the result, but it makes it so we have to write slightly less). Then we can write per-period aggregate consumption as 
 	\begin{align*}
 	C_1 &= (1 - \mu) c + \mu (y_1 + T) \\
 	C'_1 &= (1 - \mu) c + \mu (y_1 + T + \triangle) \\
@@ -161,6 +167,8 @@
 	\[ h_t = \frac{(1 - \tau)(1 - \theta)}{(1 - \tau)(1 - \theta) + \alpha \frac{c_t}{y_t}}   \]
 	as required.
 
+	Plugging in the numbers given, we find an hours ratio of about \(0.73\), so the high-labor-tax economy's workers only work about three-fourths the hours of the low-labor-tax economy's workers.
+
 	The uncompensated wage elasticity of log-log preferences is zero, but this elasticity is not uncompensated: the labor tax is rebated to the worker in its entirety! The lack of change in lifetime resources means the worker only feels work becoming relatively less worth it, which means the worker only substitutes away from work. If the revenue were instead lit on fire so the worker did not receive anything, we would expect the income and substitution effects to cancel. If instead the revenue were spent on transfers decreasing in labor hours, we would expect to see an even more extreme hours decrease in response to the labor tax since the worker would want to decrease her working hours to receive the transfer.
 
 	\section{}
@@ -175,7 +183,7 @@
 
 	\begin{align*}
 	\lambda_t &= \frac{1}{c_t} \\
-	\lambda_t = \beta r_{t+1} (1 - \tau) \lambda_{t+1}
+	\lambda_t &= \beta r_{t+1} (1 - \tau) \lambda_{t+1}
 	\end{align*}
 
 	This obviously solves to \( c_{t+1} = \beta r_{t+1} (1 - \tau) c_t \). We now want to derive a relationship between \(c\) and \(k\) to go further, which means
