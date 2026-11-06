@@ -1,0 +1,104 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage{textalpha}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyvrb}
+\usepackage{cancel}
+
+\VerbatimFootnotes
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Worksheet 15 \\ Actuarial Corporate Finance}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+    \maketitle
+
+    \section{W 15-1}
+
+    \subsection{}
+
+    This question asks about a \emph{forward contract}, not an option. This means you have no ability to decline if the price drops! Therefore the payoffs in \(6\) months are \(-10\), \(-5\), \(0\), \(5\), and \(10\). 
+
+    \subsection{}
+
+    Now given a call option on the same asset, we get payoffs of \(0\), \(0\), \(0\), \(5\), and \(10\). since we take the maximum of the forward contract payoff and \(0\).
+
+    \subsection{}
+
+    The call option should be more expensive than the forward option since its return is always equal to or greater than that of the forward option.
+
+    \section{W 15-2}
+
+    We are given that investor A has a call option with a strike price of \(45\) and investor B has a put option with a strike price of \(135\). The final stock price is \(S\), giving investor A a payout of \(12\). This means that we must have
+
+    \[ 12 = K - 45 \implies K = 57    \]
+
+    This means that investor B's option is also far in the money! Her payoff should be 
+
+    \[ 135 - 57 = 78     \]
+
+    \section{W 15-3}
+
+    Options A and B are both put options, with strike prices \(K_A = 70\) and \(K_B = 80\) respectively. A put option is in the money if \(K - S_T > 0\). We have \(K_A < K_B\), so 
+    
+    \[ K_B - S_T > K_A - S_T > 0   \]
+
+    Therefore, if we have \(K_A - S_T > 0\), we must have \(K_B - S_T > 0\). Then we see that if Option A is in the money, then Option B should also be in the money. (So multiple-choice answer A is correct!)
+
+    \section{W 15-4}
+
+    The first option is to buy a share of the stock for \(100\), the second is to buy a call option for \(5\), and the third is to buy \(20\) call options for \(100\).
+
+    The riskiest of these options is to buy the call options. If the stock drops, you still have \(95\) in the second scenario and the stock itself at whatever its price is in the first scenario, but in the third scenario you have \(0\)!
+    
+    The riskiest strategy between the first and second is in the eye of the beholder. The second is the least risky because Joey would only be out \(5\) if the stock price drops, while he could theoretically be out the entire \(100\) if the company goes bankrupt!\footnote{Though I would argue that if Joey plans to invest for the long-term, the first strategy likely makes more sense --- if Joey holds the asset for the long term, it will likely go back up at some point given how equity prices have behaved historically.}
+
+
+
+\end{document}
