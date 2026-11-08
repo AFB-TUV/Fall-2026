@@ -1,0 +1,107 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage{textalpha}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyvrb}
+\usepackage{cancel}
+
+\VerbatimFootnotes
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Homework 15 \\ Actuarial Corporate Finance}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+    \maketitle
+
+    \section{Notes}
+
+    We are talking about Put-Call Parity: a relationship between the put and call options we analyzed in the last lecture. The idea is that given a stock, a put and call option, and a bond, we can construct a portfolio out of the options that replicates the payoffs of the stock and bond. These portfolios must equal each other due to no-arbitrage: two portfolios with the same payouts in the same states of nature should also have the same price attached because they should be worth the same. We can write this as 
+
+    \[ S_0 + P_K,T = K \e^{-rT} + C_{K,T} \implies P_{K,T} - C_{K,T} = K \e^{-rT} - S_0    \]
+
+    Note that this is irrespective of the pricing model! So it only requires no-arbitrage to hold. (Also note that it only applies to European options.)
+
+    \section{X 16-1}
+
+    We now wish to create a risk-free asset using our other financial instruments: in particular, a synthetic zero-coupon bond that pays \(\$5000\) a year. We have a stock worth \(97.42\), a call on the stock worth \(12.44\), and a put on the stock worth \(10.62\). Using put-call parity we should be able to construct a portfolio that replicates the zero-coupon bond!
+
+    \subsection{}
+
+    First we want to find the risk-free rate. Using put-call parity, we can write
+
+    \[ 97.42 + 10.62 = 100\e^{-r \times 1} + 12.44 \implies \boxed{r = 0.045}  \]
+
+    \subsection{}
+
+    Now we want to know how many shares we need to get our synthetic bond that pays \(5000\). Every share of stock we purchase requires that we long a put and short a call. We do this at a strike price of \(100\), so this should give a certain payout of \(100\). Why? 
+
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+         & \(t = 0\) & \(t = 1, S_1 \leq 100\) & \(t = 1, S_1 \geq 100\) \\
+         \hline
+         Long Stock & \(-92.42\) & \(S_1\) & \(S_1\) \\ 
+         \hline
+         Long Put & \(-10.62\) & \(100 - S_1\) & \(0\) \\
+         \hline
+         Short Call & \(12.44\) & \(0\) & \(-(S_1 - 100)\) \\
+         \hline
+         Total & \(-95.6\) & \(100\) & \(100\) \\
+         \hline
+    \end{tabular}
+
+    Since the total payout is \(100\), we need to buy \(50\) shares of the stock, buy \(50\) puts, and sell \(50\) calls to construct our desired bond that pays out \(5000\). 
+
+    \section{H 15-1}
+
+    Now we consider a put and call, each with strike price of \(60\), maturation date of \(0.5\) years, and on a stock with a current price of \(57.48\). We are also given \(r = 0.03\). We want the price difference between the two options, which is given by 
+
+    \[ | P_{K,T} - C_{K,T} |  = 60 \e^{-rT} - S_0 = 60 \e^{-0.5 \times 0.03} - 57.48 \implies \boxed{P_{K,T} - C_{K,T} = 1.63}   \]
+
+
+\end{document}

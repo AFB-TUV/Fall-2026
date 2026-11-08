@@ -1,0 +1,103 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage{textalpha}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyvrb}
+\usepackage{cancel}
+
+\VerbatimFootnotes
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Worksheet 16 \\ Actuarial Corporate Finance}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+    \maketitle
+
+    \section{W 16-1} 
+
+    We are given a stock with \(S_0 = 60\), a difference between the call and put option of \(C - P = 0.15\), an expiration date of \(4\) years, and a strike price of \(K = 70\). We are asked to determine the risk-free rate. By put-call parity, we can calculate
+
+    \[ P - C = -0.15 = 70 \e^{-4r} - 60   = K \e^{-rT} - S_0 \implies r = 3.92\%    \]
+
+    \section{W 16-2}
+
+    We are given a stock worth \(S_0 = 500\), a risk-free rate of \(r = 0.06\), options with an expiration date of \(T = 1\), a call option price of \(66.59\), and a put option price of \(18.64\). We are asked for the strike price. We use put-call parity to write
+
+    \[ 18.64 - 66.59 = K \e^{-0.06} - 500 \implies K = 480.00    \]
+
+    \section{W 16-3}
+
+    We want to buy the index in one year at a price of \(S_1 = 1025\). We ensure this can happen by buying and selling put and call options with the same strike price. One share of the index currently sells for \(1000\). We are also given \(T = 1\) (implicitly) and \(r = 0.05\). 
+    
+    The idea here is that we can short the put option and buy the call option to replicate the linear function provided by buying the stock. (see graph in notes). Because \(C - P > 0\), the answer should be \(E\). (Why? Because \(1025 \e^{-.05} - 1000 \approx -25 = P - C\).)
+
+    \section{W 16-4}
+
+    We are given \(S_0 = 40\), \(r = 0.08\), a strike price of \(K = 35\), and \(P - C = -3.35\). The time to expiration is \(T = 0.25\) years. We want the amount that a \(K = 40\) put exceeds the \(K = 35\) put.
+    
+    The idea is that we can use the one \(K\) to get to the other. The current information gives us 
+
+    \begin{align*}
+    P_{35} - C_{35} &= 35 \e^{-0.25 \times 0.08} - 40 \\
+    P_{40} - (C_{35} + 3.35) &= 40 \e^{-0.25 \times 0.08} - 40
+    \end{align*}
+
+    Subtracting these two equations, we get 
+
+    \[ P_{35} - P_{40} + 3.35 = -5 \e^{-.02} \implies P_{40} - P_{35} = 5 \e^{-.02} + 3.35 = 8.25   \]
+
+
+    
+    %Buying the index in one year at a price of \(1025\) looks like having \(1025\) in cash in one year. Since one of the components of put-call parity is a bond, that means we can write
+
+    %\[ P - C = 1025 \e^{-0.05} - 1000 = -24.989    \]
+
+    %The negative number suggests that we want to buy the put and sell the call, borrowing money to make up the difference. This points to answer B.
+
+\end{document}

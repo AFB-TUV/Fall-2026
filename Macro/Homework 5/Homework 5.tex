@@ -59,6 +59,8 @@
 
     \maketitle
 
+	A permanent link to this assignment, plus a code repository, can be found at \url{https://github.com/AFB-TUV/Fall-2026/tree/main/Macro/Homework%205}.
+
     \section{CES: Profit Maximization}
 
     \subsection{}
@@ -209,7 +211,39 @@
 
 	as required.
 
-    \subsection{}
+	\subsection{}
+
+    \subsubsection{\texorpdfstring{$\bm{\sigma \rightarrow \infty}$}{R\textasciicircum n}}
+
+	As the elasticity of substitution \(\sigma\) approaches \(\infty\), goods should become infinitely substitutable --- meaning that we move towards a case where we have a mass of firms measure one supplying identical goods. This is just perfect competition! While there is not an easy way to demonstrate the model limits to infinite competition here, we can verify this by looking at the quantity function:
+
+	\[ \lim_{\sigma \rightarrow \infty} q(\omega) = \lim_{\sigma \rightarrow \infty} \left(\frac{p(\omega)}{P}\right)^{-\sigma} \frac{E}{P} = 0   \]
+
+	We can interpret this result in two ways. First, if we assume all firms have the same productivity, each firm should produce an infintesimally small amount of the good in the limit --- which limits to zero. Alternatively, if we think about firms drawing their productivities from some underlying distribution, then the most productive firm should be able to undercut the others on price and get all the business --- which means that firm would have mass one and be the only firm producing, while the less productive firms would be driven out of the market in equilibrium and then produce a zero quantity of goods.
+
+	\subsubsection{\texorpdfstring{$\bm{\sigma \rightarrow 0}$}{R\textasciicircum n}}
+
+	Now we consider the case where \(\sigma\) approaches zero. The easiest way to think about this case is considering the relationship between two different goods:
+
+	\[ \frac{q(\omega)}{q(\omega')} = \left(\frac{p(\omega)}{p(\omega')}\right)^{-1} = \left(\frac{p(\omega')}{p(\omega)}\right)    \]
+
+	What this relationship tells us is that the consumer buys positive quantities of each good in relationship with their prices --- effectively a case similar to the Cobb-Douglas production function. Effectively, this means a constant share of expenditure is assigned to each good, and the firm derives its desired production based on the relationship between the expenditure and its price:
+
+	\[q(\omega) = \left(\frac{p(\omega)}{P}\right)^{-1} \frac{E}{P} = \frac{E}{p(\omega)}\]
+
+	Of course, each firm is able to monopolistically set its own price and quantity, so this function becomes ill-behaved since the firm wants to produce as little as possible to minimize costs. Effectively, the quantity produced will limit to \(0\) as the firm makes money by raising prices arbitrarily high and producing an infinitesimal amount of the good, but the revenue will always be equivalent to the expenditure share allocated to the firm's good.
+
+	\subsubsection{\texorpdfstring{$\bm{\sigma \rightarrow 1}$}{R\textasciicircum n}}
+
+	Now we consider the case of \(\sigma \rightarrow 0\). In this case, we have the relationship between two goods given by 
+
+	\[ \frac{q(\omega)}{q(\omega')} = \left(\frac{p(\omega)}{p(\omega')}\right)^{0} = 1 \implies q(\omega) = q(\omega')    \]
+
+	This relationship means that the consumer buys the same amount of each good --- the case of perfect complements! In this case we should expect each firm to capture a quantity of goods equal to the lowest produced by any firm. This more or less shows up in the expression for quantities:
+
+	\[q(\omega) = \left(\frac{p(\omega)}{P}\right)^{0} \frac{E}{P} = \frac{E}{P}\]
+
+	In the Leontief case, quantity is only determined by the consumer's total expenditures and the overall price level; the firm-specific productivity does not enter the firm's decision at all. We can also find that revenue is zero, but this is because with measure one of firms, each firm is producing the same infinitesimal quantity of their good, which means their revenue limits to zero.
 
     \section{Chaney (2008)}
 
@@ -245,7 +279,7 @@
 
     The conditional expectation is just the expectation of the conditional probability distribution, which is just our new Pareto distribution. The formula for the expectation is a property well-known enough that we could simply state it, but let's derive it by integrating the survival function.
 
-    \[  \int_{\phi_d^*}^{\infty} S(\phi | \phi > \phi_d^*) d\phi = \int_{\phi_d^*}^{\infty} \left(\phi_d^*\right)^k\left(\phi\right)^{-k} d\phi = \left[ \left(\phi_d^*\right)^k \left(\frac{1}{1 - k}\right) \phi^{1 - k}   \right]_{\phi_d^*}^\infty    \]
+    \[  \int_{\phi_d^*}^{\infty} S(\phi | \phi > \phi_d^*) d\phi = \int_{\phi_d^*}^{\infty} \left(\phi_d^*\right)^k\left(\phi\right)^{-k} d\phi = \left[ \left(\phi_d^*\right)^k \left(\frac{1}{-k+1}\right) \phi^{-k+1}   \right]_{\phi_d^*}^\infty    \]
 
     We assume that \(k \geq 1\), which should be safe given the typical values chosen for \(k\). This prevents the expectation from limiting to \(\infty\). Then we can write
 
@@ -253,17 +287,94 @@
 
     \subsection{}
 
-    \subsection{}
+	We now assume that the consumer has a CES demand function. From the results in the previous part, that immediately lets us write the general revenue function as 
+
+	\[ r(\phi) = EP^{\sigma - 1} \left( \frac{\sigma}{\sigma - 1} \frac{w}{\phi} \right)^{1 - \sigma}    \]
+
+	with profit given by \(\pi(\phi) = \frac{r(\phi)}{\sigma} - cf\). Now we want to find revenue conditional on exceeding a cutoff \(\phi_c\). Let's rewrite the revenue function to find this:
+
+	\[ \Ex{r(\phi)\ \middle|\ \phi > \phi_c} = \Ex{ EP^{\sigma - 1} \left( \frac{\sigma}{\sigma - 1} \frac{w}{\phi} \right)^{1 - \sigma}\ \middle|\ \phi > \phi_c }    \]
+
+	The only thing inside the expectation that is dependent on \(\phi\) is \(\phi\) itself, and it is separable from the rest of the function. That means we can write
+
+	\[  \Ex{r(\phi)\ \middle|\ \phi > \phi_c}  = EP^{\sigma - 1} \left( \frac{\sigma}{\sigma - 1} w \right)^{1 - \sigma} \Ex{ \phi^{\sigma - 1}\ \middle|\ \phi > \phi_c}  \]
+
+	We already know that \(\phi^{\sigma - 1}\) is just a function taken over the new Pareto distribution with minimum \(\phi_c\), so it remains to find this function. This can be found through survival analysis\footnote{Strangely enough, this result is \emph{not} commonly taught in actuarial material? It seems like it would be extremely useful. The proof is straightforward; I found it on slide 10 \href{https://archive.math.arizona.edu/jwatkins/B3_expectedvalue.pdf}{here}.} as 
+
+	\[ \Ex{\phi^{\sigma - 1}} = \int_{\phi_c}^\infty \left(\frac{d}{dx} \phi^{\sigma - 1} \right) S(\phi) d\phi = \int_{\phi_c}^\infty (\sigma - 1) \phi^{\sigma - 2} \phi_c^k \phi^{-k} d\phi \]
+
+	We rewrite this integral as
+
+	\[ \Ex{\phi^{\sigma - 1}} = (\sigma - 1) \phi_c^k \int_{\phi_c}^\infty \phi^{\sigma - 2 - k} d\phi = (\sigma - 1) \phi_c^k \left[ \frac{1}{\sigma - 1 - k} \phi^{\sigma - 1 - k} \right]_{\phi_c}^\infty    \]
+
+	Assuming we have \(k > \sigma - 1\) as given to us in the problem, the bracketed expression limits to zero as \(\phi\) approaches \(\infty\). Then we derive
+
+	\[ \Ex{\phi^{\sigma - 1}} = \frac{\sigma - 1}{k - (\sigma - 1)} \phi_c^{\sigma - 1}     \]
+
+	Note that this expectation should explode as \(k \rightarrow \sigma - 1\); it is not well-defined for smaller values of \(k\). 
 
     \subsection{}
+
+	We now want to find the zero-profit cutoff rule for both domestic firms and exporters. The profit function is given for domestic firms by
+
+	\[ \pi(\phi) = \frac{1}{\sigma} \left[EP^{\sigma - 1} \left( \frac{\sigma}{\sigma - 1} w \right)^{1 - \sigma}\right] \Ex{\phi^{\sigma - 1} \middle| \phi > \phi_d^*} - f_d        \]
+
+	and for exporters as
+
+	\[ \pi(\phi) = \frac{\tau}{\sigma} \left[ E^*\left(P^*\right)^{\sigma - 1} \left( \frac{\sigma}{\sigma - 1} w \right)^{1 - \sigma}\right] \Ex{\phi^{\sigma - 1} \middle| \phi > \phi_x^*} - f_x        \]
+
+	These expressions are easy enough to manipulate for \(\phi_d^*\) and \(\phi_x^*\) now that we have a formula for the conditional expectation term. Plugging it in, setting the profit functions equal to zero, and isolating \(\phi_d^*\) and \(\phi_x^*\), we find
+	
+	\begin{align*}
+	\phi_d^* &= \left( \frac{\sigma}{\sigma - 1} \right)^{\frac{\sigma}{\sigma - 1}} \left(w f_d (k - (\sigma - 1))\right)^{\frac{1}{\sigma - 1}} \left(\frac{E^{\frac{1}{\sigma - 1}}}{P}\right) \\
+	\phi_x^* &= \left( \frac{\sigma}{\sigma - 1} \right)^{\frac{\sigma}{\sigma - 1}} \left(\tau w f_x (k - (\sigma - 1))\right)^{\frac{1}{\sigma - 1}} \left(\frac{\left(E^*\right)^{\frac{1}{\sigma - 1}}}{P^*}\right) \\
+	\end{align*}
+
+    \subsection{}
+
+	The fraction of domestic firms that are exporters is given by solving the survival function of the distribution conditional on producing domestically above the export cutoff:
+
+	\[ S(\phi_x^*) = \left(\frac{\phi_d^*}{\phi_x^*}\right)^k      \]
+
+	We can simplify this expression further before plugging in the expression we found above. Observe that we can rewrite our general profit functions as
+
+	\begin{align*}
+	\pi(\phi_d^*) &= EP^{\sigma - 1} C \left(\phi_d^*\right)^{\sigma - 1} - f_d = 0 &\implies C = \frac{f_d}{\left(\phi_d^*\right)^{\sigma - 1} EP^{\sigma - 1}}\\
+	\pi(\phi_x^*) &= E^* \left(P^*\right)^{\sigma - 1}\tau C \left(\phi_x^*\right)^{\sigma - 1} - f_x = 0 &\implies f_x = \tau f_d \left(\frac{E^*}{E}\right) \left(\frac{P^*}{P}\right)^{\sigma - 1} \left(\frac{\phi_x^*}{\phi_d^*}\right)^{\sigma - 1} 
+	\end{align*}
+
+	This lets us write the export cutoff as a function of the domestic cutoff:
+
+	\[ \phi_d^* = \left(\frac{E^*}{E}\right)^{\frac{1}{\sigma - 1}} \left(\frac{P^*}{P}\right) \left( \tau \frac{f_d}{f_x} \right)^{\frac{1}{\sigma - 1}}  \phi_x^*     \]
+
+	Then the survival function becomes
+	\[ S(\phi_x^*) = \left(\frac{\phi_d^*}{\phi_x^*}\right)^k = \left[ \left(\frac{E^*}{E}\right) \left(\frac{P^*}{P}\right)^{\sigma - 1} \left( \tau \frac{f_d}{f_x} \right) \right]^{\frac{k}{\sigma - 1}} \]
+	which will give us the fraction of domestically active firms that are exporters in terms of model primitives and market-specific values taken as given by the firm.
+	
+	We see from this equation that more firms will become exporters if the foreign market demand \(E^* \left(P^*\right)^{\sigma - 1}\) becomes more valuable. Conversely, since \(\tau\) is bounded between \(0\) and \(1\) --- and raised to an exponent greater than \(1\) since \(k > \sigma - 1\)! --- increasing \(\tau\) will lower the percentage of firms that export. This all makes intuitive sense: if the foreign market becomes more profitable firms should be more willing to export, and if trade becomes harder firms should be less willing to export.
 
     \section{Hopenhayn on the Computer}
 
     \subsection{}
 
-    \subsection{}
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{prof_plot.png}
+	\end{figure}
 
     \subsection{}
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{v_plot.png}
+	\end{figure}
+
+    \subsection{}
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{w_plot.png}
+	\end{figure}
 
     \subsection{}
 
