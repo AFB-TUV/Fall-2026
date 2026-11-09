@@ -357,7 +357,16 @@
 
     \subsection{}
 
-	To find a reasonable grid of productivity, we first have to somehow discretize the income process. To the best of my knowledge, the given income process cannot easily be approximated by a typical recipe like the Rouwenhorst method, so my plan here was to approximate this process via simulation: write down lower and upper bounds for an income grid along with a number of gridpoints, start the process at some \(\ln(\phi_0)\) that seemed reasonable, simulate a few thousand shocks to eliminate the influence of the starting guess, then simulate the path of \(\ln(\phi)\) according to a series of shocks \(\epsilon\). I could then count the number of times \(\ln(\phi)\) entered each gridpoint as well as which gridpoint it entered next, and thereby construct a large transition matrix for \(\ln(\phi)\). Unfortunately, that code does not appear to be working: I can discretize the income process, but the value function does not look reasonable. I believe this is either because my code for the transition matrix is bad or because my simulated income process does not actually hit every gridpoint, leaving some zero rows in the transition matrix; however, I ran out of time to figure out what exactly the problem is. 
+	The GitHub repository with all codes is linked at the top of this document.\\ \verb|problem 3_rouwenhorst.jl| solves the model using a standard AR(1) productivity process discretized by the Rouwenhorst method, while \verb|problem 3.jl| solves the model by simulating the mean-reverting productivity process requested in the assignment.
+
+	To find a reasonable grid of productivity, we first have to somehow discretize the income process. To the best of my knowledge, the given income process cannot easily be approximated by a typical recipe like the Rouwenhorst method, so my plan here was to approximate this process via simulation: write down lower and upper bounds for an income grid along with a number of gridpoints, start the process at some \(\ln(\phi_0)\) that seemed reasonable, simulate a few thousand shocks to eliminate the influence of the starting guess, then simulate the path of \(\ln(\phi)\) according to a series of shocks \(\epsilon\). I could then count the number of times \(\ln(\phi)\) entered each gridpoint as well as which gridpoint it entered next, and thereby construct a large transition matrix for \(\ln(\phi)\). Unfortunately, that code does not appear to be working: I can discretize the income process, but the value function does not look correct for large values of \(\phi\). 
+	
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{v_plot_sim.png}
+	\end{figure}
+
+	I believe the problem is either that my code for the transition matrix is bad or because my simulated income process does not actually hit every gridpoint, leaving some zero rows in the transition matrix; however, I ran out of time to figure out what exactly the problem is. In lieu of the fully correct version, I choose to use values from my implementation of a Rouwenhorst process below because the results of the comparative statics exercise in the last part of this question seem more economically reaosnable. However, I note when I believe a correctly implemented mean-reverting AR(1) process would qualitatively change my results. 
 	
 	I provide a plot of my simulated income process below, which plots one million simulated values for \(\ln(\phi)\). My simulation suggests that a reasonable grid of \(\ln(\phi)\) should be a grid of a few hundred values (I used 401) in \([-2,2]\). 
 
@@ -366,11 +375,13 @@
 	\includegraphics[scale=0.4]{sim_plot.png}
 	\end{figure}
 
-	However, because my plan for simulating the income function did not work, I instead constructed an income process with the Rouwenhorst method using \(\rho = 0.9\) and \(\sigma_\epsilon = 0.15\). The code also assumes that incoming firms draw productivity from the invariant distribution. The resulting profit graph looks like this:
+	However, because my plan for simulating the income function did not work, I instead constructed an income process with the Rouwenhorst method using \(\rho = 0.9\) and \(\sigma_\epsilon = 0.15\).
+
+	The resulting profit graph looks like this:
 
 	\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{sim_plot.png}
+	\includegraphics[scale=0.4]{prof_plot.png}
 	\end{figure}
 
     \subsection{}
@@ -393,7 +404,7 @@
 
     \subsection{}
 
-	With my assumed productivity process and the given parameters, I compute \(A = 1.993\). 
+	With my assumed productivity process and the given parameters, I compute \(A = 1.993\) from the free-entry condition. Why does this ensure the goods market clears even though \(A = E P^{\sigma - 1}\) is a demand-side variable and free entry is a supply-side condition? This is because the firm takes expenditures as given: given a particular level of expenditures, the entry decision will adjust the number of firms accordingly. Then we ensure the entire market clears elsewhere in the computation.
 
     \subsection{}
 
@@ -404,21 +415,37 @@
 	\includegraphics[scale=0.4]{mu_plot.png}
 	\end{figure}
 
+	Some experimentation shows that the plateau effect displayed here does not go away if I extend the productivity grid further, so this does not point to my productivity process assuming unreasonably small values of \(\phi\). I believe the plateau effect exists not because there is a mistake in my code but because the distribution has no force for exiting incumbents besides entry: there is no exogenous death probability like in other versions of the Hopenhayn model, and my parameterization of the income process does not include mean reversion like it should, so high-productivity firms are not exiting in such a way to create a decline in the resulting distribution. A check of my progress with the simulation of the requested income process is suggestive here:
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{mu_plot_sim.png}
+	\end{figure}
+
     \subsection{}
 
-	Now we finally solve labor market clearing, which solves the model! This gives \(M = 0.00446\) in my calibration.
+	Now we finally solve labor market clearing, which solves the model! This gives \(M = 0.00371\) in my calibration.
 
     \subsection{}
 
-	The stationary firm distribution is plotted below. I find that the total mass of incumbent firms is \(0.201\) and their mean productivity is \(0.359\).
+	The stationary firm distribution is plotted below. I find that the total mass of incumbent firms is \(0.202\) and their mean productivity is \(1.782\).
 
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{dist_plot.png}
 	\end{figure}
 
+	As before, the plateau effect disappears if I use my simulated version of the requested income process.
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{dist_plot_sim.png}
+	\end{figure}
+
     \subsection{}
 
-	Resolving the model with \(cf = 0.3\), I find that \(A\) rises by \(16.9\%\), the exit cutoff \(\phi_c\) rises by \(4.33\%\), the mass of entrants \(M\) rises by \(18.9\%\), the mass of active firms drops by \(16.5\%\), and mean productivity drops by \(15.6\%\). 
+	Re-solving the model with \(cf = 0.3\), I find that \(A\) rises by \(16.9\%\), the exit cutoff \(\phi_c\) rises by \(4.33\%\), the mass of entrants \(M\) rises by \(22.3\%\), the mass of active firms drops by \(16.2\%\), and mean productivity increases by \(1.03\%\). 
+
+	When fixed operating costs increase, it becomes more expensive to run a business, so more firms will exit as the required productivity to make operating profitable rises. The increased exit rate decreases the number of active firms in the economy, but the larger exit mass also means that more firms will enter to replace them. We also see productivity increase in the economy because the required productivity to make operating profitable has risen --- this means, almost tautologically, that the surviving firms must have been more productive overall to have survived!
 
 \end{document}

@@ -24,15 +24,37 @@ function sim_ϕ(μϕ, ρ, ϕgrid, Nϕ, N_sim, ϕ0, μϵ, σϵ)
         ϕmat[ϕindices[i-1], ϕindices[i]] += 1.0
     end
 
+    row_sums = zeros(Nϕ)
     for i in 1:Nϕ
-        if sum(ϕmat[:,i]) > 0.0
-            ϕmat[:,i] = ϕmat[:,i] ./ sum(ϕmat[:,i])
+        row_sums[i] = sum(ϕmat[i,:])
+    end
+
+    #attempt to fill in zero rows of transition matrix with shifted contents of next row
+    #this is imperfect but should only need to be approximate
+    #commented out because it does not appear to fix anything
+    #for i in 1:Nϕ
+    #    if row_sums[i] == 0
+    #        println(i)
+    #        f_index = findnext(row_sums .!= 0, i)
+    #        ϕmat[i,:] += ϕmat[f_index,:]  
+            #for j in 1:i
+            #    ϕmat[i,j] += ϕmat[f_index, j + (f_index - i)]
+            #end
+            #for j in i+1:Nϕ
+            #    ϕmat[i,j] += ϕmat[f_index, j - (f_index - i)]
+            #end
+    #    end
+    #end
+
+    for i in 1:Nϕ
+        if sum(ϕmat[i,:]) > 0.0
+            ϕmat[i,:] = ϕmat[i,:] ./ sum(ϕmat[i,:])
         end
     end
 
     ϕπ = stationary_markov(ϕmat)
-    #return ϕmat, ϕπ
-    return ϕmat, ϕπ, ϕvec
+    return ϕmat, ϕπ
+    #return ϕmat, ϕπ, ϕvec
 end
 
 function findIndex(ϕ, vec)
@@ -80,10 +102,90 @@ function model(; σ = 4.0, β = 0.95, w = 1.0, cf = 0.25, ce = 0.25, Lbar = 1.0,
                 ϕmin = -2.0, ϕmax = 2.0, Nϕ = 401,
                 μe = 0.0, σe = 0.1 )
     ϕgrid = range(ϕmin, ϕmax, Nϕ)
-    πe = D_entrants(0.0, 0.1^0.5, ϕgrid)
     Π, π = sim_ϕ(μϕ, ρ, ϕgrid, Nϕ, N_sim, mean(LogNormal(μe, σϵ)), μϵ, σϵ)
     ϕgrid = exp.(ϕgrid)
+    πe = D_entrants(0.0, 0.1, log.(ϕgrid))
     return (; σ, β, w, cf, ce, Lbar, ρ, μϕ, μϵ, N_sim, ϕmin, ϕmax, Nϕ, μe, σϵ, πe, Π, π, ϕgrid)
+end
+
+
+#code to set up a model using an AR(1) discretized by a Rouwenhorst
+
+function rouwenmodel(; σ = 4.0, 
+                β = 0.95, 
+                w = 1.0, 
+                cf = 0.25, 
+                ce = 0.25,
+                ρ = 0.9,
+                σϵ = 0.15,
+                μϕ = log(1.5),
+                Lbar = 1.0,
+                n = 51,
+                μe = 0.0,
+                σe = 0.1)
+
+    zgrid, π, Π = discretize_productivity(ρ, σϵ, n)
+    πe = D_entrants(μe, σe, log.(zgrid))
+    return (; σ, β, w, cf, ce, ρ, σϵ, μϕ, Lbar, n, zgrid, π, Π, πe, μe, σe)
+end
+
+#construct distribution of entrants by finding Δcdf at each gridpoint
+function D_entrants(μ, σ, ϕgrid)
+    D = cdf.(Normal(μ, σ), ϕgrid)
+    for i in 1:length(D) - 1
+        D[length(D) - (i - 1)] = D[length(D) - (i - 1)] - D[length(D) - i]
+    end
+    println(D)
+    return D
+end
+
+
+#Implement the Rouwenhorst method
+function rouwenhorst_Π(N, p)
+    Π = [p 1-p; 1-p p]
+
+    for i in 3:N
+        Π_old = Π
+        Π = zeros(i,i)
+
+        Π[1:i-1, 1:i-1] = p*Π_old
+        Π[1:i-1, 2:i] .+= (1-p)*Π_old
+        Π[2:i, 1:i-1] .+= (1-p)*Π_old
+        Π[2:i,2:i] .+= p*Π_old
+        Π[2:i-1,:] ./= 2
+    end
+    
+    return Π
+end
+
+#finds a stationary distribution of a Markov chain
+function stationary_markov(Π,tol=1E-14)
+    n = size(Π)[1]
+    π = fill(1/n,n)
+
+    for i in 1:10_000
+        π_new = Π' * π
+        if maximum(abs.(π_new - π)) < tol
+            return π_new
+        end
+        π = π_new
+    end
+end
+
+
+#function to discretize an AR(1) 
+function discretize_productivity(ρ,σ,n_e)
+    p = (1+ρ)/2
+    nshift = (n_e - 1)/2
+    e = range(-nshift,nshift,n_e)
+    α = 2*σ/sqrt(n_e-1)
+    e = α .* e
+
+    Π = rouwenhorst_Π(n_e, p)
+    π = stationary_markov(Π)
+
+    z = exp.(e)
+    return z,π,Π
 end
 
 #series of functions that define profits through building up the CES theory
@@ -175,9 +277,9 @@ end
 function entryTest(Π, μ, χ, πe, M; maxits = 10_000, tol = 1e-6)
     μ_prime = zeros(length(μ))
     for i = 1:maxits
-        if i % 10 == 0
-            println("Iteration ", i, " : ", μ_prime)
-        end
+        #if i % 10 == 0
+        #    println("Iteration ", i, " : ", μ_prime)
+        #end
 
         μ_prime = (χ .* Π)*μ + M * πe
         if maximum(abs.(μ_prime - μ)) < tol
@@ -189,11 +291,11 @@ function entryTest(Π, μ, χ, πe, M; maxits = 10_000, tol = 1e-6)
 end
 
 function eq_labor(A, χ, model)
-    (; π, πe, ce, cf, ϕgrid, Lbar, w, σ, Π) = model
+    (; π, ce, cf, ϕgrid, Lbar, w, σ, Π, πe) = model
     n = quantity.(A, ϕgrid, Lbar, w, σ) ./ ϕgrid
     μ = π
 
-    function entry(M; maxits = 10_000, tol = 1e-6)
+    function entry(M; maxits = 10_000, tol = 1e-10)
         μ_prime = zeros(length(μ))
         for i = 1:maxits
             μ_prime = (χ .* Π)*μ + M * πe
@@ -221,22 +323,51 @@ function Hopenhayn(model)
     return (; V, W, χ, A, ϕ, M, μ, n)
 end
 
-#=
 m = model()
+rm = rouwenmodel()
+
+#part 1
+πvec = profit.(1.0, m.ϕgrid, m.Lbar, m.w, m.σ, m.cf)
+πplot = plot(m.ϕgrid, πvec, xlabel = "Productivity", title = "Profits", legend = false)
+png(πplot, "prof_plot_sim")
+
+#part 2
+V, W, χ = vf_ss(1.0, m)
+vplot = plot(m.ϕgrid, V, xlabel = "Productivity", title = "Value Function (A = 1)", legend = false)
+png(vplot, "v_plot_sim")
+
+#part 3
+wplot = plot(m.ϕgrid, W, xlabel = "Productivity", title = "Continuation Value (A = 1)", legend = false)
+png(wplot, "w_plot_sim")
+ϕ = m.ϕgrid[searchsortedlast(χ, 0.0) + 1]
+ϕ
+
+#part 4
 V1, W1, χ1, A1, ϕ1 = solve_A(m)
-μ1 = entryTest(m.Π, m.π, χ1, m.π, 0.2)
-M = eq_labor(A1, χ1, m)
+A1
+
+#part 5
+μ = entryTest(m.Π, m.π, χ1, m.πe, 0.2)
+μplot = plot(m.ϕgrid, μ ./ sum(μ), xlabel = "Productivity", title = "Firm Size Distribution (M = 0.2)", legend = false)
+png(μplot, "mu_plot_sim")
+
+#part 6 and 7
 
 sol1 = Hopenhayn(m)
+sol1.M
+mass_1 = sum(sol1.μ)
+ϕbar_1 = dot(m.ϕgrid, sol1.μ ./ sum(sol1.μ))
+distplot = plot(m.ϕgrid, sol1.μ ./ sum(sol1.μ), xlabel = "Productivity", title = "Stationary Firm Size Distribution", legend = false)
+png(distplot, "dist_plot_sim")
 
-πvec = profit.(1.0, m.ϕgrid, m.Lbar, m.w, m.σ, m.cf)
+#part 8
 
-
-πplot = plot(m.ϕgrid, πvec)
-vplot = plot(m.ϕgrid, sol1.V)
-wplot = plot(m.ϕgrid, sol1.W)
-
-png(πplot, "prof_plot")
-png(vplot, "v_plot")
-png(wplot, "w_plot")
-=#
+m2 = model(cf = 0.3)
+sol2 = Hopenhayn(m2)
+mass_2 = sum(sol2.μ)
+ϕbar_2 = dot(m.ϕgrid, sol2.μ ./ sum(sol2.μ))
+ΔA = (sol2.A - sol1.A)/sol1.A 
+Δϕ = (sol2.ϕ - sol1.ϕ)/sol1.ϕ
+ΔM = (sol2.M - sol1.M)/sol1.M 
+Δmass = (mass_2 - mass_1)/mass_1
+Δϕbar = (ϕbar_2 - ϕbar_1)/ϕbar_1

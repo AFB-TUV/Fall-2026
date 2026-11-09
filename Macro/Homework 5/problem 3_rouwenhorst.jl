@@ -1,7 +1,10 @@
 using Plots, LinearAlgebra, Random, Distributions
 
+
+#=
 Random.seed!(2191997)
 
+#code to simulate the given income process
 function sim_ϕ(μϕ, ρ, ϕgrid, Nϕ, N_sim, ϕ0, σϵ)
     Dϵ = Normal(0,σϵ)
     
@@ -41,19 +44,10 @@ function findIndex(ϕ, vec)
     return ϕret
 end
 
-function D_entrants(μ, σ, ϕgrid)
-    D = cdf.(Normal(μ, σ), ϕgrid)
-    for i in 2:length(D)
-        D[i] -= D[i-1]
-    end
-    return D
-end
-
 function ϕ_evo(μϕ, ρ, ϕ, ϵ)
     return (1 - ρ)*μϕ + ρ*ϕ + ϵ
 end
 
-#=
 function model(; σ = 4.0, β = 0.95, w = 1.0, cf = 0.25, ce = 0.25, Lbar = 1.0,
                 ρ = 0.9, μϕ = log(1.5), σϵ = 0.15, N_sim = 100_000, ϕmin = -2.5, ϕmax = 2.5, Nϕ = 501,
                 μe = 0.0, σe = 0.1 )
@@ -64,9 +58,9 @@ function model(; σ = 4.0, β = 0.95, w = 1.0, cf = 0.25, ce = 0.25, Lbar = 1.0,
     return (; σ, β, w, cf, ce, Lbar, ρ, μϕ, μϵ, N_sim, ϕmin, ϕmax, Nϕ, μe, σe, πe, Π, ϕgrid)
 end
 =#
+
+
 #code to set up a model using an AR(1) discretized by a Rouwenhorst
-
-
 function model(; σ = 4.0, 
                 β = 0.95, 
                 w = 1.0, 
@@ -76,11 +70,25 @@ function model(; σ = 4.0,
                 σϵ = 0.15,
                 μϕ = log(1.5),
                 Lbar = 1.0,
-                n = 51)
+                n = 51,
+                μe = 0.0,
+                σe = 0.1)
 
     zgrid, π, Π = discretize_productivity(ρ, σϵ, n)
-    return (; σ, β, w, cf, ce, ρ, σϵ, μϕ, Lbar, n, zgrid, π, Π)
+    πe = D_entrants(μe, σe, log.(zgrid))
+    return (; σ, β, w, cf, ce, ρ, σϵ, μϕ, Lbar, n, zgrid, π, Π, πe, μe, σe)
 end
+
+#construct distribution of entrants by finding Δcdf at each gridpoint
+function D_entrants(μ, σ, ϕgrid)
+    D = cdf.(Normal(μ, σ), ϕgrid)
+    for i in 1:length(D) - 1
+        D[length(D) - (i - 1)] = D[length(D) - (i - 1)] - D[length(D) - i]
+    end
+    println(D)
+    return D
+end
+
 
 #Implement the Rouwenhorst method
 function rouwenhorst_Π(N, p)
@@ -127,7 +135,6 @@ function discretize_productivity(ρ,σ,n_e)
     π = stationary_markov(Π)
 
     z = exp.(e)
-    #z = e .+ 0.000001
     return z,π,Π
 end
 
@@ -234,14 +241,14 @@ function entryTest(Π, μ, χ, πe, M; maxits = 10_000, tol = 1e-6)
 end
 
 function eq_labor(A, χ, model)
-    (; π, ce, cf, zgrid, Lbar, w, σ, Π) = model
+    (; π, ce, cf, zgrid, Lbar, w, σ, Π, πe) = model
     n = quantity.(A, zgrid, Lbar, w, σ) ./ zgrid
     μ = π
 
-    function entry(M; maxits = 10_000, tol = 1e-6)
+    function entry(M; maxits = 10_000, tol = 1e-10)
         μ_prime = zeros(length(μ))
         for i = 1:maxits
-            μ_prime = (χ .* Π)*μ + M * π
+            μ_prime = (χ .* Π)*μ + M * πe
             if i % 10 == 0
                 if maximum(abs.(μ_prime - μ)) < tol
                     return μ_prime
@@ -267,8 +274,6 @@ function Hopenhayn(model)
 end
 
 m = model()
-μ = entryTest(m.Π, m.π, χ1, m.π, 0.2)
-#M = eq_labor(A1, χ1, m)
 
 #part 1
 πvec = profit.(1.0, m.zgrid, m.Lbar, m.w, m.σ, m.cf)
@@ -281,24 +286,27 @@ vplot = plot(m.zgrid, V, xlabel = "Productivity", title = "Value Function (A = 1
 png(vplot, "v_plot")
 
 #part 3
-wplot = plot(m.zgrid, W)
+wplot = plot(m.zgrid, W, xlabel = "Productivity", title = "Continuation Value (A = 1)", legend = false)
 png(wplot, "w_plot")
 ϕ = m.zgrid[searchsortedlast(χ, 0.0) + 1]
+ϕ
 
 #part 4
-V1, W1, χ1, A, ϕ1 = solve_A(m)
+V1, W1, χ1, A1, ϕ1 = solve_A(m)
+A1
 
 #part 5
-μ = entryTest(m.Π, m.π, χ1, m.π, 0.2)
-μplot = plot(m.zgrid, μ, xlabel = "Productivity", title = "Firm Size Distribution (M = 0.2)", legend = false)
+μ = entryTest(m.Π, m.π, χ1, m.πe, 0.2)
+μplot = plot(m.zgrid, μ ./ sum(μ), xlabel = "Productivity", title = "Firm Size Distribution (M = 0.2)", legend = false)
 png(μplot, "mu_plot")
 
 #part 6 and 7
 
 sol1 = Hopenhayn(m)
+sol1.M
 mass_1 = sum(sol1.μ)
-ϕbar_1 = dot(m.zgrid, sol1.μ)
-distplot = plot(m.zgrid, sol1.μ, xlabel = "Productivity", title = "Stationary Firm Size Distribution", legend = false)
+ϕbar_1 = dot(m.zgrid, sol1.μ ./ sum(sol1.μ))
+distplot = plot(m.zgrid, sol1.μ ./ sum(sol1.μ), xlabel = "Productivity", title = "Stationary Firm Size Distribution", legend = false)
 png(distplot, "dist_plot")
 
 #part 8
@@ -306,7 +314,7 @@ png(distplot, "dist_plot")
 m2 = model(cf = 0.3)
 sol2 = Hopenhayn(m2)
 mass_2 = sum(sol2.μ)
-ϕbar_2 = dot(m.zgrid, sol2.μ)
+ϕbar_2 = dot(m.zgrid, sol2.μ ./ sum(sol2.μ))
 ΔA = (sol2.A - sol1.A)/sol1.A 
 Δϕ = (sol2.ϕ - sol1.ϕ)/sol1.ϕ
 ΔM = (sol2.M - sol1.M)/sol1.M 
