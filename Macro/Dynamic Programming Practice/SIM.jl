@@ -309,5 +309,5 @@ gemodel = GEModel()
 gM, gS = calibrate_β_GE(GEModel)
 clear = (gS.A - gM.B, gS.C - 1)
 
-MPCs = zeros(size(gS.c))
-MPCs[:, 2:end-1] .= (gS.c[:, 3:end] .- gS.c[:, 1:end-2]) ./ (gM.a_grid[3:end] .- gM.a_grid[1:end-2]) ./ (1 + gM.r)
+#MPCs = zeros(size(gS.c))
+#MPCs[:, 2:end-1] .= (gS.c[:, 3:end] .- gS.c[:, 1:end-2]) ./ (gM.a_grid[3:end] .- gM.a_grid[1:end-2]) ./ (1 + gM.r)

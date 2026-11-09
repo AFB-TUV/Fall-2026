@@ -357,12 +357,25 @@
 
     \subsection{}
 
+	To find a reasonable grid of productivity, we first have to somehow discretize the income process. To the best of my knowledge, the given income process cannot easily be approximated by a typical recipe like the Rouwenhorst method, so my plan here was to approximate this process via simulation: write down lower and upper bounds for an income grid along with a number of gridpoints, start the process at some \(\ln(\phi_0)\) that seemed reasonable, simulate a few thousand shocks to eliminate the influence of the starting guess, then simulate the path of \(\ln(\phi)\) according to a series of shocks \(\epsilon\). I could then count the number of times \(\ln(\phi)\) entered each gridpoint as well as which gridpoint it entered next, and thereby construct a large transition matrix for \(\ln(\phi)\). Unfortunately, that code does not appear to be working: I can discretize the income process, but the value function does not look reasonable. I believe this is either because my code for the transition matrix is bad or because my simulated income process does not actually hit every gridpoint, leaving some zero rows in the transition matrix; however, I ran out of time to figure out what exactly the problem is. 
+	
+	I provide a plot of my simulated income process below, which plots one million simulated values for \(\ln(\phi)\). My simulation suggests that a reasonable grid of \(\ln(\phi)\) should be a grid of a few hundred values (I used 401) in \([-2,2]\). 
+
 	\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{prof_plot.png}
+	\includegraphics[scale=0.4]{sim_plot.png}
+	\end{figure}
+
+	However, because my plan for simulating the income function did not work, I instead constructed an income process with the Rouwenhorst method using \(\rho = 0.9\) and \(\sigma_\epsilon = 0.15\). The code also assumes that incoming firms draw productivity from the invariant distribution. The resulting profit graph looks like this:
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{sim_plot.png}
 	\end{figure}
 
     \subsection{}
+
+	Taking \(A = 1.0\) as given, the value function looks like this:
 
 	\begin{figure}[H]
 	\centering
@@ -371,6 +384,8 @@
 
     \subsection{}
 
+	I compute the continuation value \(W(\phi) = \beta \Ex{V(\phi)}\), which looks similar to the value function (which makes sense!) The exit cutoff productivity here is about \(\phi_c = 1.346\).
+
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{w_plot.png}
@@ -378,12 +393,32 @@
 
     \subsection{}
 
-    \subsection{}
+	With my assumed productivity process and the given parameters, I compute \(A = 1.993\). 
 
     \subsection{}
 
-    \subsection{}
+	Now we compute the evolution of the distribution for some given M. I assume \(M = 0.2\) for this section and compute the stationary distribution of firms:
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{mu_plot.png}
+	\end{figure}
 
     \subsection{}
+
+	Now we finally solve labor market clearing, which solves the model! This gives \(M = 0.00446\) in my calibration.
+
+    \subsection{}
+
+	The stationary firm distribution is plotted below. I find that the total mass of incumbent firms is \(0.201\) and their mean productivity is \(0.359\).
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{dist_plot.png}
+	\end{figure}
+
+    \subsection{}
+
+	Resolving the model with \(cf = 0.3\), I find that \(A\) rises by \(16.9\%\), the exit cutoff \(\phi_c\) rises by \(4.33\%\), the mass of entrants \(M\) rises by \(18.9\%\), the mass of active firms drops by \(16.5\%\), and mean productivity drops by \(15.6\%\). 
 
 \end{document}
