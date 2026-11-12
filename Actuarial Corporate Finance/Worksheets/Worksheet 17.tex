@@ -1,0 +1,109 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage{textalpha}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyvrb}
+\usepackage{cancel}
+
+\VerbatimFootnotes
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Worksheet 17 \\ Actuarial Corporate Finance}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+    \maketitle
+
+    \section{Notes}
+
+    (we first made a binomial tree diagram. I know how to do it and am too lazy to recreate it in tikz right now)
+
+    computing risk-neutral probabilities from stock price:
+
+    \[ 100 \times 1.05 = 120 p + 80 (1 - p) = 80 + 40 p \implies p = 0.625  \]
+
+
+    \[ 100 \times 1.04 = 120 p + 80 (1 - p) = 80 + 40 p \implies p = 0.6   \]
+
+    if instead we want \(\frac{p}{1+r}\), we get \(\frac{p}{1+r} = \frac{0.6}{1.04} = 0.58\) and \(\frac{1 - p}{1 + r} = \frac{0.4}{1.04} = 0.38\).
+
+    If we were instead given \(0.58 = \frac{p}{1+r}\) and \(0.38 = \frac{1 - p}{1 + r}\), we could recover \(p\) and \(1+r\).
+
+    \[ 102 = 120 p + 80 ( 1 - p ) = 80 + 40 p \implies p = 0.55    \]
+
+    For convenience in option pricing, assume that discount rate is the same as the risk-free rate for the purpose of pricing.
+    
+    If we instead want a replicating portfolio: let the option be a call that pays \(20\) in the good state and \(0\) in the bad state (according to optimal exercising.)
+
+    \begin{align*}
+    \Delta \times 120 + B \times 1.04 &= 20 \\
+    \Delta \times 80 + B \times 1.04 &= 0
+    \end{align*}
+
+    solving the second and plugging into the first gives
+    \[ 1.04 B = - 80 \Delta \implies 40 \Delta = 20 \implies \Delta = 0.5   \]
+
+    then we go to the second and recover
+
+    \[ 40 + 1.04 B = 0 \implies B = - \frac{40}{1.04} = - 38.46   \]
+
+    So in order to replicate this portfolio, we buy \(0.5\) shares of the stock and borrow \(-38.46\) to do so.
+
+    The idea is that the stock and bond give you enough information to come up with the price of \emph{any} security provided that all payoffs are known! Note that this is a current price, and \emph{not} an equilibrium price like in CAPM --- it should work no matter what is going on with the market. (That being said, this is also an outcome of a form of the efficient market hypothesis --- the reason why we can use the prices to come up with other prices provided all the payoffs are known is that the probabilities are encoded in the prices.)
+
+    The implied price of the call option is thus \(100 \times 0.5 - 38.46 = 11.54\). Note that this option has a huge amount of implied volatility! It goes up \(\frac{20 - 11.54}{11.54} \approx 73 \%\) in the good state and goes down \(\frac{0 - 11.54}{11.54} = 100\%\) in the bad state. Also note that the expected return on this option would actually be \emph{negative} provided this problem was describing a 50-50 scenario (about \(-13\%\)).
+
+    \section{W 17-1}
+
+    The price of the call from the homework was \(5.66\). What could we do if the call instead sold at a price of \(5.41\)? We can construct (from the homework) a replicating portfolio from the stock and bond, so we could buy the call and short the replicating portfolio to obtain \(0\) in the bad state and \(0.25\) per transaction in the good state.
+
+    exact strategy: buy call, sell \(0.7361\) shares of stock, lend \(27.46\) in cash.
+
+
+
+\end{document}

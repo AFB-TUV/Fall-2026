@@ -1,0 +1,158 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage{textalpha}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyvrb}
+\usepackage{cancel}
+
+\VerbatimFootnotes
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Homework 16 \\ Actuarial Corporate Finance}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+    \maketitle
+
+    \section{Notes}
+
+    We are looking at how to price a one-period binomial model. There are two possible outcomes: there is one period, and at the end of the period the stock moves either up or down. We represent that as a stock worth \(S_0\) that can be worth either \(S_0 u\) in the good state or \(S_0 d\) in the bad state. An option on this stock pays \(X_u\) if the stock goes up and \(X_d\) if the stock goes down. We want to replicate the payouts of the option with some combination of the stock and the risk-free asset; the replicating portfolio will have \(\Delta\) shares of stock and \(B\) invested in the risk-free asset. Because the option and the stock have the same base payouts in the good and bad state, we can write
+
+    \begin{align*}
+    X_u &= \Delta S_0 u + B \e^{rT} \\
+    X_d &= \Delta S_0 d + B \e^{rT}
+    \end{align*}
+
+    We can choose \(\Delta\) and \(B\) so these equations are satisfied, giving
+
+    \begin{align*}
+    \Delta &= \frac{X_u - X_d}{S_0 (u - d)} \\
+    B = \e^{-rT} \frac{u X_d - d X_u }{u - d}
+    \end{align*}
+
+    Then, because the payouts are the same, the price must be the same by no-arbitrage, and we can write
+
+    \[ X_0 = \Delta S_0 + B = \e^{-rT} \left[\frac{\e^{rT} - d}{u - d} + \frac{u - \e^{rT}}{u - d} X_d \right]    \]
+
+    We can also think of this as expressing the expectation of the value of the option:
+
+    \[ \Ex{X_0} = \e^{-rT} \left[ p X_u + (1 - p) X_d \right]   \]
+    
+    That being said, I recall from my FAM preparation that it is easier to remember the fundamental theorem of asset pricing (i.e. asset price equals its discounted payouts) and solve through rather than remember these equations which do not have much economic content in and of themselves, so I may use that approach instead \dots which is what the last formula said. (This is much better than The Infinite Actuary's treatment!)
+
+    Generally speaking, we use risk-neutral probabilities to value any risky asset --- meaning that any asset's price is equal to its present discounted future expected value. For instance, we can write the stock price (skipping an annoying algebra step) as
+
+    \[ S_0 = \e^{-rT} \left[ \frac{e^{rT} - d}{u - d} S_0 u + \frac{u - \e^{-rT}}{u - d} S_0 d \right] = \e^{-rT} \left[ p S_u + (1 - p) S_d \right]   \]
+
+    What all this means is that \(p\) is implied by the market choosing the price \(S_0\). It is the fair price for any investor (and will mean that any option also has a fair price for any investor), independent of preferences and beliefs \dots  as long as they agree on the same stock model. (The \emph{real-world} probability does not actually matter here; it suffices that it is the aggregate belief of market participants.) 
+
+    Note: just because pricing is risk-neutral does not mean that market \emph{participants} must be risk-neutral; rather, they are compensated for taking on risk.
+
+    How do we choose \(u\) and \(d\)? This is up to the judgment of the modeler, but the most popular choice is the forward tree method:
+
+    \begin{align*}
+    u &= \e^{rh + \sigma \sqrt{h}} \\
+    d &= \e^{rh - \sigma \sqrt{h}}
+    \end{align*}
+
+    where \(h\) is the length of a period and \(\sigma\) is the standard deviation of the continuously compounded asset return.
+
+    \section{X 17-1}
+
+    We are given a binomial model of \(S_0 = 100\), \(T = 1\), \(u = 1.4\), \(d = 0.6\), no dividends, and \(r = 0.1\). 
+
+    \begin{enumerate}
+    
+    \item We can calculate the risk-neutral probability as 
+    \[ p^* = \frac{\e^{rT} - d}{u - d} = \frac{\e^{0.1 \times 1} - 0.6}{1.4 - 0.6} = 0.63146    \]
+    \item We can see from inspection that \(S_u = S_0 u = 140\) and \(S_d = 60\). This gives a call option with a strike price of \(100\) as having payouts \(C_u = 40\) and \(C_d = 0\). Risk-neutral pricing than gives us 
+    \[ C_0 = \e^{-rT} \left[ p^* C_u + (1 - p^*) C_d \right] = 22.85   \]
+    \item Now we want the replicating strategy for this option. We solve
+    \begin{align*}
+    C_u = 40 &= \Delta \times 140 + B  \e^{0.1} &\implies \Delta = 0.5 \\
+    C_d = 0 &= \Delta \times 60 + B \e^{0.1} &\implies B = -27.15
+    \end{align*}
+    So we replicate the call option payout by purchasing \(0.5\) shares of stock and borrowing \(\$27.15\). So this means that we spend a total of 
+    \[ \Delta S_0 + B = 0.5 \times 100 - 27.15 = 22.85  \]
+    which is exactly the valuation we found in part \(B\)!
+
+    \end{enumerate}
+
+    \section{H 16-1}
+
+    \subsection{}
+
+    If we use the portfolio replication strategy, we are given a stock price of \(45\), a period length of \(T = 0.5\), a good scenario of \(45 \times 1.25\) and a bad scenario of \(45 \times 0.85\). The risk-free rate is \(0.05\). We plug in numbers and find
+
+    \begin{align*}
+    C_u = (45 \times 1.25 - 43) &= \Delta \times 45 \times 1.25 + B \e^{0.025} \\
+    C_d = 0 &= \Delta \times 45 \times 0.85 + B \e^{0.025} 
+    \end{align*}
+
+    Plugging in \(B \e^{0.025} = -38.25 \Delta \) from solving the second equation into the first, we find
+
+    \[ 13.25 = 56.25 \Delta - 38.25 \Delta \implies \Delta = 0.7361    \]
+
+    We can then apply it again to find
+    \[ B = - \e^{-0.025} 45 \times 0.85 \times 0.7361 =  -27.46   \]
+
+    So we buy \(0.7361\) shares of the stock, worth \(0.7361 \times 45 = 33.12\), and borrow \(-27.46\) to do so, ending up with a replicating price of \(5.66\). 
+
+    \subsection{}
+
+    If we instead use the fundamental theorem of asset pricing, we are given a stock price of \(45\), a period length of \(T = 0.5\), a good scenario of \(45 \times 1.25\) and a bad scenario of \(45 \times 0.85\). The risk-free rate is \(0.05\). We can use this information to find the probability the stock goes up:
+
+    \[  45 = 45 \e^{-0.05 \times 0.5} \left[ 1.25p + 0.85 (1 - p) \right] \implies \e^{0.025} = 0.85 + 0.4 p \implies p = 0.43829  \]
+
+    We can then directly find the price of the call option:
+
+    \[ C_0 = \e^{-0.025} \times 0.43829 \times \left( 45 \times 1.25 - 43 \right) \implies C_0 = 5.66  \]
+
+    
+
+\end{document}
