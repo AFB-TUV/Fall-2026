@@ -1,0 +1,121 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage{textalpha}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyvrb}
+\usepackage{cancel}
+
+\VerbatimFootnotes
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Homework 17 \\ Actuarial Corporate Finance}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+    \maketitle
+
+    \section{Notes}
+
+    Last lesson, we did the one-period binomial model. This lesson, we are covering the multi-period binomial model. We start with an example.
+
+    \subsection{X 18-1}
+
+    We are given a European put option on a stock that currently trades for \(100\) with an annual volatility of \(0.2\). We are also given a risk-free rate of \(0.03\) and a strike price of \(105\) for the option, with an expiration date of one year. 
+
+    \begin{enumerate}
+    \item First we approximate the stock return by the forward tree method with a one-period binomial model. Then we write:
+    \begin{align*}
+    u &= \e^{rT + \sigma \sqrt{T}} = \e^{0.03 \times 1 + 0.2 \times \sqrt{1}} &\approx 1.2586 \\
+    d &= \e^{rT - \sigma \sqrt{T}} &\approx 0.8437 \\
+    p^* &= \frac{\e^{rT - d}}{u - d} &\approx 0.4502
+    \end{align*}
+
+    This means that our stock originally worth \(100\) is worth \(125.86\) in the good state and \(84.37\) in the bad state, meaning the put pays \(0\) in the good state and \(20.63\) in the bad state. Now putting this through the fundamental theorem of asset pricing:
+
+    \[ P_0 = \e^{-rT} \left[ p^* P_u + (1 - p^*) P_d \right] = 11.01   \]
+
+    \item Now we approximate the option premium in a two-period model. Call the period length \(h = 0.5\). Then we get
+    \begin{align*}
+    u &= \e^{0.03 \times 0.5 + 0.2 \sqrt{0.5}} &\approx 1.1693 \\
+    d &= \e^{0.03 \times 0.5 - 0.2 sqrt{0.5}} &\approx 0.9812 \\
+    p^* &= \frac{\e^{rT} - d}{u - d} &\approx 0.4647
+    \end{align*}
+
+    Following these probabilities, we get a tree that spells out \(S_0 = 100\), \(S_u = 116.93\), \(S_d = 88.12\), \(S_{uu} = 137.73\), \(S_{ud} = S_{du} = 103.05\), and \(S_{dd} = 77.66\). If we allowed this to spread out for many periods, we would get something that looks approximately by the normal distribution (I assume this is basically just the central limit theorem.) Given all this, the put payments (still taking place in one year) are given by \(P_{uu} = 0\), \(P_{ud} = P_{du} = 1.95\), and \(P_{dd = 27.34}\). 
+
+    \item Which price is correct? It depends on which model you want. Realistically, both of these are probably bad, so the most correct answer is neither, but in general it should just be the model that you find the most realistic in a given scenario.
+    
+    \item The price of the put was found to be \(11.01\). If the market instead prices the put at \(9.5\), then the put is underpriced and arbitrage can be done. Thus we long the market put for \(9.5\) and short the replicating portfolio for \(11.01\). This should give a risk-free profit of \(1.51\). Computationally, we have
+    \begin{align*}
+    \Delta &= \frac{P_u - P_d}{S_0 (u - d)} &= -0.49727 \\
+    B &= \e^{-rh} \frac{u P_d - d P_u}{u - d} = 60.737
+    \end{align*}
+    so to short the replicating portfolio, we buy about \(0.5\) shares of the stock and borrow \(60.74\). We can double-check this with a table.
+
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+         & \(t = 0\) & \(t = 1, d\) & \(t = 1, u\) \\
+         \hline
+         & & \(S_1 = 84.37\) & \(S_1 = 125.86\) \\
+         \hline
+         Long Market Put & \(-9.50\) & \(20.63\) & \(0\) \\
+         \hline
+         Long \(0.49727\) shares of stock & \(-49.73\) & \(41.96\) & \(62.59\) \\
+         \hline
+         Borrow \(60.737\) & \(60.74\) & \(-62.59\) & \(-62.59\) \\
+         \hline
+         Total & \(1.51\) & \(0\) & \(0\) \\
+         \hline
+    \end{tabular}
+    
+    This confirms that we make a profit of \(1.51\) on our arbitrage strategy.
+    \item The market put is overpriced, so we short the market put (receiving \(9.5\)) and long a synthetic put (for \(8.55\)). At time 0, we find \(\Delta\) and \(B\) for the first period and set up our replicating portfolio. At time \(0.5\), we calculate a new \(\Delta\) and \(B\) based on the current state of the world (up or down). Then at time \(1\), the replicating portfolio is worth exactly the option payout. What this shows is that we can still construct our replicating strategy for an option using a stock and a bond, but we will have to adjust it based on the state in each period. That being said, the fact that this works is the basis of no-arbitrage pricing: if our replication strategy holds, then we can continue pricing things as we have been because the basic theory still works!
+
+    \end{enumerate}
+
+\end{document}
