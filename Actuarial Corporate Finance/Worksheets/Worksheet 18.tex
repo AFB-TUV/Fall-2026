@@ -1,0 +1,100 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage{textalpha}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyvrb}
+\usepackage{cancel}
+
+\VerbatimFootnotes
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Worksheet 18 \\ Actuarial Corporate Finance}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+    \maketitle
+
+    \section{Notes}
+
+    Why do we want to use risk-neutral probabilities and risk-free discount rate? Consider two stocks: \({}_{1}S\) and \({}_{2}S\). Provided they use the same probability \(q\) for transitioning between the good and bad state, then they should have different rates of return \(r_1\) and \(r_2\) based on CAPM. Then we have \(\frac{q}{1 + r_i}\) be different for each security! But if we instead start with the risk-free rate \(r^*\), with no arbitrage and complete markets (so we can replicate cashflows), then we will have \(q_1^* = q_2^* = p^*\). Of course, markets are known to be incomplete\footnote{Insurance markets are known to be incomplete, but also any macroeconomist worth her salt will tell you that the success of heterogeneous-agent models based on borrowing constraints implies that markets are not complete for most agents, and the evidence that there exist wealthy hand-to-mouth consumers means that this is true for a wide cross-section of the income and wealth distributions \dots}. In this case you should pick the best-payoff option (I think?)
+
+    Now we move to multi-period models. Suppose we have up and down factors determined according to the forward tree method:
+    \begin{align*}
+    u &= \e^{rT + \sigma \sqrt{h}} \\
+    d &= \e^{rT - \sigma \sqrt{h}}
+    \end{align*}
+    We are also given \(h = 0.5\), \(T = 1\), \(\sigma = 0.2\), \(r = 0.03\). This defines a binomial tree with three periods (counting \(t = 0\) as the first.) If instead we wrote \(T = 2\) we would have a binomial tree model with five periods.
+
+    Now we look at the worksheet.
+
+    \section{W 18-1}
+
+    Consider ``various'' European call options on a stock. They have \(T = 0.5\) and \(K = 105\). We are also given \(S_0 = 100\). Periods are length \(\frac{1}{6}\), so there are three periods in the model. Annual volatility is \(0.2\) and the risk-free rate is \(0.08\).
+
+    \begin{enumerate}
+    \item First we want to find the premium of the put option, which requires that we find the probability of going up or down. Let's look at a one-period model for \(T = \frac{1}{6}\) for this. We first need to find \(u\) and \(d\):
+    \begin{align*}
+    u &= \e^{\frac{0.08}{6} + 0.2 \sqrt{\frac{1}{6}}} = 1.09964 \\
+    d &= \e^{\frac{0.08}{6} - 0.2 \sqrt{\frac{1}{6}}} = 0.933965
+    \end{align*}
+    
+    The fundamental theorem of asset pricing should give us 
+    
+    \[ 100 = 100 \e^{-\frac{0.08}{6}} \left[ 1.09964 p + 0.933965 (1 - p) \right] \implies p = 0.4796   \]
+
+    Now we want to see when the put option will pay off. We are given three periods, so we have four possibilities for the stock price at the end: \(100 \times u^3 \times d^0 = 132.97\), \(100 \times u^2 \times d = 112.94\), \(100 \times u \times d^2 = 95.92\), and \(100 \times u^0 \times d^3 = 81.47\)\footnote{These look like the same numbers on the board up to some numerical error due to rounding, so I'll leave them as I found them}. (We could also figure out the intermediate values similarly: \(109.96\) and \(93.40\) in the first period, and \(120.96\), \(102.70\), and \(87.24\) in the second. It is similarly easy to find the expected value of the payoff, but that is simple enough that I won't bother writing it.)
+
+    The put option will pay off in the \(u \times d^2\) and \(d^3\) states with a strike price of \(105\), so we can find the value of the put as
+
+    \[ P_0 = \e^{-0.08 \times 0.5} \left[ (105 - 95.92) \left(0.4796 \times 0.5204^2\right) + (105 - 81.47) \left( 0.5204^3 \right) \right] = 4.32      \]
+
+    Note: we could also find \(p^* = \frac{\e^{rh} - d}{u - d} = 0.4796\). However, this would require memorizing the formula, and I have not done that yet.
+
+    \end{enumerate}
+
+\end{document}

@@ -47,7 +47,7 @@ function find_shares(model; maxits = 10_000, tol = 1e-20)
         #println("Iteration ", i)
         ϵ_demand = ϵ_D.(s, σ, ρ)
         markups = markup.(ϵ_demand)
-        p = price.(σ, ϕ)
+        p = price.(σ, ϕ, τ)
         P = agg_p(p, σ)
         q = quantity.(p, P, σ, ρ, E)
         D = dot(p,q)
@@ -67,7 +67,7 @@ function HHI(shares::Matrix{Float64})
 end
 
 function cstatics_trade(τ_i::Float64, m::Function)
-    model = m(τ = τ_i)
+    model = m(τ_f = τ_i)
     sol = find_shares(model)
     h = HHI(sol.s)
     return h
@@ -91,4 +91,4 @@ for i in 1:length(τvec)
     HHIvec[i] = cstatics_trade(τvec[i], model)
 end
 
-HHIplot = plot(HHIvec)
+HHIplot = plot(τvec, HHIvec)

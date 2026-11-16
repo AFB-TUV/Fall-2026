@@ -59,4 +59,90 @@
 
     \maketitle
 
+    \section{Finishing Up Misallocation}
+
+    \section{Alternative Sources for Variable Markups}
+
+    \subsection{}
+
+    The representative household solves
+
+    \[ \max_{q_i} \int_0^1 p_i q_i di \text{ s.t. } 1 - \int_0^1 G\left(\frac{q_i}{Q}\right) di \geq 0    \]
+
+    We use this problem to formulate the Lagrangian
+
+    \[ \mathcal{L} = \int_0^1 p_i q_i di + \lambda \left[ 1 - \int_0^1 G\left(\frac{q_i}{Q}\right) di \right]  \]
+
+    and take the first-order condition with respect to \(q_i\) to find
+
+    \[ p_i = \lambda \frac{1}{Q} G'\left(\frac{q_i}{Q}\right)  \]
+
+    \subsection{}
+
+    Now we want to find an aggregate price index. We start this by multiplying both sides by \(q_i\) to get
+
+    \[ p_i q_i = \lambda \frac{q_i}{Q} G'\left(\frac{q_i}{Q}\right)   \]
+
+    and then integrate both sides over the measure of quantities to get 
+
+    \[ \int_0^1 p_i q_i di = \lambda \int_0^1 \frac{q_i}{Q} G'\left(\frac{q_i}{Q}\right) di = \lambda   \]
+
+    using the additional condition we are given at the beginning of the problem. It remains to solve the integral over \(p_i q_i\). However, because this is a representative household, we know that the sum of all prices and quantities purchased \emph{should} just be the aggregate prices and quantities! So we can write
+
+    \[ \int_0^1 p_i q_i di = P Q = \lambda  \]
+
+    which we obviously could rearrange into the desired form 
+
+    \[ P = \int_0^1 p_i \frac{q_i}{Q} di    \]
+
+    by dividing both sides by \(Q\). Now we plug in \(PQ\) for \(\lambda\) to get 
+
+    \[ p_i = (P Q) \frac{1}{Q} G'\left(\frac{q_i}{Q}\right) \implies \frac{p_i}{P} = G'\left(\frac{q_i}{Q}\right)   \]
+
+    as required.
+
+    \subsection{}
+
+    Now we consider the function \(G(x)\) to be
+
+    \[ G(x) = 1 + \frac{1 - \e^{-\alpha(x - 1)}}{\alpha} = 1 + \frac{1}{\alpha} - \frac{1}{\alpha} \e^{-\alpha(x - 1)}   \]
+
+    We will make our lives easier by immediately finding the derivative:
+
+    \[ G'(x) = - \frac{1}{\alpha} \frac{d}{dx} \left(  \e^{-\alpha(x - 1)}  \right) = - \frac{1}{\alpha} \e^{-\alpha (x - 1)} (- \alpha) = \e^{-\alpha (x - 1)}   \]
+
+    Now we derive the demand for good \(i\). This is given by \(q_i\), which we can find in the first-order condition we found in the previous part:
+
+    \[ \frac{p_i}{P} = G'\left(\frac{q_i}{Q}\right) = \e^{-\alpha (\frac{q_i}{Q} - 1)} \implies \ln(\frac{p_i}{P}) = - \alpha \frac{q_i}{Q}     \]
+
+    Rearranging this condition, we recover the demand function
+
+    \[ q_i = Q \left( 1 + \frac{1}{\alpha} \ln(\frac{p_i}{P}) \right)      \]
+
+    \subsection{}
+
+    Now we check our first-order condition. Allowing \(p_i = P\) we recover
+
+    \[ q_i = Q \left(1 + \frac{1}{\alpha} \ln(1) \right) = Q   \]
+
+    like we want.
+
+    \subsection{}
+
+    We are given 
+
+    \[ \epsilon_i \equiv \frac{\partial \ln(q_i)}{\partial \ln(p_i)} = - \frac{\partial q_i}{\partial p_i} \frac{p_i}{q_i}    \]
+
+    Taking the condition for demand we found before, we can take the derivative to find
+
+    \[ \frac{\partial q_i}{\partial p_i} = \frac{partial}{\partial p_i} \left(Q + \frac{Q}{\alpha } \ln(\frac{p_i}{P})\right) = \frac{Q}{\alpha} \left[ \ln(P) - \ln(p_i) \right] = - \frac{Q}{\alpha} p_i^{-1}     \]
+
+    This then lets us recover the demand elasticity as
+
+    \[ \epsilon_i = - \frac{\partial q_i}{\partial p_i} \frac{p_i}{q_i} = \frac{Q}{\alpha} p_i^{-1} \frac{p_i}{q_i} = \frac{1}{\alpha} \left(\frac{q_i}{Q}\right)^{-1}  \]
+
+
+
+    \section{Two Country Atkeson-Burstein}
+
 \end{document}
