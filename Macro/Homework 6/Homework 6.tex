@@ -46,7 +46,7 @@
 \newcommand{\e}{\mathrm{e}}
 \newcommand{\Var}{\mathrm{Var}}
 \newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
-\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\renewcommand{\Pr}[1]{\mathbb{P}\left(#1\right)}
 \newcommand{\plim}{\mathrm{plim}}
 \newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
 \renewcommand\qedsymbol{$\blacksquare$}
@@ -61,6 +61,106 @@
 
     \section{Finishing Up Misallocation}
 
+    \subsection{}
+
+    We have defined TFP as 
+
+    %\[ TFP \equiv \frac{Y}{K^\alpha L^{1 - \alpha}} = \frac{\left( \sum y_i^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} }{K^\alpha L^{1 - \alpha}} = \frac{\left( \sum \left[ A_i L_i \left(\frac{K_i}{L_i}\right)^\alpha \right]^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} }{K^\alpha L^{1 - \alpha}} \]
+
+
+    \[ TFP \equiv \frac{Y}{K^\alpha L^{1 - \alpha}} = \frac{\left( \sum y_i^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} }{K^\alpha L^{1 - \alpha}} \]
+
+    We observe that the desired form of \(\overline{TFPR}\) has the aggregate output \(Y\) on the bottom, so we need to first manipulate this equation so the denominator becomes \(Y\). We have \(Y = TFP \times K^\alpha L^{1 - \alpha}\) so we could obtain \(Y\) by multiplying by \(\frac{TFP}{TFP}\). But we also want to obtain the aggregate price level \(P\) on the bottom, so we work with \(TFPR = TFP \times P\). This means we actually want to multiply by \(\frac{TFPR}{TFPR} = \frac{TFPR}{TFP \times P}\). Then we write
+
+    \[ \frac{\left( \sum y_i^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} }{K^\alpha L^{1 - \alpha}} = \left( \frac{\left( \sum y_i^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} }{K^\alpha L^{1 - \alpha}} \right) \left( \frac{TFPR}{TFP \times P} \right) = \frac{\left( \sum \left(TFPR \times y_i\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} }{P Y}     \]
+
+    during which we observe that any multiplier \(C\) on the numerator will pass inside the summation because it can be written \( \left(\left(C\right)^{\frac{\sigma - 1}{\sigma}}\right)^{\frac{\sigma}{\sigma - 1}}\). We immediately rewrite this expression to move the large fraction inside the numerator since \(PY\) is part of \(\overline{TFPR}\):
+
+    \[ \left( \sum \left(TFPR \times \frac{y_i}{P Y}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}}   \]
+
+    This looks sort of like \(\overline{TFPR}\) on the top, but we also need to get \(TFPR_i\) on the bottom. The easiest way to get it inside the equation is to simply multiply by \(\frac{TFPR_i}{TFPR_i}\). This looks like
+
+    \[ \left( \sum \left(TFPR \times \frac{y_i}{P Y} \times \frac{TFPR_i}{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} = \left( \sum \left( \frac{TFPR \times \frac{y_i}{P Y} \times A_i p_i}{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}}    \]
+
+    using the fact that \(TFPR_i = A_i p_i\). We further rewrite this expression as
+
+    \[ \left( \sum A_i \left( \frac{TFPR \times \frac{p_i y_i}{P Y}}{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} = \left( \sum A_i \left( \frac{TFPR \times \left(\frac{p_i y_i}{P Y}\right)^\alpha \times \left(\frac{p_i y_i}{P Y}\right)^{1 - \alpha}}{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}}   \]
+
+    The problem is that it is not clear where to proceed from here to put the wedges inside the expression. I am not sure I will be able to find this before the due date.
+
+    %\[ \left( \sum \left(TFPR \times \frac{y_i}{P Y} \times \frac{TFPR_i}{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} = \left( \sum \left( \frac{TFPR \times \frac{y_i}{P Y} \times \frac{R^\alpha w^{1 - \alpha}}{\alpha^{1 - \alpha} (1 - \alpha)^\alpha} \frac{(1 + \tau_i^k)^\alpha}{1 - \tau_i^y}}{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}}    \]
+
+    %This slightly terrifying expression can be rewritten to a form that looks slightly closer to what we want by splitting the terms into \(\alpha\) and \(1 - \alpha\) exponentiated pieces:
+
+    %\[ \left( \sum \left( \frac{TFPR \times \left( \frac{1 + \tau_i^k}{1 - \tau_i^y} \frac{y_i}{P Y} \right)^\alpha \left( \frac{1}{1 - \tau_i^y} \frac{y_i}{P Y} \right)^{1 - \alpha}  \times \frac{R^\alpha w^{1 - \alpha}}{\alpha^{1 - \alpha} (1 - \alpha)^\alpha} }{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}}     \]
+
+    %Now we have an expression with \(R\) and \(w\), which we do not want in our final expression. We can eliminate these by observing that each price should equal the marginal product for each firm modulo the existing wedges. We can write these as 
+
+    %\begin{align*}
+    %R &= MRPK_i \left(\frac{1 + \tau_i^k}{1 - \tau_i^y}\right) \\
+    %w &= MRPL_i (1 - \tau_i^y)
+    %\end{align*}
+
+    %so we rewrite the expression as
+
+    %\[ \left( \sum \left( \frac{TFPR \times \left( \frac{1 + \tau_i^k}{1 - \tau_i^y} \frac{y_i}{P Y} \right)^\alpha \left( \frac{1}{1 - \tau_i^y} \frac{y_i}{P Y} \right)^{1 - \alpha}  \times \frac{\left( MRPK_i \left(\frac{1 + \tau_i^k}{1 - \tau_i^y} \right)\right)^\alpha \left( MRPL_i (1 - \tau_i^y) \right)^{1 - \alpha}}{\alpha^{1 - \alpha} (1 - \alpha)^\alpha} }{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}}     \]
+
+    %and then simplify a bit to 
+
+    %\[  \left( \sum \left( \frac{TFPR \times \left( \left(\frac{1 + \tau_i^k}{1 - \tau_i^y}\right)^2 \frac{y_i}{P Y} \right)^\alpha \left( \frac{y_i}{P Y} \right)^{1 - \alpha}  \times \frac{\left( MRPK_i\right)^\alpha \left( MRPL_i \right)^{1 - \alpha}}{\alpha^{1 - \alpha} (1 - \alpha)^\alpha} }{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}}   \]
+
+    %We can then observe that the final term is just \(TFPR_i\), so we can write
+
+    %\[  \left( \sum \left( \frac{TFPR \times \left( \left(\frac{1 + \tau_i^k}{1 - \tau_i^y}\right)^2 \frac{y_i}{P Y} \right)^\alpha \left( \frac{y_i}{P Y} \right)^{1 - \alpha}  \times TFPR_i }{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}}   \]
+
+    %We now use the fact that \(TFPR = A_i p_i\) to write
+
+    %\[  \left( \sum A_i \left( \frac{TFPR \times \left( \left(\frac{1 + \tau_i^k}{1 - \tau_i^y}\right)^2 \frac{p_i y_i}{P Y} \right)^\alpha \left( \frac{p_i y_i}{P Y} \right)^{1 - \alpha}}{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}}   \]
+
+
+
+    %\[ \frac{R^\alpha w^{1 - \alpha}}{\alpha^{1 - \alpha} (1 - \alpha)^\alpha} = \frac{(1 + MPK_i)^\alpha MPL_i^{1 - \alpha}}{\alpha^{1 - \alpha} (1 - \alpha)^\alpha} = \frac{\left(1 + \frac{MRPK_i}{p_i}\right)^\alpha \left(\frac{MRPL_i}{p_i}\right)^{1 - \alpha}}{\alpha^{1 - \alpha} (1 - \alpha)^\alpha}      \]
+
+    %and we pull out \(p_i\) to get 
+
+    %\[ \frac{\left(p_i + MRPK_i\right)^\alpha \left(MRPL_i\right)^{1 - \alpha}}{p_i \alpha^{1 - \alpha} (1 - \alpha)^\alpha}       \]
+
+    %We have solved for the capital-labor ratio in class, so this becomes
+
+    %\[ \frac{\left( \sum \left[ A_i L_i \left( \frac{\alpha}{1 - \alpha} \frac{w}{R(1 + \tau_i^k)} \right)^\alpha \right]^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} }{K^\alpha L^{1 - \alpha}}     \]
+
+
+
+
+
+    %In equilibrium, the firm's capital and labor choices must equal their marginal products. So we can write the numerator as 
+
+    %\[ \left( \sum \left[ A_i MRPK_i^\alpha MRPLL_i^{1 - \alpha} \right]^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} = \left( \sum \left[ A_i \left( TFPR_i \alpha^{1- \alpha} (1 - \alpha)^\alpha \right) \right]^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}}  \]
+
+    %We can rewrite this as 
+
+    %\[  \left( \sum \left[ A_i \left( TFPR_i \alpha^{1- \alpha} (1 - \alpha)^\alpha \right) \right]^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} = \left( \sum \left[ A_i \left( R^\alpha w^{1 - \alpha} \frac{1 + \tau_i^k}{1 - \tau_i^y} \right) \right]^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} \]
+
+
+    %We first observe that we have derived in class \(A_i = \frac{(p_i y_i )^{\frac{\sigma}{\sigma - 1}}}{K_i^\alpha L_i^{1 - \alpha}}\). 
+    
+    %where the equivalence between \(K\) and \(L\) and their marginal products must be true in equilibrium through firm maximization. Then we substitute for the marginal product expressions since these are known quantities:
+
+    %\[ TFP = \frac{\left( \sum y_i^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}}}{\left( \sum \frac{R \left( 1 + \tau_i^k \right)}{1 - \tau_i^y} \right)^\alpha \left( \sum \frac{w}{1 - \tau_i^y} \right)^{1 - \alpha}}       \]
+
+    \subsection{}
+
+    Suppose \(TFPQ_i\) and \(TFPR_i\) are jointly lognormal random variables. Then each \(TFPX_i\) is distributed according to a lognormal distribution, meaning 
+
+    \[ log(TFPX_i) \sim \mathcal{N}   \]
+
+    We have defined \(TFPR_i = A_i p_i\) and the slides indicate that \(TFPQ_i = A_i\). Then using the CES aggregate form of TFP, we have
+
+    \[ TFP = \left(\sum A_i^{\sigma - 1}\right)^{\frac{1}{\sigma - 1}} = \left(\sum \left(\e^{log(A_i)}\right)^{\sigma - 1}\right)^{\frac{1}{\sigma - 1}}     \]
+
+    %\[ TFP = \left(\sum A_i^{\sigma - 1}\right)^{\frac{1}{\sigma - 1}} = \left(\sum \left(\frac{A_i p_i}{p_i}\right)^{\sigma - 1}\right)^{\frac{1}{\sigma - 1}}     \]
+
+    
     \section{Alternative Sources for Variable Markups}
 
     \subsection{}
@@ -135,11 +235,43 @@
 
     Taking the condition for demand we found before, we can take the derivative to find
 
-    \[ \frac{\partial q_i}{\partial p_i} = \frac{partial}{\partial p_i} \left(Q + \frac{Q}{\alpha } \ln(\frac{p_i}{P})\right) = \frac{Q}{\alpha} \left[ \ln(P) - \ln(p_i) \right] = - \frac{Q}{\alpha} p_i^{-1}     \]
+    \[ \frac{\partial q_i}{\partial p_i} = \frac{\partial}{\partial p_i} \left(Q + \frac{Q}{\alpha } \ln(\frac{p_i}{P})\right) = \frac{Q}{\alpha} \frac{\partial}{\partial p_i} \left[ \ln(P) - \ln(p_i) \right] = - \frac{Q}{\alpha} p_i^{-1}     \]
 
     This then lets us recover the demand elasticity as
 
     \[ \epsilon_i = - \frac{\partial q_i}{\partial p_i} \frac{p_i}{q_i} = \frac{Q}{\alpha} p_i^{-1} \frac{p_i}{q_i} = \frac{1}{\alpha} \left(\frac{q_i}{Q}\right)^{-1}  \]
+
+    \subsection{}
+
+    The firm solves 
+
+    \[ \max_{p_i} \left(p_i - \varPhi\right) q_i   \]
+
+    The first-order condition with respect to \(p_i\) is 
+
+    \[ 0 = q_i + \left(p_i - \varphi\right) \frac{\partial q_i}{\partial p_i}    \]
+
+    We divide through by \(q_i\) and multiply the product term by \(\frac{p_i}{p_i}\), yielding
+
+    \[ 0 = 1 - \left( - \left( \frac{p_i - \varphi}{p_i} \right)   \frac{\partial q_i}{\partial p_i} \frac{p_i}{q_i}\right) = 1 - \left(\frac{p_i - \varphi}{p_i}\right) \epsilon_i    \]
+
+    Solving for \(p_i\), we get 
+
+    \[ p_i = \frac{\epsilon}{\epsilon - 1} \varphi   \]
+
+    Now we want to write this as a function of \(\frac{q_i}{Q}\). We previously obtained 
+
+    \[ \epsilon_i = \frac{1}{\alpha} \left(\frac{q_i}{Q}\right)^{-1} \]
+
+    so we can write 
+
+    \[ p_i = \frac{\frac{1}{\alpha} \left(\frac{q_i}{Q}\right)^{-1}}{\frac{1}{\alpha} \left(\frac{q_i}{Q}\right)^{-1} - 1} \varphi = \frac{\left(\frac{q_i}{Q}\right)^{-1}}{\left(\frac{q_i}{Q}\right)^{-1} - \alpha} \varphi = \frac{\varphi}{1 - \alpha \left(\frac{q_i}{Q}\right)^{-1}}   \]
+
+    which is the cleanest we can write \(p_i\) as a function of the fraction \(\frac{q_i}{Q}\).
+
+    \subsection{}
+
+    Under Kimball preferences, two factors enter the pricing equation: a demand parameter \(\alpha\) and the firm's share of output \(\frac{q_i}{Q}\). \(\alpha\) is obviously a factor specific to the given demand function, so its economic content will be tied up in the calibration in practice rather than something fundamental to Kimball preferences. This means that the only thing that matters to the markup is the share of output. As \(\frac{q_i}{Q}\) increases, \(\alpha \frac{Q}{q_i}\) should decrease, so the denominator of the markup should increase since this quantity is being subtracted --- which decreases the markup! Therefore, under Kimball preferences, firms with a larger share of the market should set smaller markups.
 
 
 

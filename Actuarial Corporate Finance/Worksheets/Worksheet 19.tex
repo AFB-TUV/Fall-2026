@@ -1,0 +1,86 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[mmddyyyy]{datetime}
+
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{eulervm}
+\usepackage[skip=10pt plus1pt]{parskip}
+\usepackage{textalpha}
+
+\usepackage[margin=1in]{geometry}
+\linespread{1.20}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multirow,array}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyvrb}
+\usepackage{cancel}
+\usepackage{amsmath}
+
+\usepackage{tzplot}
+\usepackage{istgame}
+\usepackage{makecell}
+
+\VerbatimFootnotes
+
+\graphicspath{{Images/}}
+\setlength{\parindent}{0pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
+\renewcommand{\Pr}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\plim}{\mathrm{plim}}
+\newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\title{Worksheet 19 \\ Actuarial Corporate Finance}
+\author{Alejandro Flores-Brown}
+
+\begin{document}
+
+    \maketitle
+
+    \section{Notes}
+
+    \subsection{Quiz Q2}
+
+    A put option is sold with \(K = 80\) and \(P_80 = 8\). They purchase a put option with \(K = 70\) and \(P_{70} = 1\). They have the same initial stock price and \(T = 0.5\) years. \(r = 0\%\). We want to find the \(S_T\) that ensures the portfolio breaks even. The \(K = 80\) put is shorted and then other is longed, meaning she receives \(8 - 1 = 7\) at \(t = 0\). We can set up the problem as getting a return \(\max\left\{ K_1 - S_T, 0 \right\} - \max\left\{ K_2 - S_T, 0 \right\}\). To equalize the initial payout of \(7\) and the loss, we need to find a stock price that gives a loss of \(-7\) from the first option but not the second, which leads us to \(S_T = 73\).
+    
+    \section{Black-Scholes}
+
+    things to note about Black-Scholes: \(\Delta\) is available from the formula, you need calculus for the derivation (L'Hopital!), it uses the CDF for the standard normal distribution, it's the limiting case of the binomial tree model as the number of periods \(n \rightarrow \infty\), use the central limit theorem to go from the binomial distribution (of stock prices) to the normal distribution (of log returns)
+
+    \[ C = S_0 \Phi(d_1) - \e^{-rT} K \Phi(d_2)  \]
+
+    \[ d_1 = \frac{\ln(\frac{S_0}{K}) + \left(r + \frac{\sigma^2}{2}\right) T}{\sigma \sqrt{T} }   \]
+
+    \[ d_2 = d_1 - \sigma \sqrt{T}  \]
+
+    \[ P = K \e^{-rT} \Phi(-d_2) - S_0 \Phi(-d_1)   \]
+
+    
+
+\end{document}

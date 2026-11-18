@@ -59,11 +59,35 @@
 
     \maketitle
 
-    It looks like the only issues with my test were on problems 3 and 5, so I can restrict myself to looking at these.
+    It looks like the only issues with my test were on problems 3 and 5, so I can restrict myself to looking at these. I am much happier with this test; I knew most things very well, and half of the points lost were due to an apparent lack of attention to detail in problem 3 rather than a lack of understanding. I will have to spend some time making sure I have the formulas completely memorized, but this looks like a good position to be in for this third of the class. I also note that once again my \emph{conceptual} grasp of the material seems solid, even if my computational ability is sometimes lacking --- that feels more important to me in the long run since software is always going to be calculating statistical quantities in practice.
 
     \section{Problem 3}
 
+    I am more than a little annoyed because I lost two points on this question that I really shouldn't have. That being said, while my mistakes are \emph{annoying}, they are not actually reflective of a lack of understanding on my part and that's much more important.
+
+    The first mistake was simple: I forgot the square in the Cook's Distance formula \dots despite the fact that I clearly wrote it down before attacking the problem. Oh well. We are given \(SSE = 200\), \(h_7 = 0.2\), \(\hat{e}_7 = 4\), and \(D = 0.5\) and asked to find the number of data points \(n\). We are also given \(4\) predictors, so \(p+1 = 5\). The Cook's Distance formula is given by
+
+    \[ D_i = \left( \frac{y - \hat{y}}{s \sqrt{1 - h_{ii}}} \right)^2 \left(\frac{1}{p+1}\right) \left(\frac{h_{ii}}{1 - h_{ii}}\right)    \]
+
+    so we need to write
+
+    \[ 0.5 = \left( \frac{4}{\sqrt{\frac{4}{5} \frac{200}{n - 5}}} \right)^2 \left( \frac{1}{5} \right) \left( \frac{0.2}{1 - 0.2} \right) = \left( \frac{16}{\frac{4}{5} \frac{200}{n - 5}} \right) \left( \frac{1}{5} \right) \left( \frac{1}{4} \right) = \cancel{\left(\frac{16 \times 5}{4 \times 5 \times 4}\right)} \left(\frac{n - 5}{200}\right)     \]
+
+    We thus can simplify this expression to 
+
+    \[ 100 = n - 5 \implies n = 105     \]
+
+    Then we have part B, which I. um. skipped somehow? I was not rushed and did not feel rushed on this test so I really do not understand how I did that. Anyway. A high Cook's Distance indicates that a point is influential -- i.e. that it is either high-leverage or an outlier (or both). Effectively, it flags a point that may have an undue level of influence on the model (and possibly might be worth removing to gain more predictive accuracy since a highly influential point can sometimes skew the model in its direction.)
+
     \section{Problem 5}
+
+    The only part I got wrong on this question was the first one (though granted, "only" still means the part that was worth the most points!) This was mostly because I forgot how the variance-covariance matrix works --- my fault for not studying enough. 
+
+    We are asked for the \(95\%\) confidence interval for \(b_2\). The matrix actually gives the variance of each \(b_i\), so the variance of \(b_2\) is \(0.25\) (the (i+1)th value on the diagonal). We are also given \(b_2 = 5\) so we can immediately find \(t = \frac{5}{\sqrt{0.25}} = 10\). This t-statistic looks large, but it actually is small in context --- this model has \(2+1\) coefficients and \(4\) observations so it only has one degree of freedom! And at the \(95\%\) confidence level with one degree of freedom, the critical \(t\) statistic is \(12.71\). We can then find the confidence interval as
+
+    \[ CI = 5 \pm 12.71 \times \sqrt{0.25} = [ -1.355, 11.355 ]      \]
+
+    and as we should expect since \(t < t_{\text{crit}}\), we fail to reject the null.
 
     
 

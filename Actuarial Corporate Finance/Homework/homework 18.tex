@@ -2,7 +2,6 @@
 \usepackage[mmddyyyy]{datetime}
 
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath}
 \usepackage{mathpazo}
 \usepackage{mathtools}
 \usepackage{eulervm}
@@ -32,6 +31,11 @@
 \usepackage{float}
 \usepackage{fancyvrb}
 \usepackage{cancel}
+\usepackage{amsmath}
+
+\usepackage{tzplot}
+\usepackage{istgame}
+\usepackage{makecell}
 
 \VerbatimFootnotes
 
@@ -46,7 +50,7 @@
 \newcommand{\e}{\mathrm{e}}
 \newcommand{\Var}{\mathrm{Var}}
 \newcommand{\Ex}[1]{\mathbb{E}\left[#1\right]}
-\renewcommand{\Pr}[1]{\mathbb{P}(#1)}
+\renewcommand{\Pr}[1]{\mathbb{P}\left(#1\right)}
 \newcommand{\plim}{\mathrm{plim}}
 \newcommand{\pc}[1]{\frac{\dot{#1}(t)}{#1(t)}}
 \renewcommand\qedsymbol{$\blacksquare$}
@@ -61,13 +65,216 @@
 
     \section{H 18-1}
 
-    We are given a call option on a stock with \(S_0 = 100\), \(K = 105\), \(T = 0.5\), \(h = \frac{1}{6}\), \(\sigma = 0.2\), and \(r = 0.08\). We want the premium of the call option. 
+    We are given a call option on a stock with \(S_0 = 100\), \(K = 105\), \(T = 0.5\), \(h = \frac{1}{6}\), \(\sigma = 0.2\), and \(r = 0.08\). We want the premium of the call option. We first find the amount the stock price moves each period through the forward tree method:
+    
+    \begin{align*}
+    u &= \e^{rh + \sigma \sqrt{h}} = \e^{\frac{0.08}{6} + 0.2 \sqrt{\frac{1}{6}}} = 1.099640 \\
+    d &= \e^{rh - \sigma \sqrt{h}} = \e^{\frac{0.08}{6} - 0.2 \sqrt{\frac{1}{6}}} = 0.933965
+    \end{align*}
+
+    The binomial tree model has the same probability of moving up or down in each period, so we can find \(p^*\) easily by calculating it based on a one-period return. The stock evolves according to
+
+    \[ 100 = 100 \e^{-\frac{0.08}{6}} \left[ 1.09964 p^* + 0.933965 (1 - p^*) \right] \implies \e^{\frac{0.04}{3}} = 0.165675 p^* + 0.933965 \]
+
+    which gives \(p^* = 0.4796 \) and \(1 - p^* = 0.5204\). Now we can see about the price of the call. The call will evolve over three periods, so we first find the four potential outcomes for the stock payoffs: \(S_0 u^3 = 100 \times 1.09964^3 = 132.97\), \(S_0 u^2 d = 112.94\), \(S_0 u d^2 = 95.92\), and \(S_0 d^3 = 81.47\). The strike price of the call is \(105\), so the only two outcomes that lead to the call payoffs being non-zero are the last two. Then we can find the call price as
+
+    \[ C = \e^{-0.08 \times 0.5} \left[ \binom{3}{0} 0.4796^3 \times (132.97 - 105) + \binom{3}{1} 0.4796^2 \times 0.5204 \times (112.94 - 105) \right]   \]
+
+    which gives
+
+    \[ \boxed{C = 5.70}    \]
+
+
+
+
 
     \section{H 18-2}
 
+    We are given \(S_0 = 50\), \(K = 47\), \(\sigma = 0.3\), \(h = 0.25\), \(T = 1\), and \(r = 0.08\). 
+
+    \begin{enumerate}
+    
+        \item We first need to check the risk-neutral probability of moving into the `up' state. We first find \(u\) and \(d\):
+        
+        \begin{align*}
+        u &= \e^{rh + \sigma \sqrt{h}} = \e^{0.08 \times 0.25 + 0.3 \times sqrt{0.25}} = \e^{0.17} \\
+        d &= \e^{rh - \sigma \sqrt{h}} = \e^{0.08 \times 0.25 - 0.3 \times sqrt{0.25}} = \e^{-0.13}
+        \end{align*}
+
+        These are very clean quantities, so I will leave them like this for the computations. We can then find the stock's probability of moving up or down in one period through asset pricing:
+
+        \[ 50 = 50 \e^{-0.08 \times 0.25} \left[ \e^{0.17} p^* + \e^{-0.13} (1 - p^*) \right] \implies  \boxed{p^* = 0.46257}   \]
+
+        which is what we want.
+
+        \item
+        
+        \begin{figure}[H]
+        \centering
+        \begin{istgame}
+        \setistgrowdirection'{east}
+        \xtShowMidArrows
+        \xtShowEndPoints
+        \istroot(0)<180>{\makecell[r]{50}}
+            \istb \istb \endist
+        \istroot(a1)(0-1)<90>{\makecell[r]{$50\e^{0.17}$}}
+            \istb \istb \endist
+        \istroot(a2)(0-2)<90>{\makecell[r]{$50\e^{-0.13}$}}
+            \istb \istb \endist
+        \istroot(b1)(a1-1)<90>{\makecell[r]{$50\e^{0.34}$}}
+            \istb \istb \endist
+        \istroot(b2)(a1-2)<90>{\makecell[r]{$50 \e^{0.04}$}}
+            \istb \istb \endist
+        \istroot(b3)(a2-1)<90>
+            \istb \istb \endist
+        \istroot(b4)(a2-2)<90>{\makecell[r]{$50 \e^{-0.26}$}}
+            \istb \istb \endist
+        \istroot(c1)(b1-1)<90>{\makecell[r]{$50 \e^{0.51}$}}
+            \istb{}{\makecell[c]{50 \e^{0.68}}} \istb{}{\makecell[c]{50 \e^{0.38}}} \endist
+        \istroot(c2)(b1-2)<90>{\makecell[r]{$50 \e^{0.21}$}}
+            \istb \istb{}{\makecell[c]{50 \e^{0.08}}} \endist
+        \istroot(c3)(b2-1)<90>
+            \istb \istb \endist
+        \istroot(c4)(b2-2)<90>{\makecell[r]{$50 \e^{-0.09}$}}
+            \istb \istb \endist
+        \istroot(c5)(b3-1)<90>
+            \istb \istb \endist
+        \istroot(c6)(b3-2)<90>
+            \istb \istb \endist
+        \istroot(c7)(b4-1)<90>
+            \istb \istb \endist
+        \istroot(c8)(b4-2)<90>{\makecell[r]{$50 \e^{-0.39}$}}
+            \istb{}{\makecell[c]{50 \e^{-0.22}}} \istb{}{\makecell[c]{50 \e^{-0.52}}} \endist
+        \end{istgame}
+        \end{figure}
+
+        \item The final prices of this tree are \(50 \e^{0.17 \times 4 } = 98.69\), \(50 \e^{0.17 \times 3 - 0.13} =  73.11 \), \\ \(50 \e^{2(0.17 - 0.13) } = 54.16\), \(50 \e^{0.17 - 0.13 \times 3 } = 40.13\), and \(50 \e^{-0.13 \times 4} = 29.73\). With a strike price of \(47\), only the last two prices will result in a non-zero payoff. Then the price of the put should be given by
+        
+        \begin{align*}
+        P = \e^{-0.08 \times 1} \left[ \binom{4}{1} \times 0.46257 \times (1 - 0.46257)^3 \times \left(47 - 50 \e^{-0.22}\right) \right. \\ \left. + \binom{4}{0} \times (1 - 0.46257)^4 \times \left(47 - 50 \e^{-0.52}\right) \right] \implies \boxed{P = 3.15}
+        \end{align*}
+
+        \item At \(t = 0.75\), the possible stock prices are \(50 \e^{0.17 \times 3} = 83.27\), \(50 \e^{0.17 \times 2 - 0.13} = 61.68\), \(50 \e^{0.17 - 0.13 \times 2} = 45.70\), and \(50 \e^{-0.13 \times 3} = 33.85\). The put option still has strike price \(47\), so it only pays off in the last two branches. We can write the price of this put as 
+        
+        \begin{align*}
+        P = \e^{-0.08 \times 0.75} \left[ \binom{3}{1} \times 0.46257 \times (1 - 0.46257)^2 \times \left(47 - 50 \e^{-0.09}\right) \right. \\ \left. + \binom{3}{0} \times (1 - 0.46257)^3 \times \left(47 - 50 \e^{-0.39}\right) \right] = 2.41
+        \end{align*}
+
+        At \(P' = 4\) the put is too expensive, so we want to short the put and long the replicating portfolio. I overlooked this part of the problem and did not have time to calculate it unfortunately --- this homework was far too long.
+        
+
+
+    \end{enumerate}
+
     \section{Notes}
 
+    We are studying Black-Scholes, which is a continuous-time version of the binomial tree model. The actual model uses stochastic calculus but we are apparently not doing that here. Instead, we jump straight to the closed-form solution. 
+    
+    We are evaluating a stock over an interval \([0,T]\). We assume we are using the binomial tree method with period length \(h = \frac{T}{n}\). This means that we of course have \(u = \e^{r \frac{T}{n} + \sigma \sqrt{\frac{T}{n}}}\) and \(d = \e^{r \frac{T}{n} - \sigma \sqrt{\frac{T}{n}}}\). This allows us to write \(p^*\) as (simplified):
+
+    \[ p^* = \frac{\e^{rh} - d}{u - d} = \frac{1}{e^{\sigma \sqrt{\frac{T}{n}}} + 1}    \]
+
+    Taking the limit as \(n \rightarrow \infty\), we find \(p^* \rightarrow \frac{1}{2}\). Each period, the stock will thus move either up or down with equal probability. Letting \(A\) denote the number of moves up, we have the final stock price as \(S_T = S_0 u^A d^{n - A}\). If we also have \(R = \frac{S_T}{S_0}\) be the return for the stock, we have
+
+    \[ \ln(R) = \ln(\frac{S_T}{S_0}) = \ln(u^A d^{n - A}) = A \times 2 \sigma \sqrt{\frac{T}{n}} + rT - \sigma \sqrt{nT}  \]
+
+    If we think of moving up or down as a success/failure model, then we effectively have our stock following a binomial distribution. That means that by the Central Limit Theorem, this model should eventually converge to a normal distribution! That means that by the central limit theorem,
+
+    \[  \frac{A - \Ex{A}}{\sqrt{Var(A)}} = \frac{A - n p^*}{\sqrt{n p^* (1 - p^*)}} = z \sim \mathcal{N}\left(0,1\right)      \]
+
+    with \(A = \sqrt{n p^* (1 - p^*)} = z + n p^*\). We then rewrite our equation for \(R\) as 
+
+    \begin{align*}
+    R = \left(\sqrt{n p^* (1 - p^*)} \times z + n p^* \right) \times 2 \sigma \sqrt{\frac{T}{n}} + rT - \sigma \sqrt{nT} \\ = z \times 2 \sigma \sqrt{T} \sqrt{p^* (1 - p^*)} + (2 p^* - 1) \sigma \sqrt{nT}
+    \end{align*}
+
+    We observe that \(\sqrt{p^* (1 - p^*)}\) limits to \(\frac{1}{2}\), while the second limits to \(0 \times \infty\) which is of course unknown. To work with the latter, we define \(x = \e^{\sigma \sqrt{\frac{T}{n}}}\) so we get \(\sqrt{n} = \frac{\sigma \sqrt{T}}{\ln(x)}\). Then we find the limit 
+
+    \[ \lim_{n \rightarrow \infty} (2p^* - 1) \sigma \sqrt{nT} = \lim_{n \rightarrow \infty} \left( 2 \frac{1}{x + 1} - 1 \right) \sqrt{n} \times \sigma T = \lim_{x \rightarrow 1} \left( \frac{2}{x+1} - \frac{x+1}{x+1} \right) \frac{\sigma \sqrt{T}}{\ln(x)} \sigma \sqrt{T}  \]
+
+    With the latter form expressed in terms of \(x\), we then get 
+
+    \[ \lim_{x \rightarrow 1} \frac{(1 - x) \sigma^2 T}{(x + 1) \ln(x)} = \lim_{x \rightarrow 1} \frac{- \sigma^2 T }{(x + 1) \frac{1}{x} + \ln(x)} = - \frac{\sigma^2}{2} T   \]
+
+    Plugging this back in, we can then find
+
+    \[ \lim_{n \rightarrow \infty} \ln(R) = z \times 2 \sigma \sqrt{T} \times \frac{1}{2} - \frac{\sigma^2}{2} T + rT = \left( r - \frac{\sigma^2}{2}  \right) T + \sigma \sqrt{T} z \sim \mathcal{N}\left( \left(r - \frac{\sigma^2}{2}  \right) T , \sigma^2 T \right)   \]
+
+    This means that the gross stock return \(R\) follows a lognormal distribution! (note: R is lognormal regardless of \(T\).) One useful thing about lognormal variables is you can multiply them together and still get a lognormal distribution, so this allows us to model stock returns consistently over arbitrary time horizons. 
+
+    What are the drawbacks of this model? It is not flexible enough to capture all the complexity of financial markets. However, it is clearly better than the basic binomial tree. Also note that the lognormal distribution can understate extreme outcomes, so it may not capture very important tail risks in the real world (i.e. financial crises.) However, it is good enough for a model to build on.
+
+    \subsection{}
+
+    We now consider a European call option with strike price \(K\) and maturity \(T\). The underlying premium follows a lognormal distribution with parameter \(r\): 
+
+    \[ R = \frac{S_T}{S_0} = \e^{\left( r - \frac{\sigma^2}{2} \right) T + \sigma \sqrt{T} \times z}  \]
+
+    Then the call price is 
+
+    \begin{align*}
+    C = \e^{-rT} \Ex{S_T - K, 0} = \e^{-rT} \int_K^\infty f(S_T) (S_T - K) dS_T \\ = \e^{-rT} \int_K^\infty f(S_T) S_T dS_T - K \e^{-rT} \int_K^\infty f(S_T) dS_T
+    \end{align*}
+
+    We can write the two integral terms here as \(A\) and \(B\). We can rewrite \(B\) as 
+
+    \[ B =  \int_K^\infty f(S_T) dS_T = \Pr{S_T > K} = \Pr{\frac{\ln(\frac{S_0}{K}) + \left( r - \frac{\sigma^2}{2} \right) T}{\sigma \sqrt{T}} > - z }    \]
+
+    We define the term inside the probability expression as \(d_2\) so we can write this expression as \(\Pr{z > -d_2}\). Because the underlying random variable here is normal, we can also write this as expression \(\Pr{z < d_2} = \Phi\left(d_2\right)\). \(A\) is even more complicated, so we skip the derivation and write
+
+    \[ A = S_0 \Phi\left(d_1\right) \text{ where } d_1 = \frac{\ln(\frac{S_0}{K}) + \left(r + \frac{\sigma^2}{2}\right) T}{\sigma \sqrt{T}}  \]
+
+    Then we finally can write the call option price as
+
+    \[ C_{K,T} = S_0 \Phi\left(d_1\right) - \e^{-rT} K \Phi\left( d_2 \right)  \]
+
+    This of course has no closed-form solution, so we will use a normal table and round \(d_1\) and \(d_2\) to two decimals accordingly. Using put-call parity, we can also derive
+
+    \[ P_{K,T} = K \e^{-rT} \Phi\left(- d_2\right) - S_0 \Phi\left(- d_1\right)  \] 
+
+    We can also relate \(d_2\) and \(d_1\) as 
+
+    \[ d_2 = d_1 - \sigma \sqrt{T}  \]
+
+    Additional notes: the Black-Scholes model is based on the binomial tree, so many of the same ideas hold (e.g. risk-neutral valuation still works.) In this vein, we can also find a replicating portfolio through declaring our \(C\) and \(P\) formulas as a \(\Delta\) minus a \(B\). Note that this does assume continuous rebalancing which is unreasonable, but it is a good enough approximation. 
+
+
+
     \section{H 18-3}
+
+    We are given \(S_0 = 40\), \(\sigma = 0.3\), \(r = 0.04\), \(K = 42\), and \(T = 1\).
+
+    \begin{enumerate}
+    
+    \item Under Black-Scholes, we can find the call price as
+
+    \[ C_{K,T} = S_0 \Phi\left(d_1\right) - K \e^{-rT} \Phi\left( d_2 \right)  \]
+
+    with 
+
+    \[ d_1 = \frac{\ln(\frac{S_0}{K}) + \left(r + \frac{\sigma^2}{2}\right) T}{\sigma \sqrt{T}}    \]
+
+    and \( d_2 = d_1 - \sigma \sqrt{T} \). Plugging in values, we find
+
+    \[ d_1 = \frac{\ln(\frac{40}{42}) + \left(0.04 + \frac{0.3^2}{2}\right)}{0.3} = 0.1207  \]
+
+    and \(d_2 = d_1 - 0.3 = -0.1793\). This means we can write the call price as 
+
+    \[ C_{K,T} = 40 \Phi(0.1207) - K \e^{-0.04} \Phi(-0.1793) = 40 \times 0.5480 - 42 \times \e^{-0.04} \times 0.4289      \]
+
+    so \(\boxed{C = 4.61}\).
+
+    \item  The counterpart put option has a price given by
+    
+    \[ P_{K,T} = K \e^{-rT} \Phi\left(- d_2\right) - S_0 \Phi\left(- d_1\right) \]
+
+    Plugging in numbers, we have 
+
+    \[ \boxed{P_{K,T} = 42 \e^{-0.04} \times (1 - 0.4289) - 40 \times (1 - 0.5480) = 4.97  }     \]
+
+    \item The delta of an option is just the function \(\Phi(d_1)\). Thus for the call we have a delta of \(0.5480\) and for the put we have a delta of \(0.4520\). 
+
+    \end{enumerate}
 
     
 
