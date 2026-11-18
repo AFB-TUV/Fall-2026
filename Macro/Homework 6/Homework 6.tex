@@ -63,6 +63,8 @@
 
     \subsection{}
 
+    I was unable to solve this before the deadline no matter how hard I tried. My most successful-looking attempt is below.
+
     We have defined TFP as 
 
     %\[ TFP \equiv \frac{Y}{K^\alpha L^{1 - \alpha}} = \frac{\left( \sum y_i^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} }{K^\alpha L^{1 - \alpha}} = \frac{\left( \sum \left[ A_i L_i \left(\frac{K_i}{L_i}\right)^\alpha \right]^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} }{K^\alpha L^{1 - \alpha}} \]
@@ -86,7 +88,7 @@
 
     \[ \left( \sum A_i \left( \frac{TFPR \times \frac{p_i y_i}{P Y}}{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} = \left( \sum A_i \left( \frac{TFPR \times \left(\frac{p_i y_i}{P Y}\right)^\alpha \times \left(\frac{p_i y_i}{P Y}\right)^{1 - \alpha}}{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}}   \]
 
-    The problem is that it is not clear where to proceed from here to put the wedges inside the expression. I am not sure I will be able to find this before the due date.
+    The problem is that it is not clear where to proceed from here to put the wedges inside the expression.
 
     %\[ \left( \sum \left(TFPR \times \frac{y_i}{P Y} \times \frac{TFPR_i}{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}} = \left( \sum \left( \frac{TFPR \times \frac{y_i}{P Y} \times \frac{R^\alpha w^{1 - \alpha}}{\alpha^{1 - \alpha} (1 - \alpha)^\alpha} \frac{(1 + \tau_i^k)^\alpha}{1 - \tau_i^y}}{TFPR_i}\right)^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma}{\sigma - 1}}    \]
 
@@ -154,11 +156,36 @@
 
     \[ log(TFPX_i) \sim \mathcal{N}   \]
 
-    We have defined \(TFPR_i = A_i p_i\) and the slides indicate that \(TFPQ_i = A_i\). Then using the CES aggregate form of TFP, we have
+    %We have defined \(TFPR_i = A_i p_i\) and the slides indicate that \(TFPQ_i = A_i\). Then using the CES aggregate form of TFP, we have
 
-    \[ TFP = \left(\sum A_i^{\sigma - 1}\right)^{\frac{1}{\sigma - 1}} = \left(\sum \left(\e^{log(A_i)}\right)^{\sigma - 1}\right)^{\frac{1}{\sigma - 1}}     \]
+    %\[ TFP = \left(\sum A_i^{\sigma - 1}\right)^{\frac{1}{\sigma - 1}} = \left(\sum \left(\e^{log(A_i)}\right)^{\sigma - 1}\right)^{\frac{1}{\sigma - 1}}     \]
 
     %\[ TFP = \left(\sum A_i^{\sigma - 1}\right)^{\frac{1}{\sigma - 1}} = \left(\sum \left(\frac{A_i p_i}{p_i}\right)^{\sigma - 1}\right)^{\frac{1}{\sigma - 1}}     \]
+
+    Under CES demand, the revenue share of any firm \(i\) is given by 
+    
+    \[\left(\frac{p_i y_i}{P Y}\right) = \left(\frac{p_i y_i}{P Y}\right)^{1 - \sigma} \]
+
+    Using the equation \(TFPR_i = p_i A_i \implies p_i = \frac{TFPR_i}{A_i}\), we can rewrite this equation as
+
+    \[\left(\frac{p_i}{P}\right)^{1 - \sigma} = \left(\frac{A_i P}{TFPR_i}\right)^{\sigma - 1} \]
+
+    Summing across all firms, we end up with
+
+    \[ \sum \left(\frac{p_i}{P}\right)^{1 - \sigma} = 1 = \sum \left(\frac{A_i P}{TFPR_i}\right)^{\sigma - 1} \implies P^{1 - \sigma} = \sum \left(\frac{A_i}{TFPR_i}\right)^{\sigma - 1}    \]
+
+    We observe that the quantity on the right-hand side is basically just a mean, so we are inclined to take an expectation here. We can express a variable \(x\) as \(\e^{\ln(x)}\), so we do that here and take expectations to get
+
+    \[ P^{1 - \sigma} = \Ex{\e^{(\sigma - 1) \ln(\frac{A_i}{TFPR_i})}} = \Ex{\e^{\left((\sigma - 1) \ln(A_i) - \ln(TFPR_i)\right)}}     \]
+
+    Taking logs and then dividing through by \(1 - \sigma\), we have
+
+    \begin{align*}
+    P = \left(\frac{\sigma - 1}{1 - \sigma}\right) \ln(\Ex{\e^{\left((\sigma - 1) \ln(A_i) - \ln(TFPR_i)\right)}}) \\ = \mu_{TFPR} - \mu_A + \frac{(\sigma - 1)^2}{2} \left( 2 \sigma_{TFPR, A} - \sigma_A^2 - \sigma_{TFPR}^2 \right)
+    \end{align*}
+
+    I did not get further on this problem.
+
 
     
     \section{Alternative Sources for Variable Markups}
