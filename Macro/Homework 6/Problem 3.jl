@@ -16,7 +16,20 @@ function quantity(p::Float64, P::Float64, σ::Float64, ρ::Float64, E::Float64)
     return (p^(-σ))*(P^(σ - ρ))*E
 end
 
+function revenue(q::Float64, p::Float64)
+    return q * p 
+end
+
+function profit(q::Float64, p::Float64, τ::Float64 )
+    return q*p/τ
+end
+
+#Julia lets you define functions with the same name that take in different inputs
 function agg_p(p::Matrix{Float64}, σ::Float64)
+    return (sum(p .^ (1 - σ)))^(1/(1 - σ))
+end
+
+function agg_p(p::Vector{Float64}, σ::Float64)
     return (sum(p .^ (1 - σ)))^(1/(1 - σ))
 end
 
@@ -40,7 +53,11 @@ function find_shares(model; maxits = 10_000, tol = 1e-20)
     markups = zeros(Float64, size(ϕ))
     q = zeros(Float64, size(ϕ))
     p = zeros(Float64, size(ϕ))
+    r = zeros(Float64, size(ϕ))
+    π = zeros(Float64, size(ϕ))
     P = 0.0
+    P_H = 0.0
+    P_F = 0.0
     D = 0.0
 
     for i in 1:maxits
@@ -49,13 +66,17 @@ function find_shares(model; maxits = 10_000, tol = 1e-20)
         markups = markup.(ϵ_demand)
         p = price.(σ, ϕ, τ)
         P = agg_p(p, σ)
+        P_H = agg_p(p[1,:],σ)
+        P_F = agg_p(p[2,:],σ)
         q = quantity.(p, P, σ, ρ, E)
         D = dot(p,q)
         s_new = shares.(p, q, D)
 
         if i % 10 == 0
             if maximum(abs.(s - s_new)) < tol
-                return (; s = s_new, p = p, q = q, P = P, μ = markups, ϵ = ϵ_demand)
+                r = revenue.(p,q)
+                π = profit.(p,q,τ)
+                return (; s = s_new, p = p, q = q, P = P, μ = markups, ϵ = ϵ_demand, P_H = P_H, P_F = P_F, π = π, r = r)
             end
         end
         s = s_new
@@ -91,4 +112,5 @@ for i in 1:length(τvec)
     HHIvec[i] = cstatics_trade(τvec[i], model)
 end
 
-HHIplot = plot(τvec, HHIvec)
+HHIplot = plot(τvec, HHIvec, title = "HHI With Varying Trade Costs", xlabel = "Iceberg Trade Costs", legend = false)
+png(HHIplot, "HHI_plot")

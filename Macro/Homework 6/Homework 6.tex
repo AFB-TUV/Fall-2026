@@ -32,6 +32,7 @@
 \usepackage{float}
 \usepackage{fancyvrb}
 \usepackage{cancel}
+\usepackage{adjustbox}
 
 \VerbatimFootnotes
 
@@ -303,5 +304,51 @@
 
 
     \section{Two Country Atkeson-Burstein}
+
+    \subsection{}
+
+    The shares are found via fixed-point iteration. Markups and price indices (and quantities) are obtained via given formulas. We are not given the formulae for revenue and profits, but with zero marginal cost I assume we write \(\text{revenue} = pq\) and \(\pi = \frac{pq}{\tau}\).
+
+    \begin{adjustbox}{angle=90}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+        \hline
+        & 1,H & 2,H & 3,H & 4,H & 1,F & 2,F & 3,F & 4,F \\
+        \hline
+        Shares & \(0.425534\) & \(0.164860\) & \(0.0824713\) & \(0.0571141\) & \(0.110781\) & \(0.0824713\) & \(0.0607846\) & \(0.0159835\) \\
+        \hline
+        Markups & \(1.19593\) & \(1.1425\) & \(1.1266\) & \(1.12179\) & \(1.13201\) & \(1.1266\) & \(1.12248\) & \(1.11408\) \\
+        \hline
+        Revenue & \(139.195\) & \(53.927\) & \(26.9769\) & \(18.6824\) & \(36.2374\) & \(26.9769\) & \(19.8831\) & \(5.22831\) \\
+        \hline
+        Profits & \(139.195\) & \(53.927\) & \(26.9769\) & \(18.6824\) & \(30.1978\) & \(22.4808\) & \(16.5692\) & \(4.35693\) \\
+        \hline
+        Price Indices & Overall: \(0.67365\) & Home: \(0.69763\) & Foreign: \(0.77914\) & & & & & \\
+        \hline
+    
+    \end{tabular}
+    \end{adjustbox}
+
+    \subsection{}
+
+    The computed HHI is \(0.24135\).
+
+    \subsection{}
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{HHI_plot.png}
+    \end{figure}
+
+    \subsection{}
+
+    Trade liberalization increases competition (except perhaps for very low trade costs, but this could be a numerical artefact?) This is unsurprising because decreasing competition should allow more firms to enter the sector (and foreign firms to compete better), which should increase the amount of competition.
+
+    \subsection{}
+
+    I unfortunately ran out of time to figure this section out (very bad week). My plan was to try to bisection using several productivities and starting intervals and see if I could get the algorithm to converge to different equilibria.
+
+    \subsection{}
+
+    \subsection{}
 
 \end{document}
